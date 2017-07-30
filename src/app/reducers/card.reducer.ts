@@ -11,7 +11,7 @@ const intitialState: AppStore = {
 }
 
 
-export const cardReducer: ActionReducer<AppStore> = (state = intitialState, action: Action) => {
+export function cardReducer(state = intitialState, action: Action): AppStore {
   switch (action.type) {
     case SUBMIT:
       return Object.assign({}, state, action.payload);
