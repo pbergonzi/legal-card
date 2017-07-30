@@ -1,0 +1,9 @@
+<form (ngSubmit)="stepSubmit()" >
+  <div class="form-group">
+    <label for="cname">Name:</label>
+    <input id="cname" type="text" class="form-control" [(ngModel)]="client.name" name="cname">
+    <label for="caddress">Address:</label>
+    <input id="caddress" type="text" class="form-control" [(ngModel)]="client.address" name="caddress">
+  </div>
+  <button type="submit" class="btn-default btn">Push!</button>
+</form>

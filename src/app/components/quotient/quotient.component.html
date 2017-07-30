@@ -1,0 +1,66 @@
+<div class="container">
+    <h1>Quotient Form</h1>
+    <form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="dfrom">Departure Date</label>
+        <input type="text" class="form-control" [(ngModel)]="card.dateFrom" id="dfrom" name="dfrom" required #dfrom="ngModel">
+        <div [hidden]="dfrom.valid || dfrom.pristine"
+            class="alert alert-danger">
+          Departure date is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dto">Return Date</label>
+        <input type="text" class="form-control" [(ngModel)]="card.dateTo" id="dto" name="dto" required>
+      </div>
+
+      <div class="form-group">
+        <label for="adults">Adults</label>
+        <select class="form-control" [(ngModel)]="card.adults" id="adults" name="adults" required>
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="minors">Minors</label>
+        <select class="form-control" [(ngModel)]="card.minors" id="minors" name="minors" required>
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="seniors">Seniors</label>
+        <select class="form-control" [(ngModel)]="card.seniors" id="seniors" name="seniors" required>
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!quoteForm.form.valid" >Quote now</button>
+
+    </form>
+</div>
