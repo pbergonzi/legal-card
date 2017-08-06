@@ -38,10 +38,11 @@ export class QuotientComponent implements OnInit {
   public selectedDate(value: any) {
       this.isPristine = false;
       const now = new Date();
+      now.setHours(0,0,0,0);
       this.card.dateFrom = value.start.toDate();
       this.card.dateTo = value.end.toDate();
       
-      this.isValid = this.card.dateFrom > now && 
+      this.isValid = this.card.dateFrom >= now && 
                       this.card.dateTo > this.card.dateFrom;
   }
 
