@@ -5,7 +5,7 @@ import { ActionReducer, Action } from '@ngrx/store';
 export const SUBMIT = 'SUBMIT';
 export const RESET = 'RESET';
 
-const intitialState: Card = {dateFrom: 'pp', dateTo: 'bb', adults: 1, minors: 0, seniors: 0};
+const intitialState: Card = {dateFrom: new Date(), dateTo: null, adults: 1, minors: 0, seniors: 0};
 
 export function cardReducer(state = intitialState, action: Action): Card {
   switch (action.type) {

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Daterangepicker } from 'ng2-daterangepicker';
 
 import { routes } from 'app/app.router';
 import { AppComponent } from 'app/app.component';
@@ -42,7 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
       }
-    })    
+    }),
+    Daterangepicker    
   ],
   providers: [
     LanguageService,
