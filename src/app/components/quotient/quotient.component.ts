@@ -1,15 +1,8 @@
 import { Card } from 'app/models/card.model';
-import { Store } from '@ngrx/store';
-import { SUBMIT, RESET } from 'app/reducers/card.reducer';
-import { Observable } from 'rxjs/Observable';
-import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from 'app/services/language/language.service';
-import { AppStore } from 'app/app.store';
-
-interface AppState {
-  card: Card;
-}
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs/Subject';
+import { CardService } from 'app/services/card/card.service';
 
 @Component({
   selector: 'app-form-quotient',
@@ -19,25 +12,27 @@ interface AppState {
 
 export class QuotientComponent implements OnInit {
   public card: Card;
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   constructor(
-    private store: Store<AppStore>,
-    private translate: TranslateService,
-    private language: LanguageService
+    private cardService: CardService
   ) {
-    this.store.select('card').subscribe( (data: AppStore ) => {
-      this.card = data.card;
-      //console.log(data.card);
-    });
-
-    this.translate.setDefaultLang(this.language.getDefaultLanguage());
-    this.translate.use(this.language.getLanguage());
+    this.cardService
+      .getCard()
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe( (card: Card) => this.card = card );
   }
 
   ngOnInit() {}
 
   onSubmit() {
-    this.store.dispatch({type: SUBMIT, payload: this.card});
+    console.log(this.card);
+    this.cardService.updateCard(this.card);
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }
 
