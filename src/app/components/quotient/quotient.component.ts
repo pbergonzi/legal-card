@@ -1,15 +1,9 @@
 import { Card } from 'app/models/card.model';
-import { Store } from '@ngrx/store';
-import { SUBMIT, RESET } from 'app/reducers/card.reducer';
-import { Observable } from 'rxjs/Observable';
-import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { LanguageService } from 'app/services/language/language.service';
-import { AppStore } from 'app/app.store';
-
-interface AppState {
-  card: Card;
-}
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
+import { DaterangePickerComponent } from 'ng2-daterangepicker';
+import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs/Subject';
+import { CardService } from 'app/services/card/card.service';
 
 @Component({
   selector: 'app-form-quotient',
@@ -19,25 +13,52 @@ interface AppState {
 
 export class QuotientComponent implements OnInit {
   public card: Card;
+  public isValid: boolean = true;
+  public isPristine: boolean = true;
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public daterange: any = {};
+  
+  @ViewChild(DaterangePickerComponent)
+  private picker: DaterangePickerComponent;
 
   constructor(
-    private store: Store<AppStore>,
-    private translate: TranslateService,
-    private language: LanguageService
+    private cardService: CardService
   ) {
-    this.store.select('card').subscribe( (data: AppStore ) => {
-      this.card = data.card;
-      //console.log(data.card);
-    });
+    this.cardService
+      .getCard()
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe( (card: Card) => this.card = card );
+  }
+  
+  public options: any = {
+      locale: { format: 'YYYY-DD-MM' },
+      alwaysShowCalendars: false,
+  };
 
-    this.translate.setDefaultLang(this.language.getDefaultLanguage());
-    this.translate.use(this.language.getLanguage());
+  public selectedDate(value: any) {
+      this.isPristine = false;
+      const now = new Date();
+      now.setHours(0,0,0,0);
+      this.card.dateFrom = value.start.toDate();
+      this.card.dateTo = value.end.toDate();
+      
+      this.isValid = this.card.dateFrom >= now && 
+                      this.card.dateTo > this.card.dateFrom;
   }
 
   ngOnInit() {}
 
   onSubmit() {
-    this.store.dispatch({type: SUBMIT, payload: this.card});
+    if(this.isValid){
+      this.cardService.updateCard(this.card);
+    } else {
+      console.log('la tarjeta no vale');
+    }
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }
 
