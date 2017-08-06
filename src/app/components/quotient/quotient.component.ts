@@ -41,7 +41,7 @@ export class QuotientComponent implements OnInit {
       this.card.dateFrom = value.start.toDate();
       this.card.dateTo = value.end.toDate();
       
-      this.isValid = this.card.dateFrom >= now && 
+      this.isValid = this.card.dateFrom > now && 
                       this.card.dateTo > this.card.dateFrom;
   }
 
