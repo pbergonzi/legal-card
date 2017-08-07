@@ -6,5 +6,6 @@ export interface Card {
   adults?: number,
   minors?: number,
   seniors?: number,
+  price?: number,
   owner?: Owner
 }

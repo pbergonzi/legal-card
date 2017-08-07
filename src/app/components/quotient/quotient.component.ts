@@ -4,6 +4,7 @@ import { DaterangePickerComponent } from 'ng2-daterangepicker';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-quotient',
@@ -22,6 +23,7 @@ export class QuotientComponent implements OnInit {
   private picker: DaterangePickerComponent;
 
   constructor(
+    private router: Router,
     private cardService: CardService
   ) {
     this.cardService
@@ -50,7 +52,9 @@ export class QuotientComponent implements OnInit {
 
   onSubmit() {
     if(this.isValid){
+      this.card.price = this.cardService.calculatePrice(this.card);
       this.cardService.updateCard(this.card);
+      this.router.navigate(['/product-selection']);
     } else {
       console.log('la tarjeta no vale');
     }
