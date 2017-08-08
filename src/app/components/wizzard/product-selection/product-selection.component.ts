@@ -1,20 +1,36 @@
-import { Component, OnInit } from '@angular/core';
 import { Card } from 'app/models/card.model';
-import { Store } from '@ngrx/store';
-import { SUBMIT, RESET } from 'app/reducers/card.reducer';
-import { Observable } from 'rxjs/Observable';
-import { AppStore } from 'app/app.store';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DaterangePickerComponent } from 'ng2-daterangepicker';
+import 'rxjs/add/operator/takeUntil';
+import { Subject } from 'rxjs/Subject';
+import { CardService } from 'app/services/card/card.service';
 
 @Component({
   selector: 'app-product-selection',
   templateUrl: './product-selection.component.html',
   styleUrls: ['./product-selection.component.scss']
 })
-export class ProductSelectionComponent implements OnInit {
 
-  constructor() { }
+export class ProductSelectionComponent implements OnInit {
+  private card: Card;
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
+  
+  constructor(
+    private cardService: CardService
+  ) { 
+    this.cardService
+      .getCard()
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe( (card: Card) => { 
+        this.card = card;
+      });
+  }
 
   ngOnInit() {
   }
-
+  
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
 }
