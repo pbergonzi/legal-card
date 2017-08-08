@@ -12,7 +12,7 @@ interface AppState {
 @Component({
   selector: 'app-form-quotient',
   templateUrl: './quotient.component.html',
-  styleUrls: ['./quotient.component.css']
+  styleUrls: ['./quotient.component.scss']
 })
 
 export class QuotientComponent implements OnInit {

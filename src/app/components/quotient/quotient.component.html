@@ -20,68 +20,47 @@
 </section> -->
 
 <div class="container">
-    <h1>Quotient Form</h1>
-    <form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="dfrom">Departure Date</label>
-        <input type="text" class="form-control" [(ngModel)]="card.dateFrom" id="dfrom" name="dfrom" required #dfrom="ngModel">
-        <div [hidden]="dfrom.valid || dfrom.pristine"
-            class="alert alert-danger">
-          Departure date is required
+  <header class="major">
+    <h2>Quotient Form</h2>
+    <p>Ipsum dolor feugiat aliquam tempus sed magna lorem consequat accumsan</p>
+  </header>
+
+  <!-- Content -->
+  <section id="content">
+
+    <section>
+      <form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
+      
+        <div class="row uniform 50%">
+          <div class="12u">
+            <label for="dfrom">{{ 'date_from' | translate }}</label>
+      
+            <input
+              type="text"
+              name="daterangeInput"
+              class="form-control"
+              daterangepicker 
+              [options]="options" 
+              (selected)="selectedDate($event)" 
+              required />
+      
+            <div [hidden]="isValid || isPristine"
+                class="alert alert-danger">
+              The input dates are not valid
+            </div>
+          </div>
         </div>
-      </div>
+      
+        <div class="row uniform 100%">
+          <div class="12u">
+            <ul class="actions">
+              <li><input type="submit" value="Quote now" class="special" [disabled]="!isValid || isPristine" /></li>
+            </ul>
+          </div>
+        </div>
+      
+      </form>
+    </section>
 
-      <div class="form-group">
-        <label for="dto">Return Date</label>
-        <input type="text" class="form-control" [(ngModel)]="card.dateTo" id="dto" name="dto" required>
-      </div>
-
-      <div class="form-group">
-        <label for="adults">Adults</label>
-        <select class="form-control" [(ngModel)]="card.adults" id="adults" name="adults" required>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="minors">Minors</label>
-        <select class="form-control" [(ngModel)]="card.minors" id="minors" name="minors" required>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="seniors">Seniors</label>
-        <select class="form-control" [(ngModel)]="card.seniors" id="seniors" name="seniors" required>
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-        </select>
-      </div>
-
-      <button type="submit" class="btn btn-success" [disabled]="!quoteForm.form.valid" >Quote now</button>
-
-    </form>
+  </section>
 </div>
