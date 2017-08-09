@@ -5,6 +5,7 @@ import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
 import { Router } from '@angular/router';
+import { IMyDpOptions } from 'mydatepicker';
 
 @Component({
   selector: 'app-form-quotient',
@@ -21,6 +22,18 @@ export class QuotientComponent implements OnInit {
   
   @ViewChild(DaterangePickerComponent)
   private picker: DaterangePickerComponent;
+
+  ////////// TEST PICKER //////////////
+  /**/  private myDatePickerOptions: IMyDpOptions = {
+  /**/    // other options...
+  /**/    dateFormat: 'dd/mm/yyyy'
+  /**/  };
+  /**/  // Initialized to specific date (09.10.2018).
+  /**/  private model: Object = {
+  /**/    dateFrom: { date:  {year: 2018, month: 10, day: 9 } },
+  /**/    dateTo: { date: { year: 2018, month: 10, day: 9 } }
+  /**/  };
+  /////////////////////////////////////
 
   constructor(
     private router: Router,
