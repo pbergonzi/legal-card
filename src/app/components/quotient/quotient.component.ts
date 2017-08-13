@@ -5,7 +5,7 @@ import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
 import { Router } from '@angular/router';
-import { IMyDpOptions } from 'mydatepicker';
+import { MyDatePicker, IMyDpOptions, IMyDateModel } from 'mydatepicker';
 
 @Component({
   selector: 'app-form-quotient',
@@ -17,22 +17,42 @@ export class QuotientComponent implements OnInit {
   public card: Card;
   public isValid: boolean = true;
   public isPristine: boolean = true;
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
   public daterange: any = {};
+  private ngUnsubscribe: Subject<void> = new Subject<void>();
   
   @ViewChild(DaterangePickerComponent)
   private picker: DaterangePickerComponent;
 
   ////////// TEST PICKER //////////////
+  /**/  @ViewChild('dateFromInput') dateFromInput: MyDatePicker;
+  /**/  @ViewChild('dateToInput') dateToInput: MyDatePicker;
+  /**/
   /**/  private myDatePickerOptions: IMyDpOptions = {
   /**/    // other options...
   /**/    dateFormat: 'dd/mm/yyyy'
   /**/  };
+  /**/
   /**/  // Initialized to specific date (09.10.2018).
   /**/  private model: Object = {
   /**/    dateFrom: { date:  {year: 2018, month: 10, day: 9 } },
   /**/    dateTo: { date: { year: 2018, month: 10, day: 9 } }
   /**/  };
+  /**/
+  /**/  onDateFromChanged(event: IMyDateModel) {
+  /**/    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+  /**/    this.selectedDate({
+  /**/      start: new Date(event.jsdate).toLocaleDateString(),
+  /**/      end: this.card.dateTo
+  /**/    });
+  /**/  }
+  /**/
+  /**/  onDateToChanged(event: IMyDateModel) {
+  /**/    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+  /**/    this.selectedDate({
+  /**/      start: this.card.dateFrom,
+  /**/      end: new Date(event.jsdate).toLocaleDateString()
+  /**/    });
+  /**/  }
   /////////////////////////////////////
 
   constructor(
@@ -51,6 +71,8 @@ export class QuotientComponent implements OnInit {
   };
 
   public selectedDate(value: any) {
+      console.log(value);
+
       this.isPristine = false;
       const now = new Date();
       now.setHours(0,0,0,0);

@@ -1,86 +1,84 @@
 <div class="container">
-  <!-- Content -->
-  <section id="content">
 
-    <section>
-      <form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
-      
-        <!-- Test with sections -->
-        <section id="three" class="spotlight style3 left">
-          <span class="image fit main bottom">
-            <img src="images/pic04.jpg" alt="" />
-          </span>
+  <!-- Title -->
+  <header class="major">
+    <h2>Welcome to Legal Card</h2>
+    <p>Let's get started!</p>
+  </header>
 
-          <div class="content">
-            <header>
-              <h3>Quotation</h3>
-            </header>
-            
+  <div class="row 100%">
+
+    <div class="5u 12u$(medium) important(medium)">
+      <!-- Sidebar -->
+      <section id="sidebar">
+        <section>
+          <form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
+            <h3>Quotation</h3>
+
             <div class="row uniform 100%">
-              
               <div class="12u">
                 <label for="dfrom">{{ 'date_from' | translate }}</label>
                 <my-date-picker
                   name="dateFromInput"
+                  #dateFromInput="mydatepicker"
                   [options]="myDatePickerOptions"
                   [(ngModel)]="model.dateFrom"
                   placeholder="dd/mm/aaaa"
+                  (dateChanged)="onDateFromChanged($event)"
                   required></my-date-picker>
               </div>
-              
+            </div>
+
+            <div class="row uniform 100%">
               <div class="12u">
                 <label for="dto">{{ 'date_to' | translate }}</label>
                 <my-date-picker
                   name="dateToInput"
+                  #dateToInput="mydatepicker"
                   [options]="myDatePickerOptions"
                   [(ngModel)]="model.dateTo"
                   placeholder="dd/mm/aaaa"
+                  (dateChanged)="onDateToChanged($event)"
                   required></my-date-picker>
-                    
-                <!-- <input
-                  type="text"
-                  name="daterangeInput"
-                  class="form-control"
-                  daterangepicker 
-                  [options]="options" 
-                  (selected)="selectedDate($event)" 
-                  required /> -->
               </div>
-
-              <div class="12u">
-                <div [hidden]="isValid || isPristine"
-                  class="alert alert-danger">
-                  The input dates are not valid
-                </div>
-              </div>
-
-              <div class="12u">
-                <ul class="actions">
-                  <li><input type="submit" value="Quote now" class="special" [disabled]="!isValid || isPristine" /></li>
-                </ul>
-              </div>
-
             </div>
-
-          </div>
-
-          <div class="cont-player">
+            
             <div class="row uniform 100%">
-
               <div class="12u">
-                <div class="placeholder">
-                  <youtube-player
-                    [playerId]='"player"'
-                    [videoId]='"vntAEVjPBzQ"'></youtube-player>
-                </div>
+                <footer>
+                  <ul class="actions">
+                    <li><input type="submit" value="Quote now" class="special" [disabled]="!isValid || isPristine" /></li>
+                  </ul>
+                </footer>
               </div>
-
             </div>
-          </div>
+          </form>
         </section>
 
-      </form>
-    </section>
+        <hr />
+        
+        <section>
+          <h3>Amet Lorem Tempus</h3>
+          <p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p>
+          <footer>
+            <ul class="actions">
+              <li><a href="#" class="button">Learn More</a></li>
+            </ul>
+          </footer>
+        </section>
+      </section>
+    </div>
 
-  </section>
+    <div class="7u 12u$(medium)">
+      <!-- Content -->
+      <section id="content">
+        <h3>How it works?</h3>
+
+        <youtube-player
+          [playerId]='"player"'
+          [videoId]='"vntAEVjPBzQ"'></youtube-player>
+      </section>
+    </div>
+
+  </div>
 </div>
