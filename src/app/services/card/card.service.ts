@@ -26,13 +26,20 @@ export class CardService {
     return this.cardStore;
   }
 
+  public calculateDays(card: Card): number {
+    const days =  1 + Math.floor(( card.dateTo.getTime() - card.dateFrom.getTime() ) / 86400000); 
+    return days;
+  }
+
   public calculatePrice(card: Card): number {
     const days =  1 + Math.floor(( card.dateTo.getTime() - card.dateFrom.getTime() ) / 86400000); 
     
+    /* por ahora solo calculo dias
     const price = Math.floor(days / 365) * this.yearPrice + 
                       Math.floor(days / 28) * this.monthPrice + 
                       (days % 28) * this.dayPrice;
-                      
+    */
+    const price = days * this.dayPrice;                  
     return price;
   }
 
