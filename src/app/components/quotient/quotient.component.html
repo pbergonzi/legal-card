@@ -42,6 +42,15 @@
                   required></my-date-picker>
               </div>
             </div>
+
+            <div class="row uniform 100">
+              <div class="12u">
+                <div [hidden]="isValid || isPristine"
+                  class="alert alert-danger">
+                  The input dates are not valid
+                </div>
+              </div>
+            </div>
             
             <div class="row uniform 100%">
               <div class="12u">
