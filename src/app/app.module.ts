@@ -18,6 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { cardReducer } from 'app/reducers/card.reducer';
 import { LanguageService } from 'app/services/language/language.service';
 import { CardService } from 'app/services/card/card.service';
+import { PaypalComponent } from './components/paypal/paypal.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -30,7 +31,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ServicesComponent,
     QuotientComponent,
     ProductSelectionComponent,
-    PersonalDataComponent
+    PersonalDataComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
