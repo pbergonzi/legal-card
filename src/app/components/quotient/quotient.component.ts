@@ -41,7 +41,7 @@ export class QuotientComponent implements OnInit {
   /**/  onDateFromChanged(event: IMyDateModel) {
   /**/    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
   /**/    this.selectedDate({
-  /**/      start: new Date(event.jsdate).toLocaleDateString(),
+  /**/      start: new Date(event.jsdate),
   /**/      end: this.card.dateTo
   /**/    });
   /**/  }
@@ -50,7 +50,7 @@ export class QuotientComponent implements OnInit {
   /**/    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
   /**/    this.selectedDate({
   /**/      start: this.card.dateFrom,
-  /**/      end: new Date(event.jsdate).toLocaleDateString()
+  /**/      end: new Date(event.jsdate)
   /**/    });
   /**/  }
   /////////////////////////////////////
@@ -71,13 +71,11 @@ export class QuotientComponent implements OnInit {
   };
 
   public selectedDate(value: any) {
-      console.log(value);
-
       this.isPristine = false;
       const now = new Date();
       now.setHours(0,0,0,0);
-      this.card.dateFrom = value.start.toDate();
-      this.card.dateTo = value.end.toDate();
+      this.card.dateFrom = value.start;
+      this.card.dateTo = value.end;
       
       this.isValid = this.card.dateFrom >= now && 
                       this.card.dateTo > this.card.dateFrom;
