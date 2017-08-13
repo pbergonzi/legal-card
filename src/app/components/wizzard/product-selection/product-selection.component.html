@@ -1,5 +1,42 @@
-<p>
-  product-selection works!
-  {{ card.price }}
-</p>
-<app-paypal></app-paypal>
+<div class="container">
+
+  <!-- Title -->
+  <header class="major">
+    <h2>Your request quotation</h2>
+  </header>
+
+  <div class="row 100%">
+
+    <div class="5u 12u$(medium) important(medium)">
+      <!-- Sidebar -->
+      <section id="sidebar">
+        <section>
+          <h2>Request again</h2>
+          <app-form-quotient></app-form-quotient>
+        </section>
+      </section>
+    </div>
+
+    <div class="7u 12u$(medium)">
+      <!-- Content -->
+      <section id="content">
+        <h3>Details</h3>
+        
+        <section>
+          <p>Your price: {{ card.price }}</p>
+          <app-paypal></app-paypal>
+        </section>
+
+        <section>
+          <h3>Amet Lorem Tempus</h3>
+          <p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p>
+          <footer>
+            <ul class="actions">
+              <li><a href="#" class="button">Learn More</a></li>
+            </ul>
+          </footer>
+        </section>
+      </section>
+    </div>
+  </div>
+</div>
