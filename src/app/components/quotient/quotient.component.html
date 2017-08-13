@@ -1,7 +1,7 @@
 <form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
   <h3>Quotation</h3>
 
-  <div class="row uniform 100%">
+  <div class="row 100%">
     <div class="12u">
       <label for="dfrom">{{ 'date_from' | translate }}</label>
       <my-date-picker
@@ -13,9 +13,7 @@
         (dateChanged)="onDateFromChanged($event)"
         required></my-date-picker>
     </div>
-  </div>
 
-  <div class="row uniform 100%">
     <div class="12u">
       <label for="dto">{{ 'date_to' | translate }}</label>
       <my-date-picker
@@ -27,18 +25,14 @@
         (dateChanged)="onDateToChanged($event)"
         required></my-date-picker>
     </div>
-  </div>
 
-  <div class="row uniform 100">
     <div class="12u">
       <div [hidden]="isValid || isPristine"
         class="alert alert-danger">
         The input dates are not valid
       </div>
     </div>
-  </div>
   
-  <div class="row uniform 100%">
     <div class="12u">
       <footer>
         <ul class="actions">
