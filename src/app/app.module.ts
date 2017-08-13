@@ -5,6 +5,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Daterangepicker } from 'ng2-daterangepicker';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
 
 import { routes } from 'app/app.router';
 import { AppComponent } from 'app/app.component';
@@ -49,6 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) {
           deps: [HttpClient]
       }
     }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     Daterangepicker
   ],
   providers: [
