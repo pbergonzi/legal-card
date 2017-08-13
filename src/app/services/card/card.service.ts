@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Card } from 'app/models/card.model';
+import { Owner } from 'app/models/owner.model';
 import { Store } from '@ngrx/store';
 import { AppStore } from 'app/app.store';
 import { SUBMIT, RESET } from 'app/reducers/card.reducer';
@@ -34,11 +35,23 @@ export class CardService {
                       
     return price;
   }
-  updateCard(card: Card) {
+
+  public isValidDateRange(card: Card){
+    const now = new Date();
+    now.setHours(0,0,0,0);
+    
+    return card && ( card.dateFrom >= now && card.dateTo > card.dateFrom);  
+  }
+  
+  public isValidOwner(owner: Owner){
+    return owner && owner.name && owner.passport && owner.address && owner.birthDate && owner.email;  
+  }
+
+  public updateCard(card: Card) {
     this.store.dispatch({ type: SUBMIT, payload: card });
   }
 
-  resetCard() {
+  public resetCard() {
     this.store.dispatch({ type: RESET });
   }
 }

@@ -11,9 +11,11 @@ import { AppComponent } from 'app/app.component';
 import { AboutComponent } from 'app/components/about/about.component';
 import { ServicesComponent } from 'app/components/services/services.component';
 import { QuotientComponent } from 'app/components/quotient/quotient.component';
+import { ProductSelectionComponent } from 'app/components/wizzard/product-selection/product-selection.component';
+import { PersonalDataComponent } from 'app/components/wizzard/personal-data/personal-data.component';
+
 import { StoreModule } from '@ngrx/store';
 import { cardReducer } from 'app/reducers/card.reducer';
-import { ProductSelectionComponent } from 'app/components/wizzard/product-selection/product-selection.component';
 import { LanguageService } from 'app/services/language/language.service';
 import { CardService } from 'app/services/card/card.service';
 
@@ -27,7 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AboutComponent,
     ServicesComponent,
     QuotientComponent,
-    ProductSelectionComponent
+    ProductSelectionComponent,
+    PersonalDataComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
           deps: [HttpClient]
       }
     }),
-    Daterangepicker    
+    Daterangepicker
   ],
   providers: [
     LanguageService,

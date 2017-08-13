@@ -56,7 +56,7 @@ export class QuotientComponent implements OnInit {
       this.cardService.updateCard(this.card);
       this.router.navigate(['/product-selection']);
     } else {
-      console.log('la tarjeta no vale');
+      console.log('The card is not valid');
     }
   }
 
