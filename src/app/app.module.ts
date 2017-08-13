@@ -19,6 +19,8 @@ import { cardReducer } from 'app/reducers/card.reducer';
 import { LanguageService } from 'app/services/language/language.service';
 import { CardService } from 'app/services/card/card.service';
 import { PaypalComponent } from './components/paypal/paypal.component';
+import { MyDatePickerModule } from 'mydatepicker';
+import { YoutubePlayerMiniModule }  from 'ng2-youtube-player-mini'
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http);
@@ -44,12 +46,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
       }
     }),
-    Daterangepicker
+    Daterangepicker,
+    MyDatePickerModule,
+    YoutubePlayerMiniModule
   ],
   providers: [
     LanguageService,

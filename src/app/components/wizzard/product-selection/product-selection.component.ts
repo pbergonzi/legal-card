@@ -8,7 +8,7 @@ import { CardService } from 'app/services/card/card.service';
 @Component({
   selector: 'app-product-selection',
   templateUrl: './product-selection.component.html',
-  styleUrls: ['./product-selection.component.css']
+  styleUrls: ['./product-selection.component.scss']
 })
 
 export class ProductSelectionComponent implements OnInit {

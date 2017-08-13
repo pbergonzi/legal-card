@@ -1,18 +1,50 @@
-<div class="container">
-    <h1>Quotient Form</h1>
-    <form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="dfrom">{{ 'date_from' | translate }}</label>
-        <input type="text" class="form-control" name="daterangeInput" daterangepicker 
-          [options]="options" 
-          (selected)="selectedDate($event)" 
-          required />
-        <div [hidden]="isValid || isPristine"
-            class="alert alert-danger">
-          The input dates are not valid
-        </div>
+<form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
+  <h3>Quotation</h3>
+
+  <div class="row uniform 100%">
+    <div class="12u">
+      <label for="dfrom">{{ 'date_from' | translate }}</label>
+      <my-date-picker
+        name="dateFromInput"
+        #dateFromInput="mydatepicker"
+        [options]="myDatePickerOptions"
+        [(ngModel)]="model.dateFrom"
+        placeholder="dd/mm/aaaa"
+        (dateChanged)="onDateFromChanged($event)"
+        required></my-date-picker>
+    </div>
+  </div>
+
+  <div class="row uniform 100%">
+    <div class="12u">
+      <label for="dto">{{ 'date_to' | translate }}</label>
+      <my-date-picker
+        name="dateToInput"
+        #dateToInput="mydatepicker"
+        [options]="myDatePickerOptions"
+        [(ngModel)]="model.dateTo"
+        placeholder="dd/mm/aaaa"
+        (dateChanged)="onDateToChanged($event)"
+        required></my-date-picker>
+    </div>
+  </div>
+
+  <div class="row uniform 100">
+    <div class="12u">
+      <div [hidden]="isValid || isPristine"
+        class="alert alert-danger">
+        The input dates are not valid
       </div>
-      
-      <button type="submit" class="btn btn-success" [disabled]="!isValid || isPristine" >Quote now</button>
-    </form>
-</div>
+    </div>
+  </div>
+  
+  <div class="row uniform 100%">
+    <div class="12u">
+      <footer>
+        <ul class="actions">
+          <li><input type="submit" value="Quote now" class="special" [disabled]="!isValid || isPristine" /></li>
+        </ul>
+      </footer>
+    </div>
+  </div>
+</form>
