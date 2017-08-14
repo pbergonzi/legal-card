@@ -33,9 +33,9 @@ export class QuotientComponent implements OnInit {
   /**/  };
   /**/
   /**/  // Initialized to specific date (09.10.2018).
-  /**/  private model: Object = {
-  /**/    dateFrom: { date:  {year: 2018, month: 10, day: 9 } },
-  /**/    dateTo: { date: { year: 2018, month: 10, day: 9 } }
+  /**/  private model = {
+  /**/    dateFrom: this.formatModelDate(new Date()),
+  /**/    dateTo: this.formatModelDate(new Date())
   /**/  };
   /**/
   /**/  onDateFromChanged(event: IMyDateModel) {
@@ -62,9 +62,26 @@ export class QuotientComponent implements OnInit {
     this.cardService
       .getCard()
       .takeUntil(this.ngUnsubscribe)
-      .subscribe( (card: Card) => this.card = card );
+      .subscribe( (card: Card) => { 
+        if(card){
+          this.card = card;
+          if(card.dateFrom)
+            this.model.dateFrom = this.formatModelDate(card.dateFrom);
+          if(card.dateTo)
+            this.model.dateTo = this.formatModelDate(card.dateTo);
+        }
+      });
   }
   
+  private formatModelDate(date: Date): any{
+    return { date:  
+              { year: date.getFullYear(), 
+                month: date.getMonth() + 1, 
+                day: date.getDate() 
+              } 
+            }
+  }
+
   public options: any = {
       locale: { format: 'YYYY-DD-MM' },
       alwaysShowCalendars: false,
