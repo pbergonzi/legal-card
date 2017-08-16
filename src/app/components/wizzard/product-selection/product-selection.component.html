@@ -24,9 +24,10 @@
         
         <section>
           <p>Your price: {{ card.price }}</p>
+          <input type="button" (click)="gotoPersonalData()" value="Personal-Data" class="special" />
           <app-paypal></app-paypal>
         </section>
-
+        
         <section>
           <h3>Amet Lorem Tempus</h3>
           <p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p>
