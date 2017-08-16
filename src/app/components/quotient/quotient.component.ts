@@ -69,6 +69,8 @@ export class QuotientComponent implements OnInit {
             this.model.dateFrom = this.formatModelDate(card.dateFrom);
           if(card.dateTo)
             this.model.dateTo = this.formatModelDate(card.dateTo);
+          if(card.dateFrom && card.dateTo)
+            this.isPristine = false;
         }
       });
   }

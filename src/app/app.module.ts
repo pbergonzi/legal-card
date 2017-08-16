@@ -9,7 +9,6 @@ import { Daterangepicker } from 'ng2-daterangepicker';
 import { routes } from 'app/app.router';
 import { AppComponent } from 'app/app.component';
 import { AboutComponent } from 'app/components/about/about.component';
-import { ServicesComponent } from 'app/components/services/services.component';
 import { QuotientComponent } from 'app/components/quotient/quotient.component';
 import { ProductSelectionComponent } from 'app/components/wizzard/product-selection/product-selection.component';
 import { PersonalDataComponent } from 'app/components/wizzard/personal-data/personal-data.component';
@@ -31,7 +30,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     AboutComponent,
-    ServicesComponent,
     QuotientComponent,
     ProductSelectionComponent,
     PersonalDataComponent,
