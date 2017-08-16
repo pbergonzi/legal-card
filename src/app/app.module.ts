@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 //import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
 
 import { routes } from 'app/app.router';
 import { AppComponent } from 'app/app.component';
@@ -35,6 +38,8 @@ import { HomeComponent } from './components/home/home.component'
     }),
     MyDatePickerModule,
     YoutubePlayerMiniModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
   ],
   providers: [
     CardService

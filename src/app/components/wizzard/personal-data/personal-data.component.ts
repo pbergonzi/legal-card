@@ -6,6 +6,7 @@ import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
 import { Router } from '@angular/router';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-personal-data',
@@ -23,7 +24,8 @@ export class PersonalDataComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private cardService: CardService
+    private cardService: CardService,
+    private db: AngularFireDatabase
   ) { 
     this.cardService
       .getCard()
