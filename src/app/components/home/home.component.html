@@ -1,7 +1,31 @@
 <!-- Banner -->
 <section id="banner">
   <div class="content">
-    <app-services></app-services>
+    <div class="row 100%">
+
+      <div class="3u 12u$(medium) important(medium)">
+        <!-- Sidebar -->
+        <section id="sidebar">
+          <section>
+            <app-form-quotient></app-form-quotient>
+          </section>
+
+          <hr />
+        </section>
+      </div>
+
+      <div class="9u 12u$(medium)">
+        <!-- Content -->
+        <section id="content">
+          <h3>How it works?</h3>
+
+          <youtube-player
+            [playerId]='"player"'
+            [videoId]='"vntAEVjPBzQ"'></youtube-player>
+        </section>
+
+      </div>
+    </div>
   </div>
   <a href="#one" class="goto-next scrolly">Next</a>
 </section>

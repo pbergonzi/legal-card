@@ -22,7 +22,6 @@ export class CardService {
     this.cardStore = this.store.select(CARD_STORE);
     const sessionCard = JSON.parse(sessionStorage.getItem('legal-card'));
     if(sessionCard){
-      console.log(sessionCard.dateFrom);
       sessionCard.dateFrom = new Date(sessionCard.dateFrom);
       sessionCard.dateTo = new Date(sessionCard.dateTo);
       this.updateCard(sessionCard);
