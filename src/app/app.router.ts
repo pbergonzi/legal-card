@@ -11,8 +11,8 @@ import { PersonalDataComponent } from 'app/components/wizzard/personal-data/pers
 export const router: Routes = [
   // { path: '', redirectTo: 'about', pathMatch: 'full'},
   { path: '', component: HomeComponent},
-  { path: 'about', component: AboutComponent },
-  { path: 'services', component: ServicesComponent },
+//{ path: 'about', component: AboutComponent },
+//{ path: 'services', component: ServicesComponent },
   { path: 'product-selection', component: ProductSelectionComponent },
   { path: 'personal-data', component: PersonalDataComponent }
 ];

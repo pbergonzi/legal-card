@@ -20,6 +20,13 @@ export class CardService {
     private store: Store<AppStore>
   ) {
     this.cardStore = this.store.select(CARD_STORE);
+    const sessionCard = JSON.parse(sessionStorage.getItem('legal-card'));
+    if(sessionCard){
+      console.log(sessionCard.dateFrom);
+      sessionCard.dateFrom = new Date(sessionCard.dateFrom);
+      sessionCard.dateTo = new Date(sessionCard.dateTo);
+      this.updateCard(sessionCard);
+    }
   }
 
   public getCard(): Observable<Card> {
@@ -55,10 +62,12 @@ export class CardService {
   }
 
   public updateCard(card: Card) {
+    sessionStorage.setItem('legal-card',  JSON.stringify(card));
     this.store.dispatch({ type: SUBMIT, payload: card });
   }
 
   public resetCard() {
+    sessionStorage.removeItem('legal-card');
     this.store.dispatch({ type: RESET });
   }
 }
