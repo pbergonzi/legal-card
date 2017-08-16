@@ -37,7 +37,7 @@ import { HomeComponent } from './components/home/home.component'
       card: cardReducer 
     }),
     MyDatePickerModule,
-    YoutubePlayerMiniModule
+    YoutubePlayerMiniModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
   ],
