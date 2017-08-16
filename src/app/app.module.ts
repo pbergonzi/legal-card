@@ -1,10 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { Daterangepicker } from 'ng2-daterangepicker';
+//import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { routes } from 'app/app.router';
 import { AppComponent } from 'app/app.component';
@@ -14,16 +11,11 @@ import { PersonalDataComponent } from 'app/components/wizzard/personal-data/pers
 
 import { StoreModule } from '@ngrx/store';
 import { cardReducer } from 'app/reducers/card.reducer';
-import { LanguageService } from 'app/services/language/language.service';
 import { CardService } from 'app/services/card/card.service';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { YoutubePlayerMiniModule }  from 'ng2-youtube-player-mini';
 import { HomeComponent } from './components/home/home.component'
-
-export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http);
-}
 
 @NgModule({
   declarations: [
@@ -41,20 +33,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     StoreModule.provideStore({ 
       card: cardReducer 
     }),
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    Daterangepicker,
     MyDatePickerModule,
     YoutubePlayerMiniModule
   ],
   providers: [
-    LanguageService,
     CardService
   ],
   bootstrap: [AppComponent]
