@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 
 export class PersonalDataComponent implements OnInit {
-  private card: Card;
+  public card: Card;
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   
   private isValid(){
