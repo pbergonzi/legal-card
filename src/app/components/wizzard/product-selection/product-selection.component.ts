@@ -1,9 +1,9 @@
 import { Card } from 'app/models/card.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DaterangePickerComponent } from 'ng2-daterangepicker';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-selection',
@@ -16,7 +16,8 @@ export class ProductSelectionComponent implements OnInit {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   
   constructor(
-    private cardService: CardService
+    private cardService: CardService,
+    private router: Router
   ) { 
     this.cardService
       .getCard()
@@ -32,5 +33,9 @@ export class ProductSelectionComponent implements OnInit {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  gotoPersonalData(){
+    this.router.navigate(['/personal-data']);
   }
 }
