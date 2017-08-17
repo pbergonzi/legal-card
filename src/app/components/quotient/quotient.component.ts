@@ -20,25 +20,22 @@ export class QuotientComponent implements OnInit {
   public daterange: any = {};
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   
-  @ViewChild(DaterangePickerComponent)
-  private picker: DaterangePickerComponent;
-
   ////////// TEST PICKER //////////////
   /**/  @ViewChild('dateFromInput') dateFromInput: MyDatePicker;
   /**/  @ViewChild('dateToInput') dateToInput: MyDatePicker;
   /**/
-  /**/  private myDatePickerOptions: IMyDpOptions = {
+  /**/  public myDatePickerOptions: IMyDpOptions = {
   /**/    // other options...
   /**/    dateFormat: 'dd/mm/yyyy'
   /**/  };
   /**/
   /**/  // Initialized to specific date (09.10.2018).
-  /**/  private model = {
+  /**/  public model = {
   /**/    dateFrom: this.formatModelDate(new Date()),
   /**/    dateTo: this.formatModelDate(new Date())
   /**/  };
   /**/
-  /**/  onDateFromChanged(event: IMyDateModel) {
+  /**/  public onDateFromChanged(event: IMyDateModel) {
   /**/    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
   /**/    this.selectedDate({
   /**/      start: new Date(event.jsdate),
@@ -46,7 +43,7 @@ export class QuotientComponent implements OnInit {
   /**/    });
   /**/  }
   /**/
-  /**/  onDateToChanged(event: IMyDateModel) {
+  /**/  public onDateToChanged(event: IMyDateModel) {
   /**/    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
   /**/    this.selectedDate({
   /**/      start: this.card.dateFrom,

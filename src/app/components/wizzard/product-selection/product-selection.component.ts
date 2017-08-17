@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 
 export class ProductSelectionComponent implements OnInit {
-  private card: Card;
+  public card: Card;
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   
   constructor(

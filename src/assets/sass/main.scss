@@ -1392,7 +1392,7 @@
 		}
 
 		&:after {
-			@include vendor('background-image', ('linear-gradient(top, #{_palette(bg-transparent)}, #{_palette(bg-transparent)})', 'url("../css/images/overlay.png");'));
+			@include vendor('background-image', ('linear-gradient(to bottom, #{_palette(bg-transparent)}, #{_palette(bg-transparent)})', 'url("../css/images/overlay.png");'));
 			content: '';
 			display: block;
 			height: 100%;
