@@ -1,0 +1,29 @@
+#banner {
+  min-height: calc(100vh - 61px);
+
+  &:before {
+    height: calc(100vh - 61px);
+  }
+
+  & * {
+    text-align: left;
+  }
+
+  .content {
+    padding: 3em 6em; 
+  }
+
+  /deep/ app-services {
+    background: orange;
+
+    header {
+      display: block !important;
+      margin-bottom: 2em;
+    }
+  }
+}
+
+.spotlight  {
+  min-height: calc(100vh - 61px);
+  height: calc(100vh - 61px);
+}

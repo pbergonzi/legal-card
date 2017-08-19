@@ -20,25 +20,22 @@ export class QuotientComponent implements OnInit {
   public daterange: any = {};
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   
-  @ViewChild(DaterangePickerComponent)
-  private picker: DaterangePickerComponent;
-
   ////////// TEST PICKER //////////////
   /**/  @ViewChild('dateFromInput') dateFromInput: MyDatePicker;
   /**/  @ViewChild('dateToInput') dateToInput: MyDatePicker;
   /**/
-  /**/  private myDatePickerOptions: IMyDpOptions = {
+  /**/  public myDatePickerOptions: IMyDpOptions = {
   /**/    // other options...
   /**/    dateFormat: 'dd/mm/yyyy'
   /**/  };
   /**/
   /**/  // Initialized to specific date (09.10.2018).
-  /**/  private model: Object = {
-  /**/    dateFrom: { date:  {year: 2018, month: 10, day: 9 } },
-  /**/    dateTo: { date: { year: 2018, month: 10, day: 9 } }
+  /**/  public model = {
+  /**/    dateFrom: this.formatModelDate(new Date()),
+  /**/    dateTo: this.formatModelDate(new Date())
   /**/  };
   /**/
-  /**/  onDateFromChanged(event: IMyDateModel) {
+  /**/  public onDateFromChanged(event: IMyDateModel) {
   /**/    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
   /**/    this.selectedDate({
   /**/      start: new Date(event.jsdate),
@@ -46,7 +43,7 @@ export class QuotientComponent implements OnInit {
   /**/    });
   /**/  }
   /**/
-  /**/  onDateToChanged(event: IMyDateModel) {
+  /**/  public onDateToChanged(event: IMyDateModel) {
   /**/    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
   /**/    this.selectedDate({
   /**/      start: this.card.dateFrom,
@@ -62,9 +59,28 @@ export class QuotientComponent implements OnInit {
     this.cardService
       .getCard()
       .takeUntil(this.ngUnsubscribe)
-      .subscribe( (card: Card) => this.card = card );
+      .subscribe( (card: Card) => { 
+        if(card){
+          this.card = card;
+          if(card.dateFrom)
+            this.model.dateFrom = this.formatModelDate(card.dateFrom);
+          if(card.dateTo)
+            this.model.dateTo = this.formatModelDate(card.dateTo);
+          if(card.dateFrom && card.dateTo)
+            this.isPristine = false;
+        }
+      });
   }
   
+  private formatModelDate(date: Date): any{
+    return { date:  
+              { year: date.getFullYear(), 
+                month: date.getMonth() + 1, 
+                day: date.getDate() 
+              } 
+            }
+  }
+
   public options: any = {
       locale: { format: 'YYYY-DD-MM' },
       alwaysShowCalendars: false,
