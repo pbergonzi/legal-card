@@ -28,7 +28,8 @@
         "assets/js/jquery.dropotron.min.js",
         "assets/js/jquery.scrollex.min.js",
         "assets/js/skel.min.js",
-        "assets/js/util.js"
+        "assets/js/util.js",
+        "assets/js/main.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
