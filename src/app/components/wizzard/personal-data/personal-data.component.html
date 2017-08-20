@@ -21,11 +21,21 @@
       
       <div class="form-group">
         <label for="bdate">Birth Date</label>
-        <input type="text" class="form-control" [(ngModel)]="card.owner.birthDate" id="bdate" name="bdate" required #bdate="ngModel">
-        <div [hidden]="bdate.valid || bdate.pristine"
+        <my-date-picker
+        id="bdate" 
+        name="bdate"
+        [options]="myDatePickerOptions"
+        [(ngModel)]="birthDate"
+        placeholder="dd/mm/aaaa"
+        (dateChanged)="onBirthDateChanged($event)"
+        #bdate="ngModel"
+        required></my-date-picker>
+
+        <!--input type="text" class="form-control" [(ngModel)]="card.owner.birthDate" id="bdate" name="bdate" required #bdate="ngModel"-->
+        <!--div [hidden]="bdate.valid || bdate.pristine"
             class="alert alert-danger">
           Insert your birth date
-        </div>
+        </div-->
       </div>
       
       <div class="form-group">

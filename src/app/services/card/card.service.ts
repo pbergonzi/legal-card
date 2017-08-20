@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppStore } from 'app/app.store';
 import { SUBMIT, RESET } from 'app/reducers/card.reducer';
 import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 const CARD_STORE = 'card';
 
@@ -17,13 +18,17 @@ export class CardService {
   private yearPrice: number = 1200;
 
   constructor( 
-    private store: Store<AppStore>
+    private store: Store<AppStore>,
+    private db: AngularFireDatabase
   ) {
     this.cardStore = this.store.select(CARD_STORE);
     const sessionCard = JSON.parse(sessionStorage.getItem('legal-card'));
     if(sessionCard){
       sessionCard.dateFrom = new Date(sessionCard.dateFrom);
       sessionCard.dateTo = new Date(sessionCard.dateTo);
+      if(sessionCard.owner && sessionCard.owner.birthDate){
+        sessionCard.owner.birthDate = new Date(sessionCard.owner.birthDate);
+      }
       this.updateCard(sessionCard);
     }
   }
@@ -58,6 +63,14 @@ export class CardService {
   
   public isValidOwner(owner: Owner){
     return owner && owner.name && owner.passport && owner.address && owner.birthDate && owner.email;  
+  }
+
+  public saveCardToDb(card: Card){
+    card.isoDateTo = card.dateTo.toISOString();
+    card.isoDateFrom = card.dateFrom.toISOString();
+    card.owner.isoBirthDate = card.owner.birthDate.toISOString();
+    console.log(card);
+    this.db.list('/cards').push(card);
   }
 
   public updateCard(card: Card) {
