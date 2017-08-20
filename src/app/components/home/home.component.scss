@@ -1,8 +1,8 @@
 #banner {
-  min-height: calc(100vh - 61px);
+  min-height: calc(100vh - 3.5em);
 
   &:before {
-    height: calc(100vh - 61px);
+    height: calc(100vh - 3.5em);
   }
 
   & * {
@@ -21,9 +21,4 @@
       margin-bottom: 2em;
     }
   }
-}
-
-.spotlight  {
-  min-height: calc(100vh - 61px);
-  height: calc(100vh - 61px);
 }

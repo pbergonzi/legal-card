@@ -6,6 +6,8 @@
 
 (function($) {
 
+	console.log('Inside main.js');
+
 	skel.breakpoints({
 		xlarge: '(max-width: 1680px)',
 		large: '(max-width: 1280px)',
@@ -45,7 +47,7 @@
 
 		// Scrolly links.
 			$('.scrolly').scrolly({
-				speed: 2000
+				speed: 1000
 			});
 
 		// Dropdowns.
