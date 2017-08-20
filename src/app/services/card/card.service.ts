@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Card } from 'app/models/card.model';
 import { Owner } from 'app/models/owner.model';
 import { Store } from '@ngrx/store';
@@ -6,23 +6,30 @@ import { AppStore } from 'app/app.store';
 import { SUBMIT, RESET } from 'app/reducers/card.reducer';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 const CARD_STORE = 'card';
 
 @Injectable()
 export class CardService {
   private cardStore: Observable<Card>;
-    
+  private user: Observable<firebase.User>; 
+
   private dayPrice: number = 10;
   private monthPrice: number = 120;
   private yearPrice: number = 1200;
 
   constructor( 
     private store: Store<AppStore>,
-    private db: AngularFireDatabase
+    private af: AngularFireDatabase,
+    private afAuth: AngularFireAuth
   ) {
     this.cardStore = this.store.select(CARD_STORE);
     const sessionCard = JSON.parse(sessionStorage.getItem('legal-card'));
+    this.user = this.afAuth.authState;
+    this.afAuth.auth.signInAnonymously();
+
     if(sessionCard){
       sessionCard.dateFrom = new Date(sessionCard.dateFrom);
       sessionCard.dateTo = new Date(sessionCard.dateTo);
@@ -57,7 +64,6 @@ export class CardService {
   public isValidDateRange(card: Card){
     const now = new Date();
     now.setHours(0,0,0,0);
-    
     return card && ( card.dateFrom >= now && card.dateTo > card.dateFrom);  
   }
   
@@ -69,8 +75,13 @@ export class CardService {
     card.isoDateTo = card.dateTo.toISOString();
     card.isoDateFrom = card.dateFrom.toISOString();
     card.owner.isoBirthDate = card.owner.birthDate.toISOString();
-    console.log(card);
-    this.db.list('/cards').push(card);
+    //console.log(card);
+    const userSubs= this.user.subscribe( (afUser: firebase.User) => {
+      if(afUser && afUser.uid) {
+        this.af.list('/cards/' + afUser.uid).push(card);
+        userSubs.unsubscribe();
+      }
+    });
   }
 
   public updateCard(card: Card) {
@@ -81,5 +92,9 @@ export class CardService {
   public resetCard() {
     sessionStorage.removeItem('legal-card');
     this.store.dispatch({ type: RESET });
+  }
+
+  ngOnDestroy() {
+    this.afAuth.auth.signOut();
   }
 }

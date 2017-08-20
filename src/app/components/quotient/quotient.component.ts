@@ -5,7 +5,7 @@ import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
 import { Router } from '@angular/router';
-import { MyDatePicker, IMyDpOptions, IMyDateModel } from 'mydatepicker';
+import { MyDatePicker, IMyDpOptions, IMyDateModel, IMyDate } from 'mydatepicker';
 
 @Component({
   selector: 'app-form-quotient',
@@ -19,43 +19,20 @@ export class QuotientComponent implements OnInit {
   public isPristine: boolean = true;
   public daterange: any = {};
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  
-  ////////// TEST PICKER //////////////
-  /**/  @ViewChild('dateFromInput') dateFromInput: MyDatePicker;
-  /**/  @ViewChild('dateToInput') dateToInput: MyDatePicker;
-  /**/
-  /**/  public myDatePickerOptions: IMyDpOptions = {
-  /**/    // other options...
-  /**/    dateFormat: 'dd/mm/yyyy'
-  /**/  };
-  /**/
-  /**/  // Initialized to specific date (09.10.2018).
-  /**/  public model = {
-  /**/    dateFrom: this.formatModelDate(new Date()),
-  /**/    dateTo: this.formatModelDate(new Date())
-  /**/  };
-  /**/
-  /**/  public onDateFromChanged(event: IMyDateModel) {
-  /**/    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
-  /**/    this.selectedDate({
-  /**/      start: new Date(event.jsdate),
-  /**/      end: this.card.dateTo
-  /**/    });
-  /**/  }
-  /**/
-  /**/  public onDateToChanged(event: IMyDateModel) {
-  /**/    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
-  /**/    this.selectedDate({
-  /**/      start: this.card.dateFrom,
-  /**/      end: new Date(event.jsdate)
-  /**/    });
-  /**/  }
-  /////////////////////////////////////
+
+  public model = {
+    dateFrom: this.formatModelDate(new Date()),
+    dateTo: this.formatModelDate(new Date())
+  };
 
   constructor(
     private router: Router,
     private cardService: CardService
   ) {
+    const defaultTo = new Date();
+    defaultTo.setDate(defaultTo.getDate() + 5);
+    this.model.dateTo = this.formatModelDate(defaultTo);
+
     this.cardService
       .getCard()
       .takeUntil(this.ngUnsubscribe)
@@ -73,31 +50,44 @@ export class QuotientComponent implements OnInit {
   }
   
   private formatModelDate(date: Date): any{
-    return { date:  
-              { year: date.getFullYear(), 
-                month: date.getMonth() + 1, 
-                day: date.getDate() 
-              } 
-            }
+    return  {date: { year: date.getFullYear(), 
+              month: date.getMonth() + 1, 
+              day: date.getDate() 
+            }}; 
   }
 
-  public options: any = {
-      locale: { format: 'YYYY-DD-MM' },
-      alwaysShowCalendars: false,
+  public myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'dd/mm/yyyy'
   };
-
+  
+  public onDateFromChanged(event: IMyDateModel) {
+    //console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+    this.selectedDate({
+      start: new Date(event.jsdate),
+      end: this.card.dateTo
+    });
+  }
+  
+  public onDateToChanged(event: IMyDateModel) {
+    //console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+    this.selectedDate({
+      start: this.card.dateFrom,
+      end: new Date(event.jsdate)
+    });
+  }
+  
+  
   public selectedDate(value: any) {
       this.isPristine = false;
       const now = new Date();
       now.setHours(0,0,0,0);
       this.card.dateFrom = value.start;
       this.card.dateTo = value.end;
-      
+      this.card.dateFrom.setHours(0,0,0,0);
+      this.card.dateTo.setHours(0,0,0,0);
       this.isValid = this.card.dateFrom >= now && 
                       this.card.dateTo > this.card.dateFrom;
   }
-
-  ngOnInit() {}
 
   onSubmit() {
     if(this.isValid){
@@ -108,6 +98,8 @@ export class QuotientComponent implements OnInit {
       console.log('The card is not valid');
     }
   }
+
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
