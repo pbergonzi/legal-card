@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 //import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 import { routes } from 'app/app.router';
@@ -40,6 +41,7 @@ import { HomeComponent } from './components/home/home.component'
     YoutubePlayerMiniModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [
     CardService

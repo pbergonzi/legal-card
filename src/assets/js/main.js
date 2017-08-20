@@ -6,7 +6,7 @@
 
 (function($) {
 
-	console.log('Inside main.js');
+	//console.log('Inside main.js');
 
 	skel.breakpoints({
 		xlarge: '(max-width: 1680px)',

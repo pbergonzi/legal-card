@@ -65,7 +65,7 @@ export class PersonalDataComponent implements OnInit {
   };
 
   public onBirthDateChanged(event: IMyDateModel) {
-    console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
+    //console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
     this.birthDate = event.date;
     this.card.owner.birthDate = event.jsdate;
   }
