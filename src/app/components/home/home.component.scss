@@ -13,6 +13,10 @@
     padding: 3em 6em; 
   }
 
+  /deep/ youtube-player {
+    iframe { width: 100%; }
+  }
+
   /deep/ app-services {
     background: orange;
 
