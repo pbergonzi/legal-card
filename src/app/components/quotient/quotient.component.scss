@@ -12,6 +12,7 @@
 
 my-date-picker {
   margin-bottom: 1em;
+
   /deep/ {
     position: relative;
     display: block;
@@ -38,10 +39,7 @@ my-date-picker {
       background-color: transparent;
     }
 
-    .mydp .selection,
-    .mydp .weekdaytitle,
-    .mydp .monthinput,
-    .mydp .yearinput {
+    .mydp .selection {
       display: table-cell;
       padding-left: 1em;
       height: 100% !important;
@@ -69,14 +67,6 @@ my-date-picker {
     }
 
     .mydp .btnclear,
-    .mydp .btndecrease,
-    .mydp .btnincrease,
-    .mydp .btnpicker,
-    .mydp .headerbtn,
-    .mydp .headermonthtxt,
-    .mydp .headertodaybtn,
-    .mydp .headeryeartxt,
-    .mydp .yearchangebtn
     .mydp .btnpicker {
       width: 46px;
       padding: 0 1em;
