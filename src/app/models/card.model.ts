@@ -1,10 +1,11 @@
 import { Owner } from './owner.model';
+import { Package } from './package.model';
 
 export interface Card {
   dateFrom?: Date,
   isoDateFrom?: string,
   dateTo?: Date,
   isoDateTo?: string,
-  price?: number,
+  package?: Package,
   owner?: Owner
 }
