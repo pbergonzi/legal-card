@@ -6,36 +6,33 @@
   </header>
 
   <div class="row 100%">
-
-    <div class="5u 12u$(medium) important(medium)">
+    <div class="6u 12u$(medium) important(medium)">
       <!-- Sidebar -->
       <section id="sidebar">
         <section>
-          <h2>Request again</h2>
           <app-form-quotient></app-form-quotient>
+        </section>
+        <section>
+          <h3>1 Year Package</h3>
+          <p>All cool things you have for u$s599</p>
+          <footer>
+            <ul class="actions">
+              <li><a href="#" class="button">More Info</a></li>
+            </ul>
+          </footer>
         </section>
       </section>
     </div>
 
-    <div class="7u 12u$(medium)">
+    <div class="6u 12u$(medium)">
       <!-- Content -->
-      <section id="content">
-        <h3>Details</h3>
-        
+      <h4>Details</h4>
+      <section id="content">  
         <section>
-          <p>Your price: {{ card.price }}</p>
-          <input type="button" (click)="gotoPersonalData()" value="Personal-Data" class="special" />
-          <app-paypal></app-paypal>
-        </section>
-        
-        <section>
-          <h3>Amet Lorem Tempus</h3>
-          <p>Sed tristique purus vitae volutpat commodo suscipit amet sed nibh. Proin a ullamcorper sed blandit. Sed tristique purus vitae volutpat commodo suscipit ullamcorper sed blandit lorem ipsum dolore.</p>
-          <footer>
-            <ul class="actions">
-              <li><a href="#" class="button">Learn More</a></li>
-            </ul>
-          </footer>
+          <p>Pack: {{ card.package.name }}</p>
+          <p>Price: {{ card.package.price }}</p>
+          <p>Valid From: {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
+          <input type="button" (click)="gotoPersonalData()" value="Go to checkout" class="special" />
         </section>
       </section>
     </div>

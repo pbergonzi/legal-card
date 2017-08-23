@@ -16,22 +16,18 @@ import { MyDatePicker, IMyDpOptions, IMyDateModel, IMyDate } from 'mydatepicker'
 export class QuotientComponent implements OnInit {
   public card: Card;
   public isValid: boolean = true;
-  public isPristine: boolean = true;
   public daterange: any = {};
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
   public model = {
     dateFrom: this.formatModelDate(new Date()),
-    dateTo: this.formatModelDate(new Date())
+    dateTo: this.formatModelDate(this.defaultTo())
   };
 
   constructor(
     private router: Router,
     private cardService: CardService
   ) {
-    const defaultTo = new Date();
-    defaultTo.setDate(defaultTo.getDate() + 5);
-    this.model.dateTo = this.formatModelDate(defaultTo);
 
     this.cardService
       .getCard()
@@ -39,12 +35,12 @@ export class QuotientComponent implements OnInit {
       .subscribe( (card: Card) => { 
         if(card){
           this.card = card;
-          if(card.dateFrom)
-            this.model.dateFrom = this.formatModelDate(card.dateFrom);
-          if(card.dateTo)
-            this.model.dateTo = this.formatModelDate(card.dateTo);
-          if(card.dateFrom && card.dateTo)
-            this.isPristine = false;
+          card.dateFrom ?
+            this.model.dateFrom = this.formatModelDate(card.dateFrom):
+            card.dateFrom = new Date();
+          card.dateTo ?
+            this.model.dateTo = this.formatModelDate(card.dateTo):
+            card.dateTo = this.defaultTo();
         }
       });
   }
@@ -56,8 +52,28 @@ export class QuotientComponent implements OnInit {
             }}; 
   }
 
+  private defaultTo(): Date {
+    const auxNow = new Date();
+    auxNow.setDate(auxNow.getDate() + 5);
+    return auxNow;
+  }
+
+  private oneYearFromNow(): Date {
+    const auxNow = new Date();
+    auxNow.setDate(auxNow.getDate() + 365);
+    return auxNow;
+  }
+  
+  private yesterday(): Date {
+    const auxNow = new Date();
+    auxNow.setDate(auxNow.getDate() - 1);
+    return auxNow;
+  }
+
   public myDatePickerOptions: IMyDpOptions = {
-    dateFormat: 'dd/mm/yyyy'
+    dateFormat: 'mm/dd/yyyy',
+    disableUntil: this.formatModelDate(this.yesterday()).date,
+    disableSince: this.formatModelDate(this.oneYearFromNow()).date
   };
   
   public onDateFromChanged(event: IMyDateModel) {
@@ -78,7 +94,6 @@ export class QuotientComponent implements OnInit {
   
   
   public selectedDate(value: any) {
-      this.isPristine = false;
       const now = new Date();
       now.setHours(0,0,0,0);
       this.card.dateFrom = value.start;
@@ -91,7 +106,7 @@ export class QuotientComponent implements OnInit {
 
   onSubmit() {
     if(this.isValid){
-      this.card.price = this.cardService.calculatePrice(this.card);
+      this.card.package = this.cardService.calculatePackage(this.card);
       this.cardService.updateCard(this.card);
       this.router.navigate(['/product-selection']);
     } else {
