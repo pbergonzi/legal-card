@@ -32,7 +32,7 @@
           <p>Pack: {{ card.package.name }}</p>
           <p>Price: {{ card.package.price }}</p>
           <p>Valid From: {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
-          <input type="button" (click)="gotoPersonalData()" value="Go to checkout" class="special" />
+          <input type="button" (click)="gotoPersonalData()" value="Personal Data" class="special" />
         </section>
       </section>
     </div>

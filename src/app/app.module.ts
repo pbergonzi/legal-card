@@ -19,7 +19,8 @@ import { CardService } from 'app/services/card/card.service';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { YoutubePlayerMiniModule }  from 'ng2-youtube-player-mini';
-import { HomeComponent } from './components/home/home.component'
+import { HomeComponent } from './components/home/home.component';
+import { CheckoutComponent } from './components/wizzard/checkout/checkout.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HomeComponent } from './components/home/home.component'
     ProductSelectionComponent,
     PersonalDataComponent,
     PaypalComponent,
-    HomeComponent
+    HomeComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

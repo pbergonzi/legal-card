@@ -8,6 +8,7 @@ import { SUBMIT, RESET } from 'app/reducers/card.reducer';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { environment } from '../../../environments/environment';
 import * as firebase from 'firebase/app';
 
 class Pack {
@@ -16,8 +17,8 @@ class Pack {
   days: number;
 }
 
-const fourthyFivePack: Pack = { name: '45 Days', price: 100, days: 45 };
-const yearPack: Pack = { name: '1 Year', price: 400, days: 365 };
+const fourthyFivePack: Pack = environment.fortyFivePack;
+const yearPack: Pack = environment.yearPack;
 const CARD_STORE = 'card';
 
 @Injectable()
