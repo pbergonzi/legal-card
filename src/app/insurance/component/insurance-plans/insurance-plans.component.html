@@ -1,0 +1,33 @@
+<div class="page">
+  <div class="container">
+    <h3 class="entry-title">Choose your own insurance plan</h3>
+    <p>Nam posuere purus vitae est sollicitudin placerat. Praesent posuere porta dignissim. Phasellus viverra, urna a convallis tincidunt, ante mi tempor turpis, nec tempor mauris ligula ut sapien. Etiam euismod mi eu ante mollis commodo. Suspendisse porta nisi vitae dui hendrerit, eget ornare orci semper. Phasellus pharetra, erat sit amet rutrum porttitor, est eros consectetur elit, molestie consequat erat tellus in dui. Vestibulum a vehicula sem. Nullam commodo quis purus in volutpat. Integer semper lacus a lorem efficitur auctor curabitur tincidunt ligula non.</p>
+
+    <div class="filter-links filterable-nav">
+      <select class="mobile-filter">
+        <option value="*">Show all</option>
+        <option value=".skyscraper">skyscraper</option>
+        <option value=".shopping-center">shopping-center</option>
+        <option value=".apartment">apartment</option>
+      </select>
+      <strong>Select Category: </strong>
+      <a href="javascript:void(0)" class="wow fadeInRight" (click)="filterBy = 'all'" [ngClass]="filterBy === 'all' ? 'current' : ''">Show all</a>
+      <a href="javascript:void(0)" class="wow fadeInRight" (click)=" filterBy = 'skyscraper' " [ngClass]="filterBy === 'skyscraper' ? 'current' : ''">skyscraper</a>
+      <a href="javascript:void(0)" class="wow fadeInRight" (click)=" filterBy = 'shopping-center' " [ngClass]="filterBy === 'shopping-center' ? 'current' : ''">shopping-center</a>
+      <a href="javascript:void(0)" class="wow fadeInRight" (click)=" filterBy = 'apartment'" [ngClass]="filterBy === 'apartment' ? 'current' : ''">apartment</a>
+    </div>
+
+    <div class="filterable-items">
+      <div *ngFor="let plan of (planList | planFilter : filterBy)" class="insurance-item filterable-item col-md-4 {{plan.type}}">
+        <div class="insurance-content">
+          <div class="insurance-icon"><i class="{{plan.icon}}"></i></div>
+          <h3 class="insurance-title">{{plan.title}}</h3>
+          <p>{{plan.para}}</p>
+          <a href="javascript:void(0)" class="button">See details</a>
+        </div>
+      </div>
+    </div>
+
+    <!--Pagination module will replace this stuff -->
+  </div>
+</div>

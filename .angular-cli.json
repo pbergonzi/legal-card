@@ -20,7 +20,9 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "assets/sass/main.scss"
+        "assets/insurance/fonts/lineo-icon/style.css",
+        "assets/insurance/sass/style.scss",
+        "../node_modules/font-awesome/css/font-awesome.min.css"
       ],
       "scripts": [
         "assets/js/jquery.min.js",

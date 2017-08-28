@@ -1,0 +1,55 @@
+ <header class="site-header">
+    <div class="top-header">
+      <div class="container">
+        <a [routerLink]="['/insurance']" id="branding">
+          <img src="../../../../assets/insurance/sass/images/logo.png" alt="Company Name" class="logo">
+          <div class="logo-text">
+            <h1 class="site-title">Company Name</h1>
+            <small class="description">Taline goes here</small>
+          </div>
+        </a> <!-- #branding -->
+
+        <div class="right-section pull-right">
+          <a href="#" class="phone"><img src="../../../../assets/insurance/sass/images/icon-phone.png" class="icon">+1 823 424 9134</a>
+
+          <form action="#" class="search-form">
+            <input type="text" placeholder="Search...">
+            <button type="submit"><img src="../../../../assets/insurance/sass/images/icon-search.png" alt=""></button>
+          </form>
+        </div>
+      </div> <!-- .container -->
+    </div> <!-- .top-header -->
+
+
+    <div class="bottom-header">
+      <div class="container">
+        <div class="main-navigation">
+          <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+          <ul class="menu">
+              <li class="menu-item" routerLinkActive="current-menu-item">
+                  <a [routerLink]="['about']">About us</a>
+              </li>
+              <li class="menu-item" routerLinkActive="current-menu-item">
+                  <a [routerLink]="['plans']">Insurance plans</a>
+              </li>
+              <li class="menu-item" routerLinkActive="current-menu-item">
+                <a [routerLink]="['resources']">Resources</a>
+              </li>
+              <li class="menu-item" routerLinkActive="current-menu-item">
+                <a [routerLink]="['contact']">Contact</a>
+              </li>
+          </ul> <!-- .menu -->
+        </div> <!-- .main-navigation -->
+
+        <div class="social-links">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-google-plus"></i></a>
+          <a href="#"><i class="fa fa-pinterest"></i></a>
+        </div>
+
+        <div class="mobile-navigation"></div>
+      </div>
+    </div>
+
+  </header> <!-- .site-header -->

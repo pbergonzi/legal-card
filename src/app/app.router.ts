@@ -10,6 +10,7 @@ export const router: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full'},
   { path: 'product-selection', component: ProductSelectionComponent },
   { path: 'personal-data', component: PersonalDataComponent },
+  { path: 'insurance', loadChildren: 'app/insurance/insurance.module#InsuranceModule' },
   //default redirect
   { path: '**', component: HomeComponent, pathMatch: 'full'},
 ];
