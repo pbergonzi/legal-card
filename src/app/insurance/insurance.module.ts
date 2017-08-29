@@ -13,6 +13,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AgmCoreModule} from "@agm/core";
 import { MapComponent } from './component/map/map.component';
 import {PlanFilterPipe} from "./component/shared/planFilter.pipe";
+import {CarouselModule} from "ngx-bootstrap";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {PlanFilterPipe} from "./component/shared/planFilter.pipe";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    CarouselModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey : 'AIzaSyCbRPhVlxgVwBC0bBOgyB-Dn_K8ONrxb_g'  //the api key use here is dummy please replace this with your own api key
     }),
