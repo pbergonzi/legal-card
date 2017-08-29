@@ -14,6 +14,8 @@ import {AgmCoreModule} from "@agm/core";
 import { MapComponent } from './component/map/map.component';
 import {PlanFilterPipe} from "./component/shared/planFilter.pipe";
 import {CarouselModule} from "ngx-bootstrap";
+import {QuotientComponent} from "../components/quotient/quotient.component";
+import {MyDatePickerModule} from "mydatepicker";
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import {CarouselModule} from "ngx-bootstrap";
     InsuranceResourceComponent,
     InsurancePlansComponent,
     MapComponent,
-    PlanFilterPipe
+    PlanFilterPipe,
+    QuotientComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MyDatePickerModule,
     CarouselModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey : 'AIzaSyCbRPhVlxgVwBC0bBOgyB-Dn_K8ONrxb_g'  //the api key use here is dummy please replace this with your own api key

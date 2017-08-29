@@ -1,6 +1,14 @@
+.carousel-control {
+  display: none;
+}
 .hero-slider{
 	position: relative;
 	margin-bottom: 50px;
+  .container {
+      position: absolute;
+      top: -4%;
+      left: 10%;
+  }
 	.slides{
 		list-style: none;
 		@include clearfix;
@@ -212,9 +220,6 @@
 			font-style: normal;
 		}
 	}
-  .carousel-control {
-     display: none;
-  }
 	.carousel-indicators{
 		position: absolute;
 		bottom: 30px;

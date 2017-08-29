@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CarouselConfig} from "ngx-bootstrap";
 
-
 @Component({
   selector: 'app-insurance-home',
   templateUrl: './insurance-home.component.html',

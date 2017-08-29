@@ -24,7 +24,6 @@ import { HomeComponent } from './components/home/home.component'
 @NgModule({
   declarations: [
     AppComponent,
-    QuotientComponent,
     ProductSelectionComponent,
     PersonalDataComponent,
     PaypalComponent,
@@ -34,10 +33,9 @@ import { HomeComponent } from './components/home/home.component'
     BrowserModule,
     routes,
     FormsModule,
-    StoreModule.provideStore({ 
-      card: cardReducer 
+    StoreModule.provideStore({
+      card: cardReducer
     }),
-    MyDatePickerModule,
     YoutubePlayerMiniModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
