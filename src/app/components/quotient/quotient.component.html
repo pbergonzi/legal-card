@@ -1,0 +1,42 @@
+<form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="row 100%">
+    <div class="12u">
+      <label for="dfrom">Departure date</label>
+      <my-date-picker
+        name="dateFromInput"
+        #dateFromInput="mydatepicker"
+        [options]="myDatePickerOptions"
+        [(ngModel)]="model.dateFrom"
+        placeholder="dd/mm/aaaa"
+        (dateChanged)="onDateFromChanged($event)"
+        required></my-date-picker>
+    </div>
+
+    <div class="12u">
+      <label for="dto">Return date</label>
+      <my-date-picker
+        name="dateToInput"
+        #dateToInput="mydatepicker"
+        [options]="myDatePickerOptions"
+        [(ngModel)]="model.dateTo"
+        placeholder="dd/mm/aaaa"
+        (dateChanged)="onDateToChanged($event)"
+        required></my-date-picker>
+    </div>
+
+    <div class="12u">
+      <div [hidden]="isValid"
+        class="alert alert-danger">
+        The input dates are not valid
+      </div>
+    </div>
+
+    <div class="12u">
+      <footer>
+        <ul class="actions" style="list-style: none">
+          <li><input type="submit" value="Quote now" class="special" [disabled]="!isValid" /></li>
+        </ul>
+      </footer>
+    </div>
+  </div>
+</form>

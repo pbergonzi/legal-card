@@ -1,0 +1,40 @@
+<div class="container">
+
+  <!-- Title -->
+  <header class="major">
+    <h2>Your request quotation</h2>
+  </header>
+
+  <div class="row 100%">
+    <div class="6u 12u$(medium) important(medium)">
+      <!-- Sidebar -->
+      <section id="sidebar">
+        <section>
+          <!--<app-form-quotient></app-form-quotient>-->
+        </section>
+        <section>
+          <h3>1 Year Package</h3>
+          <p>All cool things you have for u$s599</p>
+          <footer>
+            <ul class="actions">
+              <li><a href="#" class="button">More Info</a></li>
+            </ul>
+          </footer>
+        </section>
+      </section>
+    </div>
+
+    <div class="6u 12u$(medium)">
+      <!-- Content -->
+      <h4>Details</h4>
+      <section id="content">
+        <section>
+          <p>Pack: {{ card.package.name }}</p>
+          <p>Price: {{ card.package.price }}</p>
+          <p>Valid From: {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
+          <input type="button" (click)="gotoPersonalData()" value="Go to checkout" class="special" />
+        </section>
+      </section>
+    </div>
+  </div>
+</div>
