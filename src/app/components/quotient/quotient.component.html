@@ -1,6 +1,6 @@
 <form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
   <div class="row 100%">
-    <div class="12u">
+    <div class="12u form-element">
       <label for="dfrom">Departure date</label>
       <my-date-picker
         name="dateFromInput"
@@ -12,7 +12,7 @@
         required></my-date-picker>
     </div>
 
-    <div class="12u">
+    <div class="12u form-element">
       <label for="dto">Return date</label>
       <my-date-picker
         name="dateToInput"
@@ -24,14 +24,14 @@
         required></my-date-picker>
     </div>
 
-    <div class="12u">
+    <div class="12u form-element">
       <div [hidden]="isValid"
         class="alert alert-danger">
         The input dates are not valid
       </div>
     </div>
 
-    <div class="12u">
+    <div class="12u form-element">
       <footer>
         <ul class="actions" style="list-style: none">
           <li><input type="submit" value="Quote now" class="special" [disabled]="!isValid" /></li>
