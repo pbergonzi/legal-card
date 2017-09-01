@@ -1,6 +1,6 @@
 <div class="container">
     <h1>Personal Data</h1>
-    <!--<form #personalForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #personalForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="fname">Full Name</label>
         <input type="text" class="form-control" [(ngModel)]="card.owner.name" id="fname" name="fname" required #fname="ngModel">
@@ -31,11 +31,11 @@
         #bdate="ngModel"
         required></my-date-picker>
 
-        &lt;!&ndash;input type="text" class="form-control" [(ngModel)]="card.owner.birthDate" id="bdate" name="bdate" required #bdate="ngModel"&ndash;&gt;
-        &lt;!&ndash;div [hidden]="bdate.valid || bdate.pristine"
+        <!--input type="text" class="form-control" [(ngModel)]="card.owner.birthDate" id="bdate" name="bdate" required #bdate="ngModel"-->
+        <!--div [hidden]="bdate.valid || bdate.pristine"
             class="alert alert-danger">
           Insert your birth date
-        </div&ndash;&gt;
+        </div-->
       </div>
 
       <div class="form-group">
@@ -67,5 +67,5 @@
 
       <button type="submit" class="btn btn-success" [disabled]="!personalForm.form.valid" >Confirm</button>
 
-    </form>-->
+    </form>
 </div>
