@@ -5,13 +5,16 @@
 .site-footer{
 	border-top: 1px solid #ccc;
 	padding-top: 50px;
-	
+
 	.widget-area{
 		margin-bottom: 50px;
 		.widget{
 			@include em(14);
 			margin-bottom: 30px;
 		}
+    h3.widget-title{
+      font-size: 20px;
+    }
 		.widget-title{
 			@include rem(20);
 		}

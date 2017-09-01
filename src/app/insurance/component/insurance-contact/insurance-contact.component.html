@@ -42,8 +42,8 @@
           <textarea formControlName="description" name="description" placeholder="Message..."></textarea>
 
           <p class="text-right">
-            <!--<input type="submit" value="Send message">-->
-            <button type="submit" class="btn btn-primary btn-block" [disabled]="(!contactForm.valid)"> Send Message</button>
+            <input type="submit" value="Send message" [disabled]="(!contactForm.valid)">
+            <!--<button type="submit" class="btn btn-primary btn-block" > Send Message</button>-->
           </p>
         </form>
 

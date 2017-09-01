@@ -63,13 +63,13 @@ carousel{
     }
 		.slide-title{
 			@include em(35);
-			font-weight: 300;
+			font-weight: 300!important;
 			margin-bottom: 30px;
 
 			strong{
 				color: $accent-color;
 				display: block;
-				font-weight: 300;
+				font-weight: 300!important;
 			}
 		}
 
@@ -113,7 +113,7 @@ carousel{
 }
 
 .section-title,.section-subtitle{
-	font-weight: 300;
+	font-weight: 300!important;
 	margin-bottom: 50px;
 	text-align: center;
 	display: block;
@@ -142,7 +142,7 @@ carousel{
 		@include em(20);
 		margin-bottom: 20px;
 		color: $accent-color;
-		font-weight: 400;
+		font-weight: 400!important;
 
 	}
 }
@@ -207,7 +207,7 @@ carousel{
 	}
 	.entry-title{
 		@include em(16);
-		font-weight: 300;
+		font-weight: 300!important;
 		a{
 			color: $body-color;
 			transition: .3s ease;
@@ -297,7 +297,6 @@ carousel{
 		display: inline-block;
 		vertical-align: middle;
 		margin: 0 10px 10px;
-    @media screen and (max-width: 480px){ display: block; }
 	}
 }
 
@@ -305,7 +304,7 @@ carousel{
 	padding: 50px 0;
 	.entry-title{
 		@include em(48);
-		font-weight: 300;
+		font-weight: 300 !important;
 	}
 	p{
 		line-height: 2
@@ -359,7 +358,7 @@ carousel{
 			text-align: center;
 			@include em(36);
 			line-height: 1.8;
-			font-weight: 400;
+			font-weight: 400!important;
 			margin: 0 auto 20px;
 			background-color: white;
 			box-shadow: 0 0 0 10px white;
@@ -368,7 +367,7 @@ carousel{
 		.feature-title{
 			@include em(20);
 			color: $accent-color;
-			font-weight: 400;
+			font-weight: 400!important;
 		}
 	}
 }
@@ -420,7 +419,7 @@ carousel{
 		display: none;
 	}
 	strong {
-		font-weight: 300;
+		font-weight: 300!important;
 		margin-right: 10px;
 	}
 
@@ -467,12 +466,13 @@ carousel{
 	}
 	.insurance-title{
 		@include em(36);
-		font-weight: 300;
+		font-weight: 300!important;
 		color: $accent-color;
 	}
 }
 
 .pagination{
+  display: block !important;
 	text-align: center;
 	margin-top: 40px;
 
@@ -535,7 +535,7 @@ carousel{
 	}
 	.feature-title{
 		margin-bottom: 0;
-		font-weight: 300;
+		font-weight: 300!important;
 	}
 }
 

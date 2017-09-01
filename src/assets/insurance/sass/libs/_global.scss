@@ -7,14 +7,14 @@ $browser-context: 16; // Default
 body {
 	color       : $body-color;
 	font-family : $primary-font !important;
-	font-size   : #{$browser-context}px;
+	font-size   : #{$browser-context}px !important;
 	font-weight : 300;
 	line-height : normal;
 
 }
 
 h1,h2,h3,h4,h5,h6{
-	font-weight : 700;
+	font-weight : 700 !important;
 	margin      : 0 0 20px;
 }
 
@@ -29,7 +29,7 @@ ul, ol {
 }
 
 a {
-	text-decoration: none;
+	text-decoration: none !important;
 	color: $accent-color;
 }
 
