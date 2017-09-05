@@ -1,0 +1,28 @@
+#banner {
+  min-height: calc(100vh - 3.5em);
+
+  &:before {
+    height: calc(100vh - 3.5em);
+  }
+
+  & * {
+    text-align: left;
+  }
+
+  .content {
+    padding: 3em 6em; 
+  }
+
+  /deep/ youtube-player {
+    iframe { width: 100%; }
+  }
+
+  /deep/ app-services {
+    background: orange;
+
+    header {
+      display: block !important;
+      margin-bottom: 2em;
+    }
+  }
+}
