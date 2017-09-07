@@ -1,7 +1,7 @@
  <header class="site-header">
     <div class="top-header">
       <div class="container">
-        <a [routerLink]="['/insurance']" id="branding">
+        <a [routerLink]="['']" id="branding">
           <img src="../../../../assets/insurance/sass/images/logo.png" alt="Company Name" class="logo">
           <div class="logo-text">
             <h1 class="site-title">Company Name</h1>
@@ -27,16 +27,16 @@
           <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
           <ul class="menu">
               <li class="menu-item" routerLinkActive="current-menu-item">
-                  <a [routerLink]="['about']">About us</a>
+                  <a [routerLink]="['/about']">About us</a>
               </li>
               <li class="menu-item" routerLinkActive="current-menu-item">
-                  <a [routerLink]="['plans']">Insurance plans</a>
+                  <a [routerLink]="['/plans']">Insurance plans</a>
               </li>
               <li class="menu-item" routerLinkActive="current-menu-item">
-                <a [routerLink]="['resources']">Resources</a>
+                <a [routerLink]="['/resources']">Resources</a>
               </li>
               <li class="menu-item" routerLinkActive="current-menu-item">
-                <a [routerLink]="['contact']">Contact</a>
+                <a [routerLink]="['/contact']">Contact</a>
               </li>
           </ul> <!-- .menu -->
         </div> <!-- .main-navigation -->

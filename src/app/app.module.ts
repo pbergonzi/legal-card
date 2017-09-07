@@ -19,15 +19,13 @@ import { CardService } from 'app/services/card/card.service';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { YoutubePlayerMiniModule }  from 'ng2-youtube-player-mini';
-import { HomeComponent } from './components/home/home.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductSelectionComponent,
     PersonalDataComponent,
-    PaypalComponent,
-    HomeComponent
+    PaypalComponent
   ],
   imports: [
     BrowserModule,

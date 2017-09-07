@@ -1,12 +1,11 @@
 
 import {RouterModule, Routes} from "@angular/router";
 import {InsuranceComponent} from "./insurance.component";
-import {InsuranceHomeComponent} from "./component/insurance-home/insurance-home.component";
-import {InsuranceContactComponent} from "./component/insurance-contact/insurance-contact.component";
-import {InsuranceAboutusComponent} from "./component/insurance-aboutus/insurance-aboutus.component";
-import {InsurancePlansComponent} from "./component/insurance-plans/insurance-plans.component";
-import {InsuranceResourceComponent} from "./component/insurance-resource/insurance-resource.component";
-
+import {InsuranceHomeComponent} from "./insurance-home/insurance-home.component";
+import {InsuranceContactComponent} from "./insurance-contact/insurance-contact.component";
+import {InsuranceAboutusComponent} from "./insurance-aboutus/insurance-aboutus.component";
+import {InsurancePlansComponent} from "./insurance-plans/insurance-plans.component";
+import {InsuranceResourceComponent} from "./insurance-resource/insurance-resource.component";
 
 
 const INSURANCE_ROUTES: Routes = [

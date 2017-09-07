@@ -4,8 +4,8 @@ declare var $: any;
 
 @Component({
   selector: 'app-insurance',
-  templateUrl: './insurance.component.html',
-  styleUrls: ['./insurance.component.scss']
+  templateUrl: 'insurance.component.html',
+  styleUrls: ['insurance.component.scss']
 })
 export class InsuranceComponent implements OnInit {
 
