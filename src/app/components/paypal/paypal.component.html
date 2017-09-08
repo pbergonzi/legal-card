@@ -6,8 +6,7 @@
   <input type="hidden" name="os0" value="{{ card.package.name }}">
   <!-- card data -->
   <input type="text" name="custom" value="{{ card.owner.passport }}" />
-  <!--pass your notification URL-->
-  <input name="notify_url" value="{{ notificationUrl }}" type="hidden">
+  
   <input type="hidden" name="currency_code" value="USD">
 
   <input (click)="form.submit()" type="image" src="{{ btnImg }}" border="0"
