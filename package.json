@@ -7,12 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ng build -prod",
-    "start": "node server.js"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.1",
     "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
@@ -27,14 +26,17 @@
     "@ngrx/store": "^2.2.2",
     "@ngx-translate/core": "^7.1.0",
     "@ngx-translate/http-loader": "^1.0.1",
+    "angular2-google-maps": "^0.17.0",
     "angularfire2": "^4.0.0-rc.1",
-    "compression": "^1.7.0",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
-    "express": "^4.15.4",
     "firebase": "^4.2.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
     "mydatepicker": "^2.0.26",
     "ng2-daterangepicker": "^2.0.7",
     "ng2-youtube-player-mini": "^2.2.4",
+    "ngx-bootstrap": "^1.9.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
@@ -54,13 +56,11 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "node-sass": "^4.5.3",
     "protractor": "~5.1.2",
+    "sass-loader": "^6.0.6",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "~2.3.3"
-  },
-  "engines": {
-    "node": "6.9.4",
-    "npm": "3.10.10"
   }
 }

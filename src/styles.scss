@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+[data-bg-color="#f1f1f1"] {
+  background-color: #f1f1f1;
+}
+[data-bg-color="#0f75bd"] {
+  background-color: #0f75bd;
+}
+
+
+#titleBar, #navPanel {
+  display: none;
+}
+
+
+body {
+  color: #768089 !important;
+  font-family : "Roboto Condensed", "Open Sans", sans-serif;
+}
+
+.mydp {
+  .mydpicon {
+    color: #000000 !important;
+  }
+}
