@@ -46,7 +46,8 @@ import { AgmCoreModule } from '@agm/core';
     QuotientComponent,
     ProductSelectionComponent,
     PersonalDataComponent,
-    PaypalComponent
+    PaypalComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

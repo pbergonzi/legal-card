@@ -13,7 +13,6 @@ import { Card } from 'app/models/card.model';
 export class PaypalComponent implements OnInit {
   actionUrl = environment.paypalAction;
   buttonId = environment.paypalButton;
-  nDays;
   returnUrl = environment.paypalReturn;
   cancelUrl = environment.paypalCancel;
   notificationUrl = environment.paypalNotification;
@@ -31,7 +30,7 @@ export class PaypalComponent implements OnInit {
       .subscribe( (card: Card) => { 
         if(card){
           this.card = card;
-          this.nDays = this.cardService.calculateDays(this.card);
+          console.log(card);
         }
       });
   }

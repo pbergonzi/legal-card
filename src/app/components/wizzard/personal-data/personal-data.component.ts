@@ -19,10 +19,6 @@ export class PersonalDataComponent implements OnInit {
   public card: Card;
   public birthDate: IMyDate;
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  
-  private isValid(){
-    return this.cardService.isValidDateRange(this.card) && this.cardService.isValidOwner(this.card.owner);  
-  }
 
   constructor(
     private router: Router,
@@ -48,6 +44,10 @@ export class PersonalDataComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  private isValid(){
+    return this.cardService.isValidDateRange(this.card) && this.cardService.isValidOwner(this.card.owner);  
+  }
 
   onSubmit() {
     if(this.isValid()){
@@ -77,6 +77,10 @@ export class PersonalDataComponent implements OnInit {
                 day: date.getDate() 
               } 
             }
+  }
+  
+  gotoCheckout(){
+    this.router.navigate(['/checkout']);
   }
 
   ngOnDestroy() {
