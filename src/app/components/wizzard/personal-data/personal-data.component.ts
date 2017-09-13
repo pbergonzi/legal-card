@@ -51,7 +51,6 @@ export class PersonalDataComponent implements OnInit {
 
   onSubmit() {
     if(this.isValid()){
-      this.cardService.saveCardToDb(this.card);
       this.cardService.updateCard(this.card);
       //console.log(this.card);
       //this.router.navigate(['/checkout']);
