@@ -6,10 +6,7 @@ import { Store } from '@ngrx/store';
 import { AppStore } from 'app/app.store';
 import { SUBMIT, RESET } from 'app/reducers/card.reducer';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { environment } from '../../../environments/environment';
-import * as firebase from 'firebase/app';
 
 class Pack {
   name: string;
@@ -24,17 +21,12 @@ const CARD_STORE = 'card';
 @Injectable()
 export class CardService {
   private cardStore: Observable<Card>;
-  private user: Observable<firebase.User>; 
 
   constructor( 
     private store: Store<AppStore>,
-    private af: AngularFireDatabase,
-    private afAuth: AngularFireAuth
   ) {
     this.cardStore = this.store.select(CARD_STORE);
     const sessionCard = JSON.parse(sessionStorage.getItem('legal-card'));
-    this.user = this.afAuth.authState;
-    this.afAuth.auth.signInAnonymously();
 
     if(sessionCard){
       sessionCard.dateFrom = new Date(sessionCard.dateFrom);
@@ -116,19 +108,6 @@ export class CardService {
     return owner && owner.name && owner.passport && owner.address && owner.birthDate && owner.email;  
   }
 
-  public saveCardToDb(card: Card){
-    card.isoDateTo = card.dateTo.toISOString();
-    card.isoDateFrom = card.dateFrom.toISOString();
-    card.owner.isoBirthDate = card.owner.birthDate.toISOString();
-    //console.log(card);
-    const userSubs= this.user.subscribe( (afUser: firebase.User) => {
-      if(afUser && afUser.uid) {
-        this.af.list('/cards/' + afUser.uid).push(card);
-        userSubs.unsubscribe();
-      }
-    });
-  }
-
   public updateCard(card: Card) {
     sessionStorage.setItem('legal-card',  JSON.stringify(card));
     this.store.dispatch({ type: SUBMIT, payload: card });
@@ -137,9 +116,5 @@ export class CardService {
   public resetCard() {
     sessionStorage.removeItem('legal-card');
     this.store.dispatch({ type: RESET });
-  }
-
-  ngOnDestroy() {
-    this.afAuth.auth.signOut();
   }
 }

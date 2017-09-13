@@ -13,12 +13,4 @@ export const environment = {
   paypalButtonImg: 'https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif',
   yearPack: { name: 'Year Pack', price: 399, days: 365 },
   fortyFivePack: { name: 'FortyFive Pack', price: 99, days: 45 },
-  firebase: {
-    apiKey: 'AIzaSyAgnwxGh7tegpZmzzehv2okjFGWdRkevII',
-    authDomain: 'legal-card.firebaseapp.com',
-    databaseURL: 'https://legal-card.firebaseio.com',
-    projectId: 'legal-card',
-    storageBucket: 'legal-card.appspot.com',
-    messagingSenderId: '535925141687'
-  }
 };

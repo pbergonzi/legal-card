@@ -3,9 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 //import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 import { routes } from 'app/app.router';
@@ -30,7 +27,6 @@ import { ProductSelectionComponent } from 'app/components/wizzard/product-select
 import { PersonalDataComponent } from 'app/components/wizzard/personal-data/personal-data.component';
 import { CheckoutComponent } from 'app/components/wizzard/checkout/checkout.component';
 import { CarouselModule } from 'ngx-bootstrap';
-import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -58,15 +54,9 @@ import { AgmCoreModule } from '@agm/core';
       card: cardReducer
     }),
     MyDatePickerModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     CommonModule,
     ReactiveFormsModule,
-    CarouselModule.forRoot(),
-    AgmCoreModule.forRoot({
-      apiKey : 'AIzaSyCbRPhVlxgVwBC0bBOgyB-Dn_K8ONrxb_g'  //the api key use here is dummy please replace this with your own api key
-    }),
+    CarouselModule.forRoot()
   ],
   providers: [
     CardService
