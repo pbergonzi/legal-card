@@ -19,7 +19,7 @@ export class PaypalComponent implements OnInit {
   btnImg = environment.paypalButtonImg;
 
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  private card: Card;
+  public card: Card;
 
   constructor(
     private cardService: CardService
