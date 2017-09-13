@@ -2,6 +2,14 @@
   "name": "legal-card",
   "version": "0.0.0",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pbergonzi/legal-card.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pbergonzi/legal-card/issues"
+  },
+  "homepage": "https://github.com/pbergonzi/legal-card#readme",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
