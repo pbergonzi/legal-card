@@ -28,6 +28,7 @@ import { PlanFilterPipe } from 'app/services/pipes/planFilter.pipe';
 import { QuotientComponent } from 'app/components/quotient/quotient.component';
 import { ProductSelectionComponent } from 'app/components/wizzard/product-selection/product-selection.component';
 import { PersonalDataComponent } from 'app/components/wizzard/personal-data/personal-data.component';
+import { CheckoutComponent } from 'app/components/wizzard/checkout/checkout.component';
 import { CarouselModule } from 'ngx-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 

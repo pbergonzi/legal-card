@@ -34,6 +34,9 @@ const router: Routes = [
   },
   { 
     path: 'personal-data', component: PersonalDataComponent 
+  },
+  { 
+    path: 'checkout', component: CheckoutComponent 
   }
 ];
 
