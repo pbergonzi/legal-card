@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+const { version: appVersion, name: appName } = require('../../package.json');
 
 declare var $: any;
 
@@ -13,6 +14,8 @@ export class AppComponent implements OnInit {
   constructor() {}
   
   ngOnInit() {
+    console.log(appName +  ' : ' + appVersion);
+    
     // $(".mobile-navigation").append($(".main-navigation .menu").clone());
 
     // Mobile menu toggle
