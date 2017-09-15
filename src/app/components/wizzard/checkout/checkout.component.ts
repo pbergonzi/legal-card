@@ -3,7 +3,9 @@ import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
 import { Card } from 'app/models/card.model';
 import { Router } from '@angular/router';
-import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/first';
+
+import { SimpleCard } from "app/models/simple-card.model";
 
 @Component({
   selector: 'app-checkout',
@@ -12,18 +14,27 @@ import 'rxjs/add/operator/takeUntil';
 })
 
 export class CheckoutComponent implements OnInit {
-  public card:Card;
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
-  
+  public card: Card;
+
   constructor(
     private cardService: CardService,
     private router: Router
   ) { 
+    
     this.cardService
       .getCard()
-      .takeUntil(this.ngUnsubscribe)
-      .subscribe( (card: Card) => { 
-        this.card = card;
+      .first()
+      .subscribe( (card: Card) => {
+        if(card){
+          this.card = card;
+          const simpleCard: SimpleCard = this.cardService.toSimple(this.card);
+          this.cardService.compressSimpleCard(simpleCard).first().subscribe( csCard=> {
+            if(csCard){
+              this.card.hash = csCard;
+              this.cardService.updateCard(this.card);
+            }
+          });
+        }       
       });
   }
 
@@ -31,12 +42,8 @@ export class CheckoutComponent implements OnInit {
     this.router.navigate(['/personal-data']);
   }
   
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
-  }
+  ngOnDestroy() {}
 
 }

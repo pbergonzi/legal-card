@@ -1,21 +1,21 @@
-<div class="container">
-    <div class="row 100%">
-      <div class="5u 12u$(medium)">
-        <!-- Content -->
-        <h4>Details</h4>
-        <section id="content">  
-          <section>
-            <p>Pack: {{ card.package.name }}</p>
-            <p>Price: {{ card.package.price }}</p>
-            <p>Valid From: {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
-          </section>
-          <input type="button" (click)="gotoPersonalData()" value="Go Back" class="special" />
+<div *ngIf="card.hash" class="container">
+  <div class="row 100%">
+    <div class="5u 12u$(medium)">
+      <!-- Content -->
+      <h4>Details</h4>
+      <section id="content">  
+        <section>
+          <p>Pack: {{ card.package.name }}</p>
+          <p>Price: {{ card.package.price }}</p>
+          <p>Valid From: {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
         </section>
-      </div>
-      <div class="7u 12u$(medium)">
-          <section id="content">  
-            <app-paypal></app-paypal>
-          </section>
-      </div>
+        <input type="button" (click)="gotoPersonalData()" value="Go Back" class="special" />
+      </section>
+    </div>
+    <div class="7u 12u$(medium)">
+        <section id="content">  
+          <app-paypal></app-paypal>
+        </section>
     </div>
   </div>
+</div>

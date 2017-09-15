@@ -30,7 +30,6 @@ export class PaypalComponent implements OnInit {
       .subscribe( (card: Card) => { 
         if(card){
           this.card = card;
-          console.log(card);
         }
       });
   }

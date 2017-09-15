@@ -7,5 +7,6 @@ export interface Card {
   dateTo?: Date,
   isoDateTo?: string,
   package?: Package,
-  owner?: Owner
+  owner?: Owner,
+  hash?:string
 }
