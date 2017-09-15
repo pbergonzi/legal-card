@@ -7,6 +7,5 @@ export const environment = {
   paypalNotification: 'https://legal-server.herokuapp.com/ipn',
   paypalButtonImg: 'https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif',
   yearPack: { name: 'Year Pack', price: 399, days: 365 },
-  fortyFivePack: { name: 'FortyFive Pack', price: 99, days: 45 },
-  cardUrl:'https://legal-server.herokuapp.com/card'
+  fortyFivePack: { name: 'FortyFive Pack', price: 99, days: 45 }
 };

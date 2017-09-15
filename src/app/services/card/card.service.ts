@@ -7,7 +7,6 @@ import { Store } from '@ngrx/store';
 import { AppStore } from 'app/app.store';
 import { SUBMIT, RESET } from 'app/reducers/card.reducer';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
 const zlib = require('zlib');
@@ -28,7 +27,6 @@ export class CardService {
   
   constructor( 
     private store: Store<AppStore>,
-    private http: HttpClient
   ) {
     this.cardStore = this.store.select(CARD_STORE);
     const sessionCard = JSON.parse(sessionStorage.getItem('legal-card'));
@@ -150,7 +148,7 @@ export class CardService {
     return price;
   }
   */
-
+/*
   public saveCard(card: Card){
     console.log(card);
     const headers = new HttpHeaders();
@@ -160,7 +158,7 @@ export class CardService {
         //do something with the response here
         console.log(res);
     });
-  }
+  }*/
 
   public isValidDateRange(card: Card){
     const now = new Date();
