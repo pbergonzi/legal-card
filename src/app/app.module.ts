@@ -19,6 +19,8 @@ import { InsuranceContactComponent } from 'app/components/insurance-contact/insu
 import { InsuranceAboutusComponent } from 'app/components/insurance-aboutus/insurance-aboutus.component';
 import { InsuranceResourceComponent } from 'app/components/insurance-resource/insurance-resource.component';
 import { InsurancePlansComponent } from 'app/components/insurance-plans/insurance-plans.component';
+import { PaymentSuccessComponent } from 'app/components/payment-success/payment-success.component';
+import { PaymentCancelledComponent } from 'app/components/payment-cancelled/payment-cancelled.component';
 import { MapComponent } from 'app/components/map/map.component';
 import { PlanFilterPipe } from 'app/services/pipes/planFilter.pipe';
 import { QuotientComponent } from 'app/components/quotient/quotient.component';
@@ -43,7 +45,9 @@ import { CarouselModule } from 'ngx-bootstrap';
     ProductSelectionComponent,
     PersonalDataComponent,
     PaypalComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    PaymentSuccessComponent,
+    PaymentCancelledComponent
   ],
   imports: [
     BrowserModule,
