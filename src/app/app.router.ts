@@ -11,11 +11,13 @@ import { InsuranceContactComponent } from 'app/components/insurance-contact/insu
 import { InsuranceAboutusComponent } from 'app/components/insurance-aboutus/insurance-aboutus.component';
 import { InsuranceResourceComponent } from 'app/components/insurance-resource/insurance-resource.component';
 import { InsurancePlansComponent } from 'app/components/insurance-plans/insurance-plans.component';
+import { PaymentSuccessComponent } from 'app/components/payment-success/payment-success.component';
+import { PaymentCancelledComponent } from 'app/components/payment-cancelled/payment-cancelled.component';
 
 
 const router: Routes = [
   {
-      path: '', component : InsuranceHomeComponent
+    path: '', component : InsuranceHomeComponent
   },
   {
     path: 'contact', component : InsuranceContactComponent
@@ -37,6 +39,12 @@ const router: Routes = [
   },
   { 
     path: 'checkout', component: CheckoutComponent 
+  },
+  { 
+    path: 'success', component: PaymentSuccessComponent 
+  },
+  { 
+    path: 'cancel', component: PaymentCancelledComponent 
   }
 ];
 
