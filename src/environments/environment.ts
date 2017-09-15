@@ -13,4 +13,5 @@ export const environment = {
   paypalButtonImg: 'https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif',
   yearPack: { name: 'Year Pack', price: 399, days: 365 },
   fortyFivePack: { name: 'FortyFive Pack', price: 99, days: 45 },
+  cardUrl:'http://localhost:8080/card'
 };

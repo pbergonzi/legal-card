@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 import { routes } from 'app/app.router';
@@ -50,6 +50,7 @@ import { CarouselModule } from 'ngx-bootstrap';
     BrowserModule,
     routes,
     FormsModule,
+    HttpClientModule,
     StoreModule.provideStore({
       card: cardReducer
     }),
