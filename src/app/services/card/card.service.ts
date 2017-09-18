@@ -1,14 +1,15 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Card } from 'app/models/card.model';
+import { SimpleCard } from 'app/models/simple-card.model';
 import { Owner } from 'app/models/owner.model';
 import { Package } from 'app/models/package.model';
 import { Store } from '@ngrx/store';
 import { AppStore } from 'app/app.store';
 import { SUBMIT, RESET } from 'app/reducers/card.reducer';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import { environment } from '../../../environments/environment';
+
+const zlib = require('zlib');
 
 class Pack {
   name: string;
@@ -16,31 +17,34 @@ class Pack {
   days: number;
 }
 
-const fourthyFivePack: Pack = { name: '45 Days', price: 100, days: 45 };
-const yearPack: Pack = { name: '1 Year', price: 400, days: 365 };
+const fourthyFivePack: Pack = environment.fortyFivePack;
+const yearPack: Pack = environment.yearPack;
 const CARD_STORE = 'card';
 
 @Injectable()
 export class CardService {
   private cardStore: Observable<Card>;
-  private user: Observable<firebase.User>; 
-
+  
   constructor( 
     private store: Store<AppStore>,
-    private af: AngularFireDatabase,
-    private afAuth: AngularFireAuth
   ) {
     this.cardStore = this.store.select(CARD_STORE);
     const sessionCard = JSON.parse(sessionStorage.getItem('legal-card'));
-    this.user = this.afAuth.authState;
-    this.afAuth.auth.signInAnonymously();
 
-    if(sessionCard){
+    if(sessionCard && sessionCard.dateFrom && sessionCard.dateTo){
       sessionCard.dateFrom = new Date(sessionCard.dateFrom);
       sessionCard.dateTo = new Date(sessionCard.dateTo);
+
       if(sessionCard.owner && sessionCard.owner.birthDate){
         sessionCard.owner.birthDate = new Date(sessionCard.owner.birthDate);
       }
+
+      if(sessionCard.package && sessionCard.package.dateFrom && sessionCard.package.dateTo){
+        sessionCard.package.dateFrom = new Date(sessionCard.package.dateFrom);
+        sessionCard.package.dateTo = new Date(sessionCard.package.dateTo);
+      
+      }
+
       this.updateCard(sessionCard);
     }
   }
@@ -52,6 +56,46 @@ export class CardService {
   public calculateDays(card: Card): number {
     const days =  1 + Math.floor(( card.dateTo.getTime() - card.dateFrom.getTime() ) / 86400000); 
     return days;
+  }
+
+  public compressSimpleCard(scard: SimpleCard):Observable<string>{    
+    return Observable.create(observer => {
+      const buf = new Buffer(JSON.stringify(scard), 'utf-8'); 
+      
+      zlib.gzip(buf, (error, result) => {
+        if (error) throw error;
+        observer.next(result.toString('base64'));
+        observer.complete();
+      });
+
+      return () => {};
+    });
+  }
+
+  public deCompressSimpleCard(strSCard: string): Observable<SimpleCard>{
+    return Observable.create(observer => {
+      const buf = new Buffer(strSCard, 'base64');
+
+      zlib.gunzip(buf, (error, buffer) => {
+        if (error) throw error;
+        observer.next(buffer.toString('utf-8'));
+        observer.complete();
+      });
+
+      return () => {};
+    });
+  }
+
+  public toSimple(card: Card): SimpleCard{
+    const scard: SimpleCard = {};
+    scard.dateFrom = card.package.dateFrom;
+    scard.dateTo = card.package.dateTo;
+    scard.packageName = card.package.name;
+    scard.ownerEmail = card.owner.email;
+    scard.ownerName = card.owner.name;
+    scard.ownerPassport = card.owner.passport;
+    
+    return scard;
   }
 
   public calculatePackage(card: Card): Package {
@@ -104,6 +148,17 @@ export class CardService {
     return price;
   }
   */
+/*
+  public saveCard(card: Card){
+    console.log(card);
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    const req = this.http.post(environment.cardUrl, card, {responseType: 'text',headers: headers})
+    .subscribe((res) => {
+        //do something with the response here
+        console.log(res);
+    });
+  }*/
 
   public isValidDateRange(card: Card){
     const now = new Date();
@@ -112,20 +167,7 @@ export class CardService {
   }
   
   public isValidOwner(owner: Owner){
-    return owner && owner.name && owner.passport && owner.address && owner.birthDate && owner.email;  
-  }
-
-  public saveCardToDb(card: Card){
-    card.isoDateTo = card.dateTo.toISOString();
-    card.isoDateFrom = card.dateFrom.toISOString();
-    card.owner.isoBirthDate = card.owner.birthDate.toISOString();
-    //console.log(card);
-    const userSubs= this.user.subscribe( (afUser: firebase.User) => {
-      if(afUser && afUser.uid) {
-        this.af.list('/cards/' + afUser.uid).push(card);
-        userSubs.unsubscribe();
-      }
-    });
+    return owner && owner.name && owner.passport && owner.email;  
   }
 
   public updateCard(card: Card) {
@@ -136,9 +178,5 @@ export class CardService {
   public resetCard() {
     sessionStorage.removeItem('legal-card');
     this.store.dispatch({ type: RESET });
-  }
-
-  ngOnDestroy() {
-    this.afAuth.auth.signOut();
   }
 }

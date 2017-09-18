@@ -1,14 +1,15 @@
 <form #form class="form-inline" name="_s-xclick" action="{{ actionUrl }}" method="post">
   <input type="hidden" name="cmd" value="_s-xclick">
   <input type="hidden" name="hosted_button_id" value="{{ buttonId }}">
-  <input type="hidden" name="quantity" value="{{ nDays }}">
-  <input type="hidden" name="return" value="{{ returnUrl }}" />
-  <input type="hidden" name="cancel_return" value="{{ cancelUrl }}" />  
-  <!--pass your notification URL-->
-  <input name="notify_url" value="{{ notificationUrl }}" type="hidden">
-  <br/>
-  <br/>
+
+  <input type="hidden" name="on0" value="Pack">
+  <input type="hidden" name="os0" value="{{ card.package.name }}">
+
+  <input type="text" name="custom" value="{{ card.hash }}" />
+  
+  <input type="hidden" name="currency_code" value="USD">
 
   <input (click)="form.submit()" type="image" src="{{ btnImg }}" border="0"
         name="submit" alt="Make payments with PayPal - it's fast, free and secure!"/>
 </form>
+  

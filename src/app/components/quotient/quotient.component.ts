@@ -1,6 +1,5 @@
 import { Card } from 'app/models/card.model';
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
-import { DaterangePickerComponent } from 'ng2-daterangepicker';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';

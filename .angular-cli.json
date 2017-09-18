@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "service-worker.js"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -20,16 +21,14 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "assets/sass/main.scss"
+        "assets/insurance/fonts/lineo-icon/style.css",
+        "assets/insurance/sass/style.scss",
+        "../node_modules/font-awesome/css/font-awesome.min.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
       "scripts": [
-        "assets/js/jquery.min.js",
-        "assets/js/jquery.scrolly.min.js",
-        "assets/js/jquery.dropotron.min.js",
-        "assets/js/jquery.scrollex.min.js",
-        "assets/js/skel.min.js",
-        "assets/js/util.js",
-        "assets/js/main.js"
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
