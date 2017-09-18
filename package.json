@@ -1,6 +1,6 @@
 {
   "name": "legal-card",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -42,7 +42,6 @@
     "ng2-youtube-player-mini": "^2.2.4",
     "ngx-bootstrap": "^1.9.3",
     "rxjs": "^5.1.0",
-    "zlib": "^1.0.5",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
