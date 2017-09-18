@@ -2,7 +2,6 @@ import { Card } from 'app/models/card.model';
 import { SimpleCard } from 'app/models/simple-card.model';
 import { Owner } from 'app/models/owner.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DaterangePickerComponent } from 'ng2-daterangepicker';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
 import { Router } from '@angular/router';
