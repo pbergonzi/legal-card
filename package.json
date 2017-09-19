@@ -15,8 +15,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "precache": "sw-precache --verbose --config=sw-precache-config.js"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -63,7 +62,6 @@
     "node-sass": "^4.5.3",
     "protractor": "~5.1.2",
     "sass-loader": "^6.0.6",
-    "sw-precache": "^5.2.0",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "~2.3.3"

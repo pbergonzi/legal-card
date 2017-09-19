@@ -9,15 +9,6 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|" rel="stylesheet" type="text/css">
 
-  <script async>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-        console.log('Service Worker registered');
-      }).catch(function(err) {
-        console.log('Service Worker registration failed: ', err);
-      });
-    }
-  </script>
 </head>
 <body>
   <app-root></app-root>
