@@ -14,8 +14,7 @@ before_script:
 
 script:
   - ng build --prod --aot
-  - npm run precache
-
+  
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
 
