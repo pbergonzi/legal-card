@@ -6,7 +6,7 @@
 	.top-header{
 		padding: 30px 0;
 	}
-	.bottom-header{
+	.header{
 		background-color: $secondary-color;
 		@include clearfix;
 		padding: 20px 0;
@@ -86,6 +86,12 @@
 
 		li{
 			display: inline-block;
+
+			&:last-child {
+				a {
+					border: 0 none;
+				}
+			}
 
 			a{
 				color: white;
