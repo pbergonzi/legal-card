@@ -87,6 +87,12 @@
 		li{
 			display: inline-block;
 
+			&:last-child {
+				a {
+					border: 0 none;
+				}
+			}
+
 			a{
 				color: white;
 				padding:0 10px;
