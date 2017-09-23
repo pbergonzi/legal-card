@@ -27,12 +27,12 @@ carousel{
     .carousel-indicators {
       bottom: -10%;
       li {
-        background-color: #c6c7c7;
+        background-color: $silver-sand;
         height: 15px;
         width: 15px;
       }
       .active{
-        background-color: #0f75bd ;
+        background-color: $accent-color;
       }
     }
 		@include clearfix;
@@ -50,17 +50,19 @@ carousel{
 
 	.slide-content{
 		border-radius: 3px;
-		background-color: white;
+		background-color: $white;
 		width: 25%;
 		padding: 30px;
 		margin-top: 50px;
 		margin-bottom: 30px;
-    min-height: 500px;
+    	min-height: 500px;
 		@media screen and (max-width: 990px){ width: 50% }
 		@media screen and (max-width: 480px){ width: 100% }
-    .form-element{
-        padding-bottom: 15px !important;
-    }
+
+		.form-element{
+			padding-bottom: 15px !important;
+		}
+
 		.slide-title{
 			@include em(35);
 			font-weight: 300!important;
@@ -94,7 +96,7 @@ carousel{
 				display: block;
 				width: 15px;
 				height: 15px;
-				background-color: #c6c7c7;
+				background-color: $silver-sand;
 				border-radius: 50%;
 				overflow: hidden;
 				text-indent: -99999px;
@@ -159,7 +161,7 @@ carousel{
 	.caption{
 		position: absolute;
 		background-color: rgba(0,0,0,.3);
-		color: white;
+		color: $white;
 		width: 100%;
 		padding: 20px;
 	}
@@ -227,30 +229,35 @@ carousel{
 }
 
 .testimonial-slider{
-	color: white;
+	color: $white;
 	position: relative;
 
-  .carousel.slide{
-    .carousel-indicators {
-      bottom: -10%;
-      li {
-        background-color: #ffffff;
-        height: 15px;
-        width: 15px;
-      }
-      .active{
-        background-color: #4795cd ;
-      }
-    }
+  	.carousel.slide{
 		list-style: none;
 		@include clearfix;
+
+		.carousel-indicators {
+			bottom: -10%;
+		
+			li {
+				background-color: $white;
+				height: 15px;
+				width: 15px;
+			}
+		
+			.active{
+				background-color: $shakespeare ;
+			}
+		}
 	}
+
 	blockquote{
 		@include em(30);
 		text-align: center;
-    border: none;
-    padding: 60px 20px;
-    margin: 0px;
+    	border: none;
+    	padding: 60px 20px;
+    	margin: 0px;
+		
 		cite{
 			@include rem(15);
 			text-transform: uppercase;
@@ -259,6 +266,7 @@ carousel{
 			font-style: normal;
 		}
 	}
+
 	.carousel-indicators{
 		position: absolute;
 		bottom: 30px;
@@ -266,7 +274,8 @@ carousel{
 		text-align: center;
 		list-style: none;
 		z-index: 99;
-    left: 30%;
+		left: 30%;
+		
 		li{
 			display: inline-block;
 			margin: 0 5px;
@@ -274,7 +283,7 @@ carousel{
 			a{
 				overflow: hidden;
 				text-indent: -9999px;
-				background: #4795cd;
+				background: $shakespeare;
 				border-radius: 50%;
 				display: block;
 				width: 15px;
@@ -282,7 +291,7 @@ carousel{
 				cursor: pointer;
 
 				&.flex-active{
-					background-color: white;
+					background-color: $white;
 				}
 			}
 		}
@@ -306,22 +315,23 @@ carousel{
 		@include em(48);
 		font-weight: 300 !important;
 	}
-	p{
+
+	p {
 		line-height: 2
 	}
 
-	.row{
+	.row {
 		margin: 25px -15px;
 	}
 }
 
-.features{
+.features {
 	@include clearfix;
 	margin: 0 -15px;
 	position: relative;
 	z-index: 1;
 
-	&:after{
+	&:after {
 		content:" ";
 		height: 50px;
 		top: 50px;
@@ -335,7 +345,7 @@ carousel{
 		}
 	}
 
-	.feature-numbered{
+	.feature-numbered {
 		width: 25%;
 		float: left;
 		padding: 15px;
@@ -349,7 +359,7 @@ carousel{
 		}
 
 
-		.num{
+		.num {
 			width: 70px;
 			height: 70px;
 			border-radius: 50%;
@@ -360,11 +370,11 @@ carousel{
 			line-height: 1.8;
 			font-weight: 400!important;
 			margin: 0 auto 20px;
-			background-color: white;
-			box-shadow: 0 0 0 10px white;
+			background-color: $white;
+			box-shadow: 0 0 0 10px $white;
 		}
 
-		.feature-title{
+		.feature-title {
 			@include em(20);
 			color: $accent-color;
 			font-weight: 400!important;
@@ -413,6 +423,23 @@ carousel{
 		}
 	}
 }
+
+.mydp { // My Date Picker
+
+	input {
+		&:focus {
+			border-color: $shakespeare !important;
+		}
+	}
+
+	.selector {
+		.monthlabel,
+		.yearlabel {
+			color: $boulder !important;
+		}
+	}
+}
+
 .filterable-nav{
 	margin: 50px 0 30px;
 	.mobile-filter{
@@ -426,7 +453,7 @@ carousel{
 	a{
 		padding: 10px 20px;
 		border-radius: 3px;
-		border: 1px solid #ccc;
+		border: 1px solid $silver;
 		color: $body-color;
 		display: inline-block;
 		margin-bottom: 10px;
@@ -459,7 +486,7 @@ carousel{
 		margin-bottom: 20px;
 	}
 	.insurance-content{
-		background: #f1f1f1;
+		background: $seashell;
 		border-radius: 3px;
 		padding: 30px;
 		text-align: center;
@@ -486,11 +513,11 @@ carousel{
 	}
 	span.current,a:hover{
 		background-color: $accent-color;
-		color: white;
+		color: $white;
 		border: 1px solid $accent-color;
 	}
 	a{
-		border: 1px solid #ccc;
+		border: 1px solid $silver;
 		color: $body-color;
 	}
 }
@@ -518,7 +545,7 @@ carousel{
 }
 
 .boxed-feature{
-	background: #f1f1f1;
+	background: $seashell;
 	border-radius: 5px;
 	padding: 20px 30px;
 	margin-bottom: 30px;
