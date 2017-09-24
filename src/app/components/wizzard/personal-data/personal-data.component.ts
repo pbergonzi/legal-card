@@ -35,7 +35,11 @@ export class PersonalDataComponent implements OnInit {
 
   private isValid(){
     return this.cardService.isValidDateRange(this.card) && this.cardService.isValidOwner(this.card.owner);  
-  } 
+  }
+
+  gotoProductSelection(){
+    this.router.navigate(['/product-selection']);
+  }
 
   onSubmit() {
     if(this.isValid()){
