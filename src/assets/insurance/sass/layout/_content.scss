@@ -17,35 +17,40 @@ carousel{
 .hero-slider{
 	position: relative;
 	margin-bottom: 50px;
-  .container {
-      position: absolute;
-      top: -4%;
-      left: 10%;
-      @media screen and (max-width: 990px){  left:0 ; }
-  }
+  	.container {
+    	position: absolute;
+      	top: -4%;
+      	left: 10%;
+      	@media screen and (max-width: 990px){  left:0 ; }
+  	}
 	.carousel.slide{
-    .carousel-indicators {
-      bottom: -10%;
-      li {
-        background-color: $silver-sand;
-        height: 15px;
-        width: 15px;
-      }
-      .active{
-        background-color: $accent-color;
-      }
-    }
+    	.carousel-indicators {
+			bottom: -10%;
+		
+			li {
+				background-color: $silver-sand;
+				height: 15px;
+				width: 15px;
+			}
+		
+			.active{
+				background-color: $accent-color;
+			}
+		}
 		@include clearfix;
-    .carousel-item {
-      img {
-        min-height: 580px;
-        float: left;
-        margin-right: -100%;
-        width: 100%;
-        background-size: cover;
-        background-position: center center;
-      }
-    }
+	
+		.carousel-item {
+			.item {
+				width: 100%;
+				img {
+					min-height: auto;
+					width: 220%;
+					max-width: 128%;
+					position: relative;
+					left: -10%;
+				}
+			}
+		}
 	}
 
 	.slide-content{
