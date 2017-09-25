@@ -6,7 +6,7 @@
 	.top-header{
 		padding: 30px 0;
 	}
-	.bottom-header{
+	.header{
 		background-color: $secondary-color;
 		@include clearfix;
 		padding: 20px 0;
@@ -68,7 +68,7 @@
 	.menu-toggle{
 		border: none;
 		background: none;
-		color: white;
+		color: $white;
 		@include em(20);
 		display: none;
 		outline: none;
@@ -87,8 +87,14 @@
 		li{
 			display: inline-block;
 
+			&:last-child {
+				a {
+					border: 0 none;
+				}
+			}
+
 			a{
-				color: white;
+				color: $white;
 				padding:0 10px;
 				border-right: 1px solid rgba(255,255,255,.3);
 				transition: .3s ease;
@@ -111,7 +117,7 @@
 		border-radius: 50%;
 		text-align: center;
 		line-height: 1.8;
-		color:white;
+		color:$white;
 		margin-left: 5px;
 		display: inline-block;
 		transition: .3s ease;
@@ -136,14 +142,14 @@
 		a{
 			padding: 20px 0;
 			display: block;
-			color: white;
+			color: $white;
 		}
 		.current-menu-item a{ color: lighten($accent-color,10%); }
 	}
 }
 
 .breadcrumbs{
-	background-color: #f1f1f1;
+	background-color: $seashell;
 	padding: 10px 0;
 	@include em(14);
 

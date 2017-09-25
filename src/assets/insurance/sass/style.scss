@@ -8,7 +8,8 @@
 /*=========================================== 
  * Importing CSS Libraries
  *===========================================*/
- @import 	"libs/settings",
+ @import 	"layout/colors",
+ 			"libs/settings",
  			"libs/mixins",
  			"libs/normalize",
  			"libs/global",

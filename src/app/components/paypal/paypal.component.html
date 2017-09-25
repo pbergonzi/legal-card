@@ -5,11 +5,11 @@
   <input type="hidden" name="on0" value="Pack">
   <input type="hidden" name="os0" value="{{ card.package.name }}">
 
-  <input type="text" name="custom" value="{{ card.hash }}" />
+  <input type="hidden" name="custom" value="{{ card.hash }}" />
   
   <input type="hidden" name="currency_code" value="USD">
 
-  <input (click)="form.submit()" type="image" src="{{ btnImg }}" border="0"
-        name="submit" alt="Make payments with PayPal - it's fast, free and secure!"/>
+  <input (click)="form.submit()" type="image" border="0"
+        name="submit" alt="Buy Now with Paypal" class="btn-primary"/>
 </form>
   

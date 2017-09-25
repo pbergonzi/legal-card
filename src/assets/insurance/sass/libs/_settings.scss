@@ -3,13 +3,13 @@ $primary-font      : "Roboto Condensed", "Open Sans", sans-serif;
 
 
 // Color Variables
-$accent-color      : #0f75bd;
-$primary-color     : $accent-color;
-$secondary-color   : #4a4c4e;
+$accent-color      : $denim;
+$primary-color     : $denim;
+$secondary-color   : $abbey;
 
-$strong-color      : #222;
-$body-color        : #768089;
-$muted-color: #9ba1a6;
+$strong-color      : $mine-shaft;
+$body-color        : $rolling-stone;
+$muted-color: $gray-chateau;
 
 // Grid system
 $grid-columns      : 12 !default;
