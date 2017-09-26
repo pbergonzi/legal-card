@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { cardReducer } from 'app/reducers/card.reducer';
 import { CardService } from 'app/services/card/card.service';
 import { PaypalComponent } from './components/paypal/paypal.component';
+import { LogoComponent } from './components/logo/logo.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { InsuranceHeaderComponent } from 'app/components/insurance-header/insurance-header.component';
 import { InsuranceFooterComponent } from 'app/components/insurance-footer/insurance-footer.component';
@@ -45,6 +46,7 @@ import { CarouselModule } from 'ngx-bootstrap';
     ProductSelectionComponent,
     PersonalDataComponent,
     PaypalComponent,
+    LogoComponent,
     CheckoutComponent,
     PaymentSuccessComponent,
     PaymentCancelledComponent
