@@ -37,7 +37,7 @@ export class PaypalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.gaService.emitEvent("wizzard", "goToPaypal", this.card.package.name);
+    this.gaService.emitEvent("wizzard", "goToPaypal", this.card.package.name, this.card.package.price);
   }
 
   ngOnInit() {
