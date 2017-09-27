@@ -1,12 +1,93 @@
-header {
-	ul.menu {
-		svg {
-			width: 50px;
-			margin-bottom: -9px;
-			border-right: 1px solid rgba(255, 255, 255, 0.3);
-			padding-right: 20px;
+@font-face {
+    font-family: 'Chaparral-regular';
+    src: url('../fonts/ChaparralPro-Regular.otf');
+}
+
+main {
+	i {
+		margin-top: 20px;
+
+		&:before {
+			color: $second-accent-color !important;
 		}
 	}
+}
+
+h3 {
+	margin-top: 0 !important;
+	font-family: 'Chaparral-regular' !important;
+	color: $second-accent-color !important;
+}
+
+h2 {
+	color: $accent-color !important;
+	font-family: 'Chaparral-regular' !important;
+}
+
+small {
+	color: $secondary-color;
+	font-family: 'Chaparral-regular';
+}
+
+.ng-valid[required], .ng-valid.required  {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-left: 5px solid $correct-color;
+  }
+  
+  .ng-invalid:not(form)  {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-left: 5px solid $second-accent-color;
+  }
+
+* {
+	color: $text-color;
+}
+
+header {
+	svg {
+		width: 180px;
+		margin-bottom: 0px;
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
+		padding-right: 20px;
+		margin-top: 8px;
+		float: left;
+	}
+
+	ul {
+		float: left;
+		margin-left: 20px;
+		margin-top: 24px !important;
+	}
+
+	.social-links {
+		a {
+			width: 30px;
+			height: 30px;
+			border: 1px dotted transparentize($white, 0.7) !important;
+			text-align: center;
+			line-height: 1.8;
+			color: transparentize($white, 0.7) !important;
+			margin-left: 1px;
+			display: inline-block;
+			transition: .3s ease;
+			margin-bottom: 4px;
+			cursor: pointer;
+
+			&:hover{
+				color: $white !important;
+				border-color: $white !important;
+			}
+		}
+		i {
+			color: $white;
+		}
+	}
+}
+
+.quotientContainer {
+	position: relative;
 }
 
 a {
@@ -254,14 +335,53 @@ carousel{
 
 	.slide-content{
 		border-radius: 3px;
-		background-color: $white;
+		background-color: transparentize($primary-color, 0.1);
+		border: 1px solid $accent-color;
 		width: 25%;
-		padding: 30px;
-		margin-top: 50px;
+		padding: 30px 30px 0 30px;
+		margin-top: 80px;
 		margin-bottom: 30px;
-    	min-height: 500px;
+		position: relative;
+
+		border-width: 2px;
+		box-shadow: 0 0 13px 0px $primary-color;
+
 		@media screen and (max-width: 990px){ width: 50% }
 		@media screen and (max-width: 480px){ width: 100% }
+
+		.quotient-border {
+			position: absolute;
+			width: 30px;
+			height: 30px;
+
+			&.topleft {
+				top: -10px;
+				left: -10px;
+				border-top: 2px solid $accent-color;
+				border-left: 2px solid $accent-color;
+			}
+
+			&.topright {
+				top: -10px;
+				right: -10px;
+				border-top: 2px solid $accent-color;
+				border-right: 2px solid $accent-color;
+			}
+
+			&.bottomleft {
+				bottom: -10px;
+				left: -10px;
+				border-bottom: 2px solid $accent-color;
+				border-left: 2px solid $accent-color;
+			}
+
+			&.bottomright {
+				bottom: -10px;
+				right: -10px;
+				border-bottom: 2px solid $accent-color;
+				border-right: 2px solid $accent-color;
+			}
+		}
 
 		.form-element{
 			padding-bottom: 15px !important;
@@ -271,9 +391,11 @@ carousel{
 			@include em(35);
 			font-weight: 300!important;
 			margin-bottom: 30px;
+			font-family: 'Chaparral-regular';
+			color: $white;
 
 			strong{
-				color: $accent-color;
+				color: $second-accent-color;
 				display: block;
 				font-weight: 300!important;
 			}
@@ -329,7 +451,6 @@ carousel{
 }
 .section-subtitle{
 	@include em(30);
-	color: $muted-color;
 	margin-top: -50px;
 	margin-bottom: 50px;
 }

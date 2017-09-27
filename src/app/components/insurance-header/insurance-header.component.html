@@ -3,10 +3,8 @@
       <div class="container">
         <div class="main-navigation">
           <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+          <a [routerLink]="['/']"><logo></logo></a>
           <ul class="menu">
-              <li class="menu-item" routerLinkActive="current-menu-item">
-                  <a [routerLink]="['/']"><logo></logo></a>
-              </li>
               <li class="menu-item" routerLinkActive="current-menu-item">
                   <a [routerLink]="['/about']">About us</a>
               </li>
@@ -23,10 +21,14 @@
         </div> <!-- .main-navigation -->
 
         <div class="social-links">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-google-plus"></i></a>
-          <a href="#"><i class="fa fa-pinterest"></i></a>
+          <div class="top">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+          </div>
+          <div class="bottom">
+            <a href="#"><i class="fa fa-google-plus"></i></a>
+            <a href="#"><i class="fa fa-pinterest"></i></a>
+          </div>
         </div>
 
         <div class="mobile-navigation">
