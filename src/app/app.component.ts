@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from "@angular/router";
+import { GoogleAnalyticsEventsService } from 'app/services/analytics/ga.service';
 const { version: appVersion, name: appName } = require('../../package.json');
 
 declare var $: any;
@@ -11,7 +13,15 @@ declare var $: any;
 export class AppComponent implements OnInit {
   public title = 'app';
 
-  constructor() {}
+  constructor(private router: Router,
+              private gaService: GoogleAnalyticsEventsService) 
+  { 
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd){
+        this.gaService.emitPageView(event);
+      }
+    });
+  }
   
   ngOnInit() {
     console.log(appName +  ' : ' + appVersion);

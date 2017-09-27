@@ -10,6 +10,7 @@ import { AppComponent } from 'app/app.component';
 import { StoreModule } from '@ngrx/store';
 import { cardReducer } from 'app/reducers/card.reducer';
 import { CardService } from 'app/services/card/card.service';
+import { GoogleAnalyticsEventsService } from 'app/services/analytics/ga.service';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { MyDatePickerModule } from 'mydatepicker';
@@ -29,7 +30,6 @@ import { ProductSelectionComponent } from 'app/components/wizzard/product-select
 import { PersonalDataComponent } from 'app/components/wizzard/personal-data/personal-data.component';
 import { CheckoutComponent } from 'app/components/wizzard/checkout/checkout.component';
 import { CarouselModule } from 'ngx-bootstrap';
-import { Angulartics2Module, Angulartics2GoogleTagManager } from 'angulartics2';
 
 @NgModule({
   declarations: [
@@ -62,11 +62,11 @@ import { Angulartics2Module, Angulartics2GoogleTagManager } from 'angulartics2';
     MyDatePickerModule,
     CommonModule,
     ReactiveFormsModule,
-    CarouselModule.forRoot(),
-    Angulartics2Module.forRoot([ Angulartics2GoogleTagManager ])
+    CarouselModule.forRoot()
   ],
   providers: [
-    CardService
+    CardService,
+    GoogleAnalyticsEventsService
   ],
   bootstrap: [AppComponent]
 })
