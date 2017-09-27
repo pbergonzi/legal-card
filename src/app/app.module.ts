@@ -29,6 +29,7 @@ import { ProductSelectionComponent } from 'app/components/wizzard/product-select
 import { PersonalDataComponent } from 'app/components/wizzard/personal-data/personal-data.component';
 import { CheckoutComponent } from 'app/components/wizzard/checkout/checkout.component';
 import { CarouselModule } from 'ngx-bootstrap';
+import { Angulartics2Module, Angulartics2GoogleTagManager } from 'angulartics2';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { CarouselModule } from 'ngx-bootstrap';
     MyDatePickerModule,
     CommonModule,
     ReactiveFormsModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    Angulartics2Module.forRoot([ Angulartics2GoogleTagManager ])
   ],
   providers: [
     CardService
