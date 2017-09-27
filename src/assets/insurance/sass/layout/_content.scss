@@ -45,6 +45,15 @@ small {
 	color: $text-color;
 }
 
+.mapContainer {
+	overflow: hidden;
+	height: 500px;
+	text-align: center;
+	img {
+		margin-top: -250px;
+	}
+}
+
 header {
 	svg {
 		width: 180px;
@@ -749,9 +758,24 @@ carousel{
 	}
 }
 
+.colophon {
+	color: $white !important;
+}
+
+.pictureBlock {
+	h3 {
+		color: $white !important;
+	}
+
+	small {
+		color: $white;
+	}
+}
+
 .mydp { // My Date Picker
 
 	input {
+		background-color: $white;
 		&:focus {
 			border-color: $shakespeare !important;
 		}
