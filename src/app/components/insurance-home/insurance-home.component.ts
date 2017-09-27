@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CarouselConfig } from 'ngx-bootstrap';
-import { GoogleAnalyticsEventsService } from '../../services/analytics/ga.service';
 
 @Component({
   selector: 'app-insurance-home',
@@ -11,9 +10,7 @@ import { GoogleAnalyticsEventsService } from '../../services/analytics/ga.servic
 
 export class InsuranceHomeComponent implements OnInit {
 
-  constructor(private gaService: GoogleAnalyticsEventsService) {
-    this.gaService.emitEvent("testCategory", "testAction", "testLabel", 10);
-  }
+  constructor() { }
 
   ngOnInit() { }
 
