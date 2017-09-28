@@ -3,6 +3,59 @@
     src: url('../fonts/ChaparralPro-Regular.otf');
 }
 
+.homeContainer {
+	height: 100vh;
+	background-image: url('../images/background.png');
+	background-position: 50% 20%;
+	background-repeat: no-repeat;
+	
+	@media (max-width: $mobile) {
+		background-position: 80% 30%;
+	}
+}
+
+.formQuote {
+	@media (max-width: $mobile) {
+		padding: 0 15px;
+
+		> div,
+		> section {
+			width: 100% !important;
+		}
+	}
+}
+
+.main-navigation {
+	.menu {
+		a {
+			color: transparentize($white, 0.3) !important;
+
+			&:hover {
+				color: $white !important;
+			}
+		}
+	}
+	@media (max-width: $mobile) {
+		width: 100%;
+
+		.menu-toggle {
+			float: left;
+			i:before {
+				color: $white;
+			}
+		}
+
+		> a {
+			float: right;
+
+			svg {
+				border: 0 none;
+				width: 107px;
+			}
+		}
+	}
+}
+
 main {
 	i {
 		margin-top: 20px;
@@ -49,16 +102,31 @@ small {
 	overflow: hidden;
 	height: 500px;
 	text-align: center;
+	cursor: pointer;
+
+	a {
+		@media (max-width: $mobile) {
+			display: block;
+			overflow: hidden;
+		}
+	}
+
 	img {
 		margin-top: -250px;
+
+		@media (max-width: $mobile) {
+			width: 200%;
+			margin-left: -50%;
+			margin-top: -20%;
+		}
 	}
 }
 
 header {
 	svg {
-		width: 180px;
+		width: 227px;
 		margin-bottom: 0px;
-		border-right: 1px solid rgba(255, 255, 255, 0.3);
+		border-right: 1px solid transparentize($white, 0.7);
 		padding-right: 20px;
 		margin-top: 8px;
 		float: left;
@@ -187,15 +255,37 @@ carousel{
 }
 
 .personalData {
+	@media (max-width: $mobile) {
+		h1 {
+			padding: 0 15px !important;
+		}
+		.pageContainer {
+			padding: 0 15px;
+
+			> form,
+			> div {
+				width: 100%;
+			}
+		}
+	}
+
 	.pportContainer {
 		width: 14%;
 		float: left;
 		margin-right: 6%;
+
+		@media (max-width: $mobile) {
+			width: 24%;
+		}
 	}
 
 	.mailContainer {
 		width: 80%;
 		float: left;
+
+		@media (max-width: $mobile) {
+			width: 70%;
+		}
 	}
 
 	.checkout {
@@ -347,7 +437,7 @@ carousel{
 		background-color: transparentize($primary-color, 0.1);
 		border: 1px solid $accent-color;
 		width: 25%;
-		padding: 30px 30px 0 30px;
+		padding: 10px 30px 0 30px;
 		margin-top: 80px;
 		margin-bottom: 30px;
 		position: relative;
@@ -393,7 +483,7 @@ carousel{
 		}
 
 		.form-element{
-			padding-bottom: 15px !important;
+			padding-bottom: 5px !important;
 		}
 
 		.slide-title{
