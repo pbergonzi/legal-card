@@ -3,6 +3,7 @@ import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
+import { GoogleAnalyticsEventsService } from 'app/services/analytics/ga.service';
 import { Card } from 'app/models/card.model';
 
 @Component({
@@ -22,7 +23,8 @@ export class PaypalComponent implements OnInit {
   public card: Card;
 
   constructor(
-    private cardService: CardService
+    private cardService: CardService,
+    private gaService: GoogleAnalyticsEventsService
   ) {
     this.cardService
       .getCard()
@@ -32,6 +34,10 @@ export class PaypalComponent implements OnInit {
           this.card = card;
         }
       });
+  }
+
+  onSubmit() {
+    this.gaService.emitEvent("wizzard", "goToPaypal", this.card.package.name, this.card.package.price);
   }
 
   ngOnInit() {
