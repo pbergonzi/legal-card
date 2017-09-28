@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CarouselConfig} from "ngx-bootstrap";
+import { CarouselConfig } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-insurance-home',
@@ -7,11 +7,11 @@ import {CarouselConfig} from "ngx-bootstrap";
   styleUrls: ['./insurance-home.component.scss'],
   providers: [{provide: CarouselConfig, useValue: {interval: 1500, noPause: true}}]
 })
+
 export class InsuranceHomeComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

@@ -3,37 +3,37 @@
     <div class="row 100%">
       <div class="7u 12u$(medium)">
         <h1>Personal Data</h1>
-        <form #personalForm="ngForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="fname">Full Name</label>
-            <input [maxlength]="70" pattern="[^0-9]{6,70}$" type="text" class="form-control" [(ngModel)]="card.owner.name" id="fname" name="fname" required #fname="ngModel">
-          </div>
+        <div class="pageContainer">
+          <form #personalForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="fname">Full Name</label>
+              <input [maxlength]="70" pattern="[^0-9]{6,70}$" type="text" class="form-control" [(ngModel)]="card.owner.name" id="fname" name="fname" required #fname="ngModel">
+            </div>
 
-          <div class="form-group pportContainer">
-            <label for="pport">Passport</label>
-            <input type="number" [maxlength]="9" pattern="[0-9]{6,9}$" class="form-control" [(ngModel)]="card.owner.passport" id="pport" name="pport" required #pport="ngModel">
-          </div>
+            <div class="form-group pportContainer">
+              <label for="pport">Passport</label>
+              <input type="number" [maxlength]="9" pattern="[0-9]{6,9}$" class="form-control" [(ngModel)]="card.owner.passport" id="pport" name="pport" required #pport="ngModel">
+            </div>
 
-          <div class="form-group mailContainer">
-            <label for="mail">E-mail</label>
-            <input [maxlength]="70" type="email" pattern=".*@.*\.(.{1,})" class="form-control" [(ngModel)]="card.owner.email" id="mail" name="mail" required #mail="ngModel">
-          </div>
-
-          <button type="submit" class="btn btn-success" [disabled]="!personalForm.form.valid" >Confirm</button>
-
-        </form>
+            <div class="form-group mailContainer">
+              <label for="mail">E-mail</label>
+              <input [maxlength]="70" type="email" pattern=".*@.*\.(.{1,})" class="form-control" [(ngModel)]="card.owner.email" id="mail" name="mail" required #mail="ngModel">
+            </div>
+          </form>
+          <div class="5u 12u$(medium) details">
+              <!-- Content -->
+              <h4>Details</h4>
+              <section id="content">  
+                <section>
+                  <p>Pack: {{ card.package.name }}</p>
+                  <p>Price: {{ card.package.price }}</p>
+                  <p>Valid From: {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
+                </section>
+              </section>
+            </div>
+        </div>
       </div>
-      <div class="5u 12u$(medium) details">
-        <!-- Content -->
-        <h4>Details</h4>
-        <section id="content">  
-          <section>
-            <p>Pack: {{ card.package.name }}</p>
-            <p>Price: {{ card.package.price }}</p>
-            <p>Valid From: {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
-          </section>
-        </section>
-      </div>
+      
       <a (click)="gotoCheckout()" class="button checkout">Go to checkout</a>
       <input type="button" (click)="gotoProductSelection()" value="Go Back" class="special btn-secondary" />
     </div>
