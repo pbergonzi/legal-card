@@ -17,7 +17,7 @@ script:
   - ng build --prod --aot
   
 after_success:
-  - 'if [ branch = 'staging' ]; then
+  - 'if [ ${TRAVIS_BRANCH} = 'staging' ]; then
       firebase deploy --token $FIREBASE_TOKEN;
     else
       echo 'master';
