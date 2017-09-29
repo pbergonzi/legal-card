@@ -1,0 +1,25 @@
+#.travis.yml
+
+language: node_js
+node_js:
+  - "6.9"
+
+branches:
+  only:
+    - staging
+    - master
+
+before_script:
+  - npm install -g firebase-tools
+  - npm install -g @angular/cli
+
+script:
+  - ng build --prod --aot
+  
+after_success:
+  - if [[ $TRAVIS_BRANCH == "staging" ]]; then echo "deploying to staging"; firebase deploy --token $FIREBASE_TOKEN; else echo "deploying to production"; firebase deploy --token $FIREBASE_PRD_TOKEN; fi;
+    
+notifications:
+  email:
+    on_failure: change
+    on_success: change

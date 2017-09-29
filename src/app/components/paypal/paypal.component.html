@@ -1,0 +1,15 @@
+<form #form class="form-inline" (ngSubmit)="onSubmit()" name="_s-xclick" action="{{ actionUrl }}" method="post">
+  <input type="hidden" name="cmd" value="_s-xclick">
+  <input type="hidden" name="hosted_button_id" value="{{ buttonId }}">
+
+  <input type="hidden" name="on0" value="Pack">
+  <input type="hidden" name="os0" value="{{ card.package.name }}">
+
+  <input type="hidden" name="custom" value="{{ card.hash }}" />
+  
+  <input type="hidden" name="currency_code" value="USD">
+
+  <input (click)="form.submit()" type="image" border="0"
+        name="submit" alt="Buy Now with Paypal" class="btn-primary"/>
+</form>
+  
