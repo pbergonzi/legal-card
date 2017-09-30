@@ -2,6 +2,60 @@
     font-family: 'Chaparral-regular';
     src: url('../fonts/ChaparralPro-Regular.otf');
 }
+.formError {
+	font-size: 12px;
+	color: $second-accent-color;
+	display: block;
+}
+
+.mapLink {
+	display: block;
+	height: 100%;
+	width: 100%;
+	background-position: 50%;
+}
+
+.page.contact {
+	padding-top: 0;
+
+	.details {
+		padding-left: 15px;
+
+		&.fixed {
+			position: fixed;
+			top: 274px;
+			width: 250px;
+			background-color: white;
+
+			@media (max-width: $mobile) {
+				position: relative;
+				top: 15px;
+				margin-bottom: 70px;
+			}
+		}
+	}
+
+	.map {
+		height: 450px;
+		overflow: hidden;
+		@media (max-width: $mobile) {
+			height: 300px;
+			min-height: 300px;
+		}
+
+		img {
+			width: 100%;
+			margin-top: -200px;
+
+			@media (max-width: $mobile) {
+				margin-left: -230px;
+				margin-top: -140px;
+				height: 600px;
+				width: auto;
+			}
+		}
+	}
+}
 
 .homeContainer {
 	height: 100vh;
@@ -82,10 +136,13 @@ small {
 	font-family: 'Chaparral-regular';
 }
 
+*[required] {
+	transition: all 0.15s ease-in-out !important;
+}
+
 .ng-valid[required], .ng-valid.required  {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
-	border-left: 5px solid $correct-color;
   }
   
   .ng-invalid:not(form)  {

@@ -19,6 +19,9 @@
               <label for="mail">E-mail</label>
               <input [maxlength]="70" type="email" pattern=".*@.*\.(.{1,})" class="form-control" [(ngModel)]="card.owner.email" id="mail" name="mail" required #mail="ngModel">
             </div>
+            <span [hidden]="fname.valid || fname.pristine" class="formError">Please enter your name</span>
+            <span [hidden]="pport.valid || pport.pristine" class="formError">Please enter your passport number</span>
+            <span [hidden]="mail.valid || mail.pristine" class="formError">Please enter a valid email address</span>
           </form>
           <div class="5u 12u$(medium) details">
               <!-- Content -->

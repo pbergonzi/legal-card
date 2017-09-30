@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Card } from 'app/models/card.model';
 import { SimpleCard } from 'app/models/simple-card.model';
 import { Owner } from 'app/models/owner.model';
+import { Contact } from 'app/models/contact.model';
 import { Package } from 'app/models/package.model';
 import { Store } from '@ngrx/store';
 import { AppStore } from 'app/app.store';
@@ -168,6 +169,10 @@ export class CardService {
   
   public isValidOwner(owner: Owner){
     return owner && owner.name && owner.passport && owner.email;  
+  }
+
+  public isValidContact(contact: Contact) {
+    return contact && contact.name && contact.email && contact.description;
   }
 
   public updateCard(card: Card) {
