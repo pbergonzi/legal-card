@@ -5,13 +5,13 @@
     <span>Contact</span>
   </div>
 </div>
-<div class="page">
-  <div class="container">
-    <!--<div class="map"></div>-->
+<div class="page contact">
+  <div class="map">
     <app-map class="map"></app-map>
-
+  </div>
+  <div class="container contact">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3 details" [ngClass]="fixed ? 'fixed' : ''">
         <h2 class="section-title text-left">Address</h2>
 
         <div class="contact-detail">
@@ -19,33 +19,69 @@
             <p>Company Name INC. <br>
               523 Burt Street, Omaha</p>
 
-            <p>Phone: +1 823 424 9134
+            <p>Phone: +1 823 424 9134 <br>
               info@company.com</p>
           </address>
         </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9" [ngClass]="fixed ? 'col-md-offset-3' : ''">
         <h2 class="section-title text-left">Contact form</h2>
-        <form autocomplete="off" id="contactform" role="form" [formGroup]="contactForm" (ngSubmit)="sendMail($event)" class="contact-form">
+
+        <form #personalForm="ngForm" (ngSubmit)="sendMail($event)" id="contactform" class="contact-form">
           <div class="row">
             <div class="col-md-4">
-              <input type="text" formControlName="name" name="name" placeholder="Your name...">
+              <input [maxlength]="70" pattern="[^0-9]{6,70}$" type="text" class="form-control" [(ngModel)]="card.contact.name" id="name" name="name" required #name="ngModel" placeholder="Your name...">
             </div>
             <div class="col-md-4">
-              <input type="email" formControlName="email" name="email" placeholder="Email...">
+              <input [maxlength]="70" pattern=".*@.*\.(.{1,})" type="text" class="form-control" [(ngModel)]="card.contact.email" id="email" name="email" required #email="ngModel" placeholder="Your email...">
             </div>
             <div class="col-md-4">
-              <input type="text" formControlName="website" name="website" placeholder="Website...">
+              <input [maxlength]="70" type="text" class="form-control" [(ngModel)]="card.contact.website" id="website" name="website" #website="ngModel" placeholder="Your Website...">
             </div>
           </div>
 
-          <textarea formControlName="description" name="description" placeholder="Message..."></textarea>
+          <textarea [maxlength]="250" pattern="[^0-9]{6,250}$" type="text" class="form-control" [(ngModel)]="card.contact.description" id="description" name="description" #description="ngModel" placeholder="Your Message..." required></textarea>
 
-          <p class="text-right">
+          <div class="pull-left">
+            <span [hidden]="name.valid || name.pristine" class="formError">Please enter your name</span>
+            <span [hidden]="email.valid || email.pristine" class="formError">Please enter your email</span>
+            <span [hidden]="description.valid || description.pristine" class="formError">Please enter your message</span>
+          </div>
+
+          <p class="pull-right">
             <input type="submit" value="Send message" [disabled]="(!contactForm.valid)">
-            <!--<button type="submit" class="btn btn-primary btn-block" > Send Message</button>-->
           </p>
         </form>
+
+
+
+
+
+        <!-- <form #contactForm="ngForm" autocomplete="off" id="contactform" role="form" [formGroup]="contactForm" (ngSubmit)="sendMail($event)" class="contact-form">
+          <div class="row">
+            <div class="col-md-4">
+              <input [(ngModel)]="card.contact.name" id="name" #name="ngModel" type="text" pattern="[^0-9]{6,70}$" formControlName="name" name="name" placeholder="Your name..." required>
+            </div>
+            <div class="col-md-4">
+              <input [(ngModel)]="card.contact.email" id="email" #email="ngModel" type="email" pattern=".*@.*\.(.{1,})" required formControlName="email" name="email" placeholder="Email..." required>
+            </div>
+            <div class="col-md-4">
+              <input [(ngModel)]="card.contact.website" type="text" formControlName="website" name="website" placeholder="Website...">
+            </div>
+          </div>
+
+          <textarea [(ngModel)]="card.contact.description" id="description" #description="ngModel" name="description" pattern="[^0-9]{6,250}$" required formControlName="description" placeholder="Message..." required></textarea>
+
+          <div class="pull-left">
+            <span [hidden]="name.valid || name.pristine" class="formError">Please enter your name{{name.value}}</span>
+            <span [hidden]="email.valid || email.pristine" class="formError">Please enter your email</span>
+            <span [hidden]="description.valid || description.pristine" class="formError">Please enter your message</span>
+          </div>
+
+          <p class="pull-right">
+            <input type="submit" value="Send message" [disabled]="(!contactForm.valid)">
+          </p>
+        </form> -->
 
       </div>
     </div>
