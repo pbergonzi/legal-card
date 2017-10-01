@@ -31,6 +31,10 @@ export class PersonalDataComponent implements OnInit {
       });
   }
 
+  getLeftSpace() {
+    return document.querySelector('.container').clientWidth + (window.screen.width - document.querySelector('.container').clientWidth) / 2;
+  }
+
   ngOnInit() {}
 
   private isValid(){

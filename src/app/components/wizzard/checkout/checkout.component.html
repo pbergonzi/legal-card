@@ -1,23 +1,84 @@
 <div class="checkoutContainer">
-  <div *ngIf="card.hash" class="container">
-    <div class="row 100%">
-      <div class="5u 12u$(medium)">
-        <!-- Content -->
+  <div *ngIf="card.hash" class="container" [ngStyle]="{'width.px': getLeftSpace()}">
+    <header class="major">
         <h1>Details</h1>
-        <section id="content" class="details">  
-          <section>
-            <p>Pack: {{ card.package.name }}</p>
-            <p>Price: {{ card.package.price }}</p>
-            <p>Valid From: {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
-          </section>
-        </section>
-      </div>
-      <div class="7u 12u$(medium) buttons">
+        <h4 class='subtitle'>Lorem ipsum dolor sit amet.</h4>
+    </header>
+
+    <div class="leftContainer">
+      <div class="content">
+        <div class="5u 12u$(medium) cardContent">
+          <h1>Package Details</h1>
+          <p class="bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ornare venenatis urna, faucibus sodales ipsum consequat bibendum. Cras tempor bibendum interdum. Curabitur id sagittis augue. Donec dignissim in eros id mollis. Integer consequat nec magna a aliquam. Praesent quam erat, congue sit amet rhoncus in, ornare vitae augue. Praesent dapibus accumsan sem, ut facilisis risus maximus sit amet.</p>
+          <p>Pellentesque vitae augue vestibulum, facilisis diam sit amet, rhoncus metus. Sed laoreet lacinia augue, ut faucibus arcu cursus ac. Maecenas nunc leo, pharetra dictum tellus in, auctor convallis sem. Proin interdum gravida ligula a finibus. Aliquam auctor nisi sem, nec tincidunt erat varius eget. Phasellus enim nulla, porta eu enim volutpat, lacinia gravida nisl. Nulla vel bibendum arcu.</p>
+        </div>
+        <div class="7u 12u$(medium) buttons">
           <section id="content">
             <input type="button" (click)="gotoPersonalData()" value="Go Back" class="special btn-secondary" />
-            <app-paypal></app-paypal>
+            <div class="confirmButton">
+              <app-paypal></app-paypal>
+            </div>
           </section>
+        </div>
       </div>
     </div>
+    <section id="content" class="details col-md-3">
+      <div class="content">
+        <h4 class="detailsTitle">Details</h4>
+        <section class="planSelectedContainer">
+          <div class="dataLoaded">
+            <div class="pull-left userIcon">
+              <span class="fa fa-user"></span>
+            </div>
+            <div class="pull-left personalDetails">
+              <p>
+                <strong>Name:</strong>
+                <label>{{card.owner.name}}</label>
+              </p>
+              <p>
+                <strong>Passport:</strong>
+                <label>{{card.owner.passport}}</label>
+              </p>
+              <p>
+                <strong>Email:</strong>
+                <label>{{card.owner.email}}</label>
+              </p>
+            </div>
+          </div>
+          <hr class="detailsSeparator" />
+          <div>
+            <div class="pull-left iconContainer">
+              <logo-bw></logo-bw>
+            </div>
+            <div class="pull-left">
+              <h3>Your Selection</h3>
+              <span class="plan">{{ card.package.name }}</span>
+            </div>
+          </div>
+          <div>
+            <div class="pull-left iconContainer">
+              <logo-info></logo-info>
+            </div>
+            <div class="pull-left">
+              <h3>Valid From</h3>
+              <span class="plan">{{ card.package.dateFrom | date:'shortDate' }} <br>to {{ card.package.dateTo | date:'shortDate'}}</span>
+            </div>
+          </div>
+          <div>
+            <div class="pull-left iconContainer">
+              <logo-price></logo-price>
+            </div>
+            <div class="pull-left">
+              <h3>Price</h3>
+              <span class="plan">$ {{ card.package.price }}</span>
+            </div>
+          </div>
+        </section>
+        <section class="detailsText">
+          <hr class="detailsSeparator" />
+          <img src="../../../../assets/insurance/images/paypal.png" class="paypalIcon"/>
+        </section>
+      </div>
+    </section>
   </div>
 </div>
