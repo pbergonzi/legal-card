@@ -35,6 +35,10 @@ export class ProductSelectionComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
+  getLeftSpace() {
+    return document.querySelector('.container').clientWidth + (window.screen.width - document.querySelector('.container').clientWidth) / 2;
+  }
+
   gotoPersonalData(){
     this.router.navigate(['/personal-data']);
   }

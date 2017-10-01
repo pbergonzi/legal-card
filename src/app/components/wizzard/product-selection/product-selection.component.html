@@ -1,5 +1,5 @@
 <div class="page-container product-selection">
-  <div class="container">
+  <div class="container" [ngStyle]="{'width.px': getLeftSpace()}">
 
     <!-- Title -->
     <header class="major">
@@ -29,6 +29,7 @@
               <p>All cool things you have for u$s599</p>
             </div>
           </div>
+          <hr class="packageSep" />
           <div class="package">
             <div class="content">
               <header>
@@ -45,7 +46,7 @@
     </div>
 
     <div class="6u 12u$(medium) details col-md-3">
-      <div class='container'>
+      <div class='content'>
       <!-- Content -->
         <h4>Details</h4>
         <section id="content">
