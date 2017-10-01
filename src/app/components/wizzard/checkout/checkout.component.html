@@ -26,6 +26,26 @@
       <div class="content">
         <h4 class="detailsTitle">Details</h4>
         <section class="planSelectedContainer">
+          <div class="dataLoaded">
+            <div class="pull-left userIcon">
+              <span class="fa fa-user"></span>
+            </div>
+            <div class="pull-left personalDetails">
+              <p>
+                <strong>Name:</strong>
+                <label>{{card.owner.name}}</label>
+              </p>
+              <p>
+                <strong>Passport:</strong>
+                <label>{{card.owner.passport}}</label>
+              </p>
+              <p>
+                <strong>Email:</strong>
+                <label>{{card.owner.email}}</label>
+              </p>
+            </div>
+          </div>
+          <hr class="detailsSeparator" />
           <div>
             <div class="pull-left iconContainer">
               <logo-bw></logo-bw>
@@ -52,7 +72,7 @@
               <h3>Price</h3>
               <span class="plan">$ {{ card.package.price }}</span>
             </div>
-          </div>          
+          </div>
         </section>
         <section class="detailsText">
           <hr class="detailsSeparator" />

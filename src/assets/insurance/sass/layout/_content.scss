@@ -501,7 +501,27 @@ carousel{
 	}
 }
 
+.planSelectedContainer hr {
+	width: 100% !important;
+	margin-top: 0;
+}
+
+.personalDetails {
+	width: 90%;
+	margin-left: 5px;
+
+	label {
+		font-weight: normal;
+	}
+}
+
 .checkoutContainer {
+	.details {
+		.content {
+			padding-top: 10px !important;
+		}
+	}
+
 	@media (max-width: $mobile) {
 		.content {
 			position: initial !important;
@@ -521,6 +541,10 @@ carousel{
 			}
 		}
 	}
+}
+
+.dataLoaded {
+	margin-bottom: 0 !important;
 }
 
 .product-selection,
