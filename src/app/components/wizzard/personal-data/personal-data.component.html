@@ -1,41 +1,77 @@
 <div class="personalData">
-  <div class="container">
-    <div class="row 100%">
-      <div class="7u 12u$(medium)">
-        <h1>Personal Data</h1>
-        <div class="pageContainer">
-          <form #personalForm="ngForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-              <label for="fname">Full Name</label>
-              <input [maxlength]="70" pattern="[^0-9]{6,70}$" type="text" class="form-control" [(ngModel)]="card.owner.name" id="fname" name="fname" required #fname="ngModel">
-            </div>
+  <div class="container" [ngStyle]="{'width.px': getLeftSpace()}">
 
-            <div class="form-group pportContainer">
-              <label for="pport">Passport</label>
-              <input type="number" [maxlength]="9" pattern="[0-9]{6,9}$" class="form-control" [(ngModel)]="card.owner.passport" id="pport" name="pport" required #pport="ngModel">
-            </div>
+    <header class="major">
+      <h1>Personal Data</h1>
+      <h4 class='subtitle'>Lorem ipsum dolor sit amet.</h4>
+    </header>
 
-            <div class="form-group mailContainer">
-              <label for="mail">E-mail</label>
-              <input [maxlength]="70" type="email" pattern=".*@.*\.(.{1,})" class="form-control" [(ngModel)]="card.owner.email" id="mail" name="mail" required #mail="ngModel">
-            </div>
-          </form>
-          <div class="5u 12u$(medium) details">
-              <!-- Content -->
-              <h4>Details</h4>
-              <section id="content">  
-                <section>
-                  <p>Pack: {{ card.package.name }}</p>
-                  <p>Price: {{ card.package.price }}</p>
-                  <p>Valid From: {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
-                </section>
-              </section>
-            </div>
-        </div>
+    <div class="leftContainer">
+      <div class="contactForm">
+        <form #personalForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="fname">Full Name</label>
+            <input [maxlength]="70" pattern="[^0-9]{6,70}$" type="text" class="form-control" [(ngModel)]="card.owner.name" id="fname" name="fname" required #fname="ngModel">
+          </div>
+
+          <div class="form-group pportContainer">
+            <label for="pport">Passport</label>
+            <input type="number" [maxlength]="9" pattern="[0-9]{6,9}$" class="form-control" [(ngModel)]="card.owner.passport" id="pport" name="pport" required #pport="ngModel">
+          </div>
+
+          <div class="form-group mailContainer">
+            <label for="mail">E-mail</label>
+            <input [maxlength]="70" type="email" pattern=".*@.*\.(.{1,})" class="form-control" [(ngModel)]="card.owner.email" id="mail" name="mail" required #mail="ngModel">
+          </div>
+          <span [hidden]="fname.valid || fname.pristine" class="formError">Please enter your name</span>
+          <span [hidden]="pport.valid || pport.pristine" class="formError">Please enter your passport number</span>
+          <span [hidden]="mail.valid || mail.pristine" class="formError">Please enter a valid email address</span>
+        </form>
+        <a (click)="gotoCheckout()" class="button checkout success">Go to checkout</a>
+        <input type="button" (click)="gotoProductSelection()" value="Go Back" class="special btn-secondary" />
       </div>
-      
-      <a (click)="gotoCheckout()" class="button checkout">Go to checkout</a>
-      <input type="button" (click)="gotoProductSelection()" value="Go Back" class="special btn-secondary" />
+    </div>
+    <div class="5u 12u$(medium) details col-md-3">
+      <!-- Content -->
+      <section class="content">  
+        <h4 class="detailsTitle">Details</h4>
+        <section class="planSelectedContainer">
+          <div>
+            <div class="pull-left iconContainer">
+              <logo-bw></logo-bw>
+            </div>
+            <div class="pull-left">
+              <h3>Your Selection</h3>
+              <span class="plan">{{ card.package.name }}</span>
+            </div>
+          </div>
+          <div>
+            <div class="pull-left iconContainer">
+              <logo-info></logo-info>
+            </div>
+            <div class="pull-left">
+              <h3>Valid From</h3>
+              <span class="plan">{{ card.package.dateFrom | date:'shortDate' }} <br>to {{ card.package.dateTo | date:'shortDate'}}</span>
+            </div>
+          </div>
+          <div>
+            <div class="pull-left iconContainer">
+              <logo-price></logo-price>
+            </div>
+            <div class="pull-left">
+              <h3>Price</h3>
+              <span class="plan">$ {{ card.package.price }}</span>
+            </div>
+          </div>          
+        </section>
+        <section class="detailsText">
+            <hr class="detailsSeparator" />
+            <header>
+              Lorem ipsum.
+            </header>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis lacinia imperdiet. Mauris in eros ut sapien posuere gravida. Quisque tristique urna sed tellus sodales</p>
+          </section>
+      </section>
     </div>
   </div>
 </div>
