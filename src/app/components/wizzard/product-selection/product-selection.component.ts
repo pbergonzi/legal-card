@@ -35,6 +35,18 @@ export class ProductSelectionComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
+  getLeftSpace() {
+    return document.querySelector('.container').clientWidth + (window.screen.width - document.querySelector('.container').clientWidth) / 2;
+  }
+
+  choose(time) {
+    if(time === 'year') {
+      this.card.package = this.cardService.getYearPackage(this.card);
+    } else {
+      this.card.package = this.cardService.getFortyFiveDaysPackage(this.card);
+    }
+  }
+
   gotoPersonalData(){
     this.router.navigate(['/personal-data']);
   }

@@ -2,10 +2,30 @@
     font-family: 'Chaparral-regular';
     src: url('../fonts/ChaparralPro-Regular.otf');
 }
+
+@font-face {
+    font-family: 'Chaparral-bold';
+    src: url('../fonts/ChaparralPro-Bold.otf');
+}
+
+@font-face {
+    font-family: 'American';
+    src: url('../fonts/AmericanTypewriter-Bold.ttf');
+}
+
 .formError {
 	font-size: 12px;
 	color: $second-accent-color;
 	display: block;
+}
+
+.header .container {
+	display: flex;
+	justify-content: space-between;
+	
+	@media (max-width: $mobile) {
+		display: block !important;
+	}
 }
 
 .mapLink {
@@ -19,8 +39,6 @@
 	padding-top: 0;
 
 	.details {
-		padding-left: 15px;
-
 		&.fixed {
 			position: fixed;
 			top: 274px;
@@ -62,9 +80,18 @@
 	background-image: url('../images/background.png');
 	background-position: 50% 20%;
 	background-repeat: no-repeat;
+
+	.description {
+		font-family: 'American';
+		color: darken($accent-color, 15%);
+		float: left;
+		position: relative;
+		top: 104px;
+	}
 	
 	@media (max-width: $mobile) {
-		background-position: 80% 30%;
+		background-position: 80% 53%;
+		
 	}
 }
 
@@ -136,6 +163,10 @@ small {
 	font-family: 'Chaparral-regular';
 }
 
+* {
+	transition: all 0.15s ease-in-out;
+}
+
 *[required] {
 	transition: all 0.15s ease-in-out !important;
 }
@@ -180,6 +211,46 @@ small {
 }
 
 header {
+	.phone {
+		color: #ad2d1d;
+		font-family: 'Chaparral-bold';
+		font-weight: bold;
+		text-shadow: -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white, 1px 1px 0 $white;
+		font-size: 23px;
+
+		text-shadow: -1px -1px 0 transparentize($white, 0.8), 1px -1px 0 transparentize($white, 0.8), -1px 1px 0 transparentize($white, 0.8), 1px 1px 0 transparentize($white, 0.8);
+		font-size: 23px;
+		margin-top: 19px;
+		float: left;
+		margin-left: 29px;
+		margin-right: 29px;
+		@media (max-width: $mobile) {
+			display: none;
+
+			&.mobile {
+				display: block;
+			}
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: $white;
+			text-shadow: none;
+
+			i:before {
+				color: $white;
+			}
+		}
+
+		i {
+			padding-right: 5px;
+
+			&:before {
+				color: #ad2d1d;
+			}
+		}
+	}
 	svg {
 		width: 227px;
 		margin-bottom: 0px;
@@ -254,7 +325,6 @@ input[type='image'] {
 	&.btn-secondary {
 		padding: 10px;
 		margin-top: 20px;
-		margin-bottom: 20px;
 		transition: .3s ease;
 		color: black;
 		font-family: roboto condensed;
@@ -311,7 +381,70 @@ carousel{
   }
 }
 
+.checkoutContainer {
+	background-image: url('../images/step3.png');
+
+	.leftContainer {
+		.cardContent {
+			background-color: transparentize($white, 0.2);
+			padding: 20px;
+			border-radius: 4px;
+
+			p {
+				text-align: center;
+
+				&.bold {
+					font-weight: bold;
+				}
+			}
+
+			h1 {
+				top: 0;
+				width: 100%;
+				text-align: center;
+				margin-top: 0;
+				margin-bottom: 20px;
+				color: $second-accent-color;
+			}
+		}
+		.content {
+			width: 90%;
+			position: absolute;
+			bottom: 0;
+			margin-left: 5%;
+	
+			.buttons {
+				width: 100%;
+			}
+
+			.confirmButton {
+				float: right !important;
+	
+				input {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}
+
 .personalData {
+	background-image: url('../images/step2.png');
+
+	.leftContainer {
+		.contactForm {
+			width: 95% !important;
+			margin-right: 0;
+
+			@media (max-width: $mobile) {
+				form {
+					width: 105%;
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
 	@media (max-width: $mobile) {
 		h1 {
 			padding: 0 15px !important;
@@ -347,13 +480,12 @@ carousel{
 
 	.checkout {
 		margin-top: 20px;
-		margin-bottom: 20px;
 		float: right;
 	}
 
 	form {
-		width: 62.3%;
-		background-color: $white;
+		width: 100%;
+		background-color: transparentize($white, 0.2);
 		padding: 20px;
 		border: 1px solid $silver;
 		border-radius: 4px;
@@ -362,10 +494,40 @@ carousel{
 		margin-bottom: 20px;
 		margin-top: 20px;
 		height: 240px;
+
+		input {
+			border-color: $accent-color;
+		}
+	}
+}
+
+.planSelectedContainer hr {
+	width: 100% !important;
+	margin-top: 0;
+}
+
+.personalDetails {
+	width: 90%;
+	margin-left: 5px;
+
+	label {
+		font-weight: normal;
 	}
 }
 
 .checkoutContainer {
+	.details {
+		.content {
+			padding-top: 10px !important;
+		}
+	}
+
+	@media (max-width: $mobile) {
+		.content {
+			position: initial !important;
+			margin-top: 60px;
+		}
+	}
 	.buttons {
 		float: right;
 		clear: both;
@@ -381,39 +543,261 @@ carousel{
 	}
 }
 
+.dataLoaded {
+	margin-bottom: 0 !important;
+}
+
 .product-selection,
 .personalData,
 .checkoutContainer {
 	background-color: $seashell;
 
+	@media (max-width: $mobile) {
+		background-size: 100%;
+    	background-repeat: no-repeat;
+		background-position: 0 0 !important;
+	}
+
+	h1 {
+		font-family: 'American';
+		width: 75%;
+		text-align: center;
+		color: darken($accent-color, 15%);
+		text-shadow: -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white, 1px 1px 0 $white;
+
+		@media (max-width: $mobile) {
+			position: initial !important;
+			width: 100%;
+		}
+	}
+
+	h4.subtitle {
+		font-family: 'American';
+		color: $white;
+		position: relative;
+		width: 75%;
+		float: left;
+		margin-bottom: -22px;
+		font-size: 20px;
+		font-style: italic;
+		text-shadow: -1px -1px 2px darken($accent-color, 15%), 1px -1px 2px darken($accent-color, 15%), -1px 1px 2px darken($accent-color, 15%), 1px 1px 2px darken($accent-color, 15%);
+		text-align: center;
+		position: relative;
+		top: 40px;
+
+		@media (max-width: $mobile) {
+			position: initial !important;
+			width: 100% !important;
+			margin-bottom: 30px;
+		}
+	}
+
 	.details {
-		width: 31.5%;
 		background-color: $orchid-white;
 		margin-top: 20px;
 		border-radius: 4px;
-		border: 1px solid $silver;
-		padding: 20px;
+		padding: 0px !important;
 		height: 240px;
 		box-shadow: 0px 0 6px -1px $silver-chalice;
-		float: right;
 		margin-bottom: 20px;
+		@media (max-width: $mobile) {
+			height: 100% !important;
+		}
+	}
+}
+
+.paypalIcon {
+	width: 90%;
+}
+
+.btn-secondary {
+    padding: 6px 10px !important;
+	border-radius: 9px !important;
+}
+
+.button.success {
+	text-align: center !important;
+    padding: 6px 10px !important;
+	border-radius: 9px !important;
+	background-color: $second-accent-color !important;
+
+	&:hover {
+		background-color: lighten($second-accent-color, 15%) !important;
+	}
+}
+
+.pull-left {
+	float: left;
+}
+
+.product-selection,
+.personalData,
+.checkoutContainer {
+	background-position: 50%;
+
+	.details {
+		.content {
+			.planSelectedContainer {
+				border: 1px solid $white;
+				width: 90%;
+				padding: 14px;
+				overflow: hidden;
+
+				> div {
+					display: block;
+					clear: both;
+					overflow: hidden;
+					margin-bottom: 18px;
+				}
+
+				h3 {
+					color: $white !important;
+					font-size: 15px;
+					font-family: arial !important;
+					text-decoration: underline;
+					font-weight: 300 !important;
+				}
+
+				span.plan {
+					color: #aeb0b3;
+					font-weight: bold;
+				}
+
+				.iconContainer {
+					width: 14%;
+					margin-right: 15px;
+				}
+
+				svg {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.detailsTitle {
+		font-family: 'American';
+		margin-left: 7px;
+	}
+
+	h1 {
+		position: relative;
+		top: 34px;
+	}
+
+	h4.subtitle {
+		position: relative;
+		top: 75px !important;
+	}
+
+	.container {
+		margin-right: 0;
+		padding-right: 0;
+	}
+
+	.leftContainer {
+		width: 75%;
+		float: left;
+		height: 70vh;
+		position: relative;
+		top: -50px;
+		margin: 20px 0px 0 0;
+
+		@media (max-width: $mobile) {
+			width: 95%;
+			height: auto;
+		}
+
+		.formQuote,
+		.contactForm {
+			position: absolute;
+			bottom: 0;
+
+			@media (max-width: $mobile) {
+				position: initial;
+			}
+		}
+
+		.contactForm {
+			width: 90%
+		}
+	}
+
+	.details {
+		margin-top: 20px;
+		border-radius: 4px;
+		padding: 20px;
+		height: 77vh;
+		position: relative;
+		top: -99px;
+		background-color: transparent;
+		box-shadow: none;
+
+		@media (max-width: $mobile) {
+			float: left;
+			top: 0;
+
+			.content {
+				width: 95%;
+			}
+		}
+
+		.detailsSeparator {
+			width: 90%;
+			float: left;
+		}
+
+		.detailsText {
+			header {
+				display: block;
+				clear: both;
+				width: 90%;
+				font-weight: bold;
+				text-align: center;
+			}
+
+			p {
+				width: 90%;
+				text-align: center;
+				margin-top: 10px;
+			}
+		}
+
+		.content {
+			background-color: transparentize($black, 0.3);
+			height: 100%;
+			padding-top: 50px;
+			padding-left: 26px;
+			display: block;
+		}
+
+		* {
+			color: $white;
+		}
 	}
 }
 
 
 .product-selection {
+	background-image: url('../images/step1.png');
+
 	.infoSelected {
-		width: 27.3%;
 		background-color: $white;
-		padding: 30px;
 		margin-top: 20px;
 		float: left;
-		border-radius: 4px;
 		border: 1px solid $silver;
-		margin-bottom: 20px;
 		height: 300px;
-		margin-right: 6%;
 		position: relative;
+		float: left;
+		width: 35%;
+		margin-right: 4%;
+		border-radius: 3px;
+		background-color: transparentize($primary-color, 0.1);
+		border: 1px solid $accent-color;
+		padding: 10px 30px 0 30px;
+		border-width: 2px;
+		box-shadow: 0 0 13px 0px $primary-color;
+
 		footer {
 				input {
 					position: absolute;
@@ -424,29 +808,101 @@ carousel{
 	}
 
 	.planSelected {
-		float: left;
-		width: 27.3%;
-		margin-right: 6%;
-		background-color: $white;
-		padding: 30px;
+		background-color: transparentize($white, 0.2);
 		margin-top: 20px;
 		border: 1px solid $silver;
 		border-radius: 4px;
 		height: 300px;
 		position: relative;
+		width: 55%;
+		margin-right: 2%;
+		float: left;
+		margin-bottom: 20px;
 
-		footer {
-			position: absolute;
-			right: 20px;
-			bottom: 10px;
+		.packageSep {
+			border-color: $black;
+			margin: 0;
+			margin-top: -3px;
+			margin-bottom: 2px;
+		}
+
+		.package {
+			margin-top: 1px;
+			margin-bottom: 1px;
+			margin-left: 1px;
+			margin-right: 1px;
+
+			&.selected {
+				.checked {
+					display: block !important;
+					float: right;
+				}
+			}
+
+			&:first-child {
+				margin-bottom: 5px;
+			}
+
+			cursor: pointer;
+
+			.content {
+				padding-left: 30px;
+				padding-right: 30px;
+				padding-top: 39px;
+				padding-bottom: 38px;
+				transition: all 0.15s ease-in-out;
+
+				&:hover {
+					background-color: transparentize($accent-color, 0.3);
+	
+					.moreInfo {
+						color: darken($accent-color, 15%) !important;
+						font-weight: bold;
+						text-decoration: underline !important;
+					}
+	
+					p {
+						color: $white;
+					}
+
+					.checked {
+						color: darken($accent-color, 15%);
+					}
+				}
+			}
+
+			header {
+				h3 {
+					display: inline-block;
+				}
+
+				.checked {
+					display: none;
+					font-size: 42px;
+					margin-top: 37px;
+					color: transparentize($black, 0.4);
+					transition: all 0.15s ease-in-out;
+
+					&:hover {
+						color: $accent-color !important;
+					}
+				}
+	
+				.moreInfo {
+					float: right;
+					margin-top: -30px;
+					color: darken($accent-color, 15%);
+				}
+			}
 		}
 	}
 
 	.confirmButton {
-		float: right;
 		clear: both;
-		margin-right: 20px;
-		margin-bottom: 22px;
+		width: 200px;
+		display: block;
+		position: relative;
+		margin: 20px auto 0 auto !important;
 	}
 }
 
@@ -498,6 +954,7 @@ carousel{
 		margin-top: 80px;
 		margin-bottom: 30px;
 		position: relative;
+		float: left;
 
 		border-width: 2px;
 		box-shadow: 0 0 13px 0px $primary-color;

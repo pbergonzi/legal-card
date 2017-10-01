@@ -52,37 +52,6 @@
             <input type="submit" value="Send message" [disabled]="(!contactForm.valid)">
           </p>
         </form>
-
-
-
-
-
-        <!-- <form #contactForm="ngForm" autocomplete="off" id="contactform" role="form" [formGroup]="contactForm" (ngSubmit)="sendMail($event)" class="contact-form">
-          <div class="row">
-            <div class="col-md-4">
-              <input [(ngModel)]="card.contact.name" id="name" #name="ngModel" type="text" pattern="[^0-9]{6,70}$" formControlName="name" name="name" placeholder="Your name..." required>
-            </div>
-            <div class="col-md-4">
-              <input [(ngModel)]="card.contact.email" id="email" #email="ngModel" type="email" pattern=".*@.*\.(.{1,})" required formControlName="email" name="email" placeholder="Email..." required>
-            </div>
-            <div class="col-md-4">
-              <input [(ngModel)]="card.contact.website" type="text" formControlName="website" name="website" placeholder="Website...">
-            </div>
-          </div>
-
-          <textarea [(ngModel)]="card.contact.description" id="description" #description="ngModel" name="description" pattern="[^0-9]{6,250}$" required formControlName="description" placeholder="Message..." required></textarea>
-
-          <div class="pull-left">
-            <span [hidden]="name.valid || name.pristine" class="formError">Please enter your name{{name.value}}</span>
-            <span [hidden]="email.valid || email.pristine" class="formError">Please enter your email</span>
-            <span [hidden]="description.valid || description.pristine" class="formError">Please enter your message</span>
-          </div>
-
-          <p class="pull-right">
-            <input type="submit" value="Send message" [disabled]="(!contactForm.valid)">
-          </p>
-        </form> -->
-
       </div>
     </div>
   </div>

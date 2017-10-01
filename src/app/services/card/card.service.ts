@@ -99,7 +99,7 @@ export class CardService {
     return scard;
   }
 
-  public calculatePackage(card: Card): Package {
+  getFortyFiveDaysPackage(card: Card): Package {
     const pack: Package = {
       dateFrom: card.dateFrom,
       isoDateFrom: card.dateFrom.toISOString(),
@@ -109,27 +109,48 @@ export class CardService {
       name: null
     };
 
-    const days =  1 + Math.floor(( card.dateTo.getTime() - card.dateFrom.getTime() ) / 86400000); 
-    
     const dateTo = new Date(pack.dateFrom);
 
-    if(days <= 45){
-      dateTo.setDate(dateTo.getDate() + fourthyFivePack.days);
-
-      pack.name = fourthyFivePack.name;
-      pack.price = fourthyFivePack.price;
-      pack.dateTo = dateTo;
-      pack.isoDateTo = dateTo.toISOString(); 
-    } else {
-      dateTo.setDate(dateTo.getDate() + yearPack.days);
-
-      pack.name = yearPack.name;
-      pack.price = yearPack.price;
-      pack.dateTo = dateTo;
-      pack.isoDateTo = dateTo.toISOString();
-    }
+    dateTo.setDate(dateTo.getDate() + fourthyFivePack.days);
+    
+    pack.name = fourthyFivePack.name;
+    pack.price = fourthyFivePack.price;
+    pack.dateTo = dateTo;
+    pack.isoDateTo = dateTo.toISOString();
 
     return pack;
+  }
+
+  getYearPackage(card: Card): Package {
+    const pack: Package = {
+      dateFrom: card.dateFrom,
+      isoDateFrom: card.dateFrom.toISOString(),
+      dateTo: null,
+      isoDateTo: null,
+      price: null,
+      name: null
+    };
+
+    const dateTo = new Date(pack.dateFrom);
+
+    dateTo.setDate(dateTo.getDate() + yearPack.days);
+    
+    pack.name = yearPack.name;
+    pack.price = yearPack.price;
+    pack.dateTo = dateTo;
+    pack.isoDateTo = dateTo.toISOString();
+
+    return pack;
+  }
+
+  public calculatePackage(card: Card): Package {
+    const days =  1 + Math.floor(( card.dateTo.getTime() - card.dateFrom.getTime() ) / 86400000); 
+    
+    if(days <= 45){
+      return this.getFortyFiveDaysPackage(card);
+    } else {
+      return this.getYearPackage(card);
+    }
   }
 
   /* por ahora solo calculo dias
