@@ -19,18 +19,26 @@
         </div>
 
         <section class="planSelected">
-          <div class="package selected">
+          <div
+            class="package"
+            [ngClass]="card.package.name === 'Year Pack' ? 'selected' : ''"
+            (click)="choose('year')"
+          >
             <div class="content">
               <header>
                 <h3>1 Year Package</h3>
                 <a href="#" class="moreInfo">More Info</a>
                 <span class="fa fa-check checked"></span>
               </header>
-              <p>All cool things you have for u$s599</p>
+              <p>All cool things you have for u$s399</p>
             </div>
           </div>
           <hr class="packageSep" />
-          <div class="package">
+          <div
+            class="package"
+            [ngClass]="card.package.name === 'FortyFive Pack' ? 'selected' : ''"
+            (click)="choose('fortyFive')"
+          >
             <div class="content">
               <header>
                 <h3>45 Days Package</h3>
