@@ -2,6 +2,12 @@
     font-family: 'Chaparral-regular';
     src: url('../fonts/ChaparralPro-Regular.otf');
 }
+
+@font-face {
+    font-family: 'American';
+    src: url('../fonts/AmericanTypewriter-Bold.ttf');
+}
+
 .formError {
 	font-size: 12px;
 	color: $second-accent-color;
@@ -19,8 +25,6 @@
 	padding-top: 0;
 
 	.details {
-		padding-left: 15px;
-
 		&.fixed {
 			position: fixed;
 			top: 274px;
@@ -62,6 +66,14 @@
 	background-image: url('../images/background.png');
 	background-position: 50% 20%;
 	background-repeat: no-repeat;
+
+	.description {
+		font-family: 'American';
+		color: darken($accent-color, 15%);
+		float: left;
+		position: relative;
+		top: 104px;
+	}
 	
 	@media (max-width: $mobile) {
 		background-position: 80% 30%;
@@ -386,34 +398,134 @@ carousel{
 .checkoutContainer {
 	background-color: $seashell;
 
+	h1 {
+		font-family: 'American';
+		width: 75%;
+		text-align: center;
+		color: darken($accent-color, 15%);
+		text-shadow: -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white, 1px 1px 0 $white;
+	}
+
+	h4.subtitle {
+		font-family: 'American';
+		color: $white;
+		position: relative;
+		width: 75%;
+		float: left;
+		margin-bottom: -22px;
+		font-size: 20px;
+		font-style: italic;
+		text-shadow: -1px -1px 2px darken($accent-color, 15%), 1px -1px 2px darken($accent-color, 15%), -1px 1px 2px darken($accent-color, 15%), 1px 1px 2px darken($accent-color, 15%);
+		text-align: center;
+		position: relative;
+		top: 40px;
+	}
+
 	.details {
-		width: 31.5%;
 		background-color: $orchid-white;
 		margin-top: 20px;
 		border-radius: 4px;
-		border: 1px solid $silver;
-		padding: 20px;
+		padding: 0px !important;
 		height: 240px;
 		box-shadow: 0px 0 6px -1px $silver-chalice;
-		float: right;
 		margin-bottom: 20px;
+	}
+}
+
+.button.success {
+	text-align: center;
+    padding: 6px 0;
+	border-radius: 9px;
+	background-color: $second-accent-color;
+
+	&:hover {
+		background-color: lighten($second-accent-color, 15%);
 	}
 }
 
 
 .product-selection {
+	background-image: url('../images/step1.png');
+	background-position: 50%;
+
+	.details {
+		margin-top: 20px;
+		border-radius: 4px;
+		padding: 20px;
+		height: 77vh;
+		position: relative;
+		top: -99px;
+		background-color: transparent;
+		box-shadow: none;
+
+		.detailsSeparator {
+			width: 25%;
+			float: left;
+		}
+
+		.detailsText {
+			position: relative;
+			top: 25vh;
+
+			header {
+				display: block;
+				clear: both;
+				width: 25%;
+				font-weight: bold;
+				text-align: center;
+			}
+
+			p {
+				width: 25%;
+				text-align: center;
+				margin-top: 10px;
+			}
+		}
+
+		.container {
+			background-color: transparentize($black, 0.3);
+			height: 100%;
+			padding-top: 50px;
+			padding-left: 26px;
+			display: block;
+		}
+
+		* {
+			color: $white;
+		}
+	}
+
+	.leftContainer {
+		width: 75%;
+		float: left;
+		height: 70vh;
+		position: relative;
+		top: -50px;
+		margin: 20px 0px 0 0;
+
+		.formQuote {
+			position: absolute;
+			bottom: 0;
+		}
+	}
+
 	.infoSelected {
-		width: 27.3%;
 		background-color: $white;
-		padding: 30px;
 		margin-top: 20px;
 		float: left;
-		border-radius: 4px;
 		border: 1px solid $silver;
-		margin-bottom: 20px;
 		height: 300px;
-		margin-right: 6%;
 		position: relative;
+		float: left;
+		width: 35%;
+		margin-right: 4%;
+		border-radius: 3px;
+		background-color: transparentize($primary-color, 0.1);
+		border: 1px solid $accent-color;
+		padding: 10px 30px 0 30px;
+		border-width: 2px;
+		box-shadow: 0 0 13px 0px $primary-color;
+
 		footer {
 				input {
 					position: absolute;
@@ -424,29 +536,99 @@ carousel{
 	}
 
 	.planSelected {
-		float: left;
-		width: 27.3%;
-		margin-right: 6%;
-		background-color: $white;
-		padding: 30px;
+		background-color: transparentize($white, 0.2);
 		margin-top: 20px;
 		border: 1px solid $silver;
 		border-radius: 4px;
 		height: 300px;
 		position: relative;
+		width: 55%;
+		margin-right: 2%;
+		float: left;
+		margin-bottom: 20px;
 
-		footer {
-			position: absolute;
-			right: 20px;
-			bottom: 10px;
+		.package {
+			margin-top: 1px;
+			margin-bottom: 1px;
+			margin-left: 1px;
+			margin-right: 1px;
+
+			&.selected {
+				.checked {
+					display: block !important;
+					float: right;
+				}
+			}
+
+			&:first-child {
+				margin-bottom: 5px;
+			}
+
+			cursor: pointer;
+
+			.content {
+				padding-left: 30px;
+				padding-right: 30px;
+				padding-top: 39px;
+				padding-bottom: 39px;
+
+
+
+				&:hover {
+					background-color: transparentize($accent-color, 0.3);
+	
+					.moreInfo {
+						color: darken($accent-color, 15%) !important;
+						font-weight: bold;
+						text-decoration: underline !important;
+					}
+	
+					p {
+						color: $white;
+					}
+
+					.checked {
+						color: darken($accent-color, 15%);
+					}
+				}
+			}
+
+			&:first-child {
+				border-bottom: 1px solid $black;
+			}
+
+			header {
+				h3 {
+					display: inline-block;
+				}
+
+				.checked {
+					display: none;
+					font-size: 42px;
+					margin-top: 37px;
+					color: transparentize($black, 0.4);
+					transition: all 0.15 ease-in-out;
+
+					&:hover {
+						color: $accent-color !important;
+					}
+				}
+	
+				.moreInfo {
+					float: right;
+					margin-top: -30px;
+					color: darken($accent-color, 15%);
+				}
+			}
 		}
 	}
 
 	.confirmButton {
-		float: right;
 		clear: both;
-		margin-right: 20px;
-		margin-bottom: 22px;
+		width: 200px;
+		display: block;
+		position: relative;
+		margin: 20px auto 0 auto !important;
 	}
 }
 
@@ -498,6 +680,7 @@ carousel{
 		margin-top: 80px;
 		margin-bottom: 30px;
 		position: relative;
+		float: left;
 
 		border-width: 2px;
 		box-shadow: 0 0 13px 0px $primary-color;
