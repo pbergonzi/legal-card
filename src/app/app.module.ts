@@ -13,6 +13,9 @@ import { CardService } from 'app/services/card/card.service';
 import { GoogleAnalyticsEventsService } from 'app/services/analytics/ga.service';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { LogoBlackAndWhiteComponent } from './components/logo-bw/logo-bw.component';
+import { LogoPriceComponent } from './components/logo-price/logo-price.component';
+import { LogoInfoComponent } from './components/logo-info/logo-info.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { InsuranceHeaderComponent } from 'app/components/insurance-header/insurance-header.component';
 import { InsuranceFooterComponent } from 'app/components/insurance-footer/insurance-footer.component';
@@ -48,6 +51,9 @@ import { CarouselModule } from 'ngx-bootstrap';
     PersonalDataComponent,
     PaypalComponent,
     LogoComponent,
+    LogoBlackAndWhiteComponent,
+    LogoInfoComponent,
+    LogoPriceComponent,
     CheckoutComponent,
     PaymentSuccessComponent,
     PaymentCancelledComponent

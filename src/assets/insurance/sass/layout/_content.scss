@@ -4,6 +4,11 @@
 }
 
 @font-face {
+    font-family: 'Chaparral-bold';
+    src: url('../fonts/ChaparralPro-Bold.otf');
+}
+
+@font-face {
     font-family: 'American';
     src: url('../fonts/AmericanTypewriter-Bold.ttf');
 }
@@ -12,6 +17,15 @@
 	font-size: 12px;
 	color: $second-accent-color;
 	display: block;
+}
+
+.header .container {
+	display: flex;
+	justify-content: space-between;
+	
+	@media (max-width: $mobile) {
+		display: block !important;
+	}
 }
 
 .mapLink {
@@ -76,7 +90,8 @@
 	}
 	
 	@media (max-width: $mobile) {
-		background-position: 80% 30%;
+		background-position: 80% 53%;
+		
 	}
 }
 
@@ -196,6 +211,46 @@ small {
 }
 
 header {
+	.phone {
+		color: #ad2d1d;
+		font-family: 'Chaparral-bold';
+		font-weight: bold;
+		text-shadow: -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white, 1px 1px 0 $white;
+		font-size: 23px;
+
+		text-shadow: -1px -1px 0 transparentize($white, 0.8), 1px -1px 0 transparentize($white, 0.8), -1px 1px 0 transparentize($white, 0.8), 1px 1px 0 transparentize($white, 0.8);
+		font-size: 23px;
+		margin-top: 19px;
+		float: left;
+		margin-left: 29px;
+		margin-right: 29px;
+		@media (max-width: $mobile) {
+			display: none;
+
+			&.mobile {
+				display: block;
+			}
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: $white;
+			text-shadow: none;
+
+			i:before {
+				color: $white;
+			}
+		}
+
+		i {
+			padding-right: 5px;
+
+			&:before {
+				color: #ad2d1d;
+			}
+		}
+	}
 	svg {
 		width: 227px;
 		margin-bottom: 0px;
@@ -270,7 +325,6 @@ input[type='image'] {
 	&.btn-secondary {
 		padding: 10px;
 		margin-top: 20px;
-		margin-bottom: 20px;
 		transition: .3s ease;
 		color: black;
 		font-family: roboto condensed;
@@ -327,7 +381,62 @@ carousel{
   }
 }
 
+.checkoutContainer {
+	background-image: url('../images/step3.png');
+
+	.leftContainer {
+		.cardContent {
+			background-color: transparentize($white, 0.2);
+			padding: 20px;
+			border-radius: 4px;
+
+			p {
+				text-align: center;
+
+				&.bold {
+					font-weight: bold;
+				}
+			}
+
+			h1 {
+				top: 0;
+				width: 100%;
+				text-align: center;
+				margin-top: 0;
+				margin-bottom: 20px;
+				color: $second-accent-color;
+			}
+		}
+		.content {
+			width: 90%;
+			position: absolute;
+			bottom: 0;
+			margin-left: 5%;
+	
+			.buttons {
+				width: 100%;
+			}
+
+			.confirmButton {
+				float: right !important;
+	
+				input {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}
+
 .personalData {
+	background-image: url('../images/step2.png');
+
+	.leftContainer {
+		.contactForm {
+			width: 100% !important;
+		}
+	}
+
 	@media (max-width: $mobile) {
 		h1 {
 			padding: 0 15px !important;
@@ -363,13 +472,12 @@ carousel{
 
 	.checkout {
 		margin-top: 20px;
-		margin-bottom: 20px;
 		float: right;
 	}
 
 	form {
-		width: 62.3%;
-		background-color: $white;
+		width: 100%;
+		background-color: transparentize($white, 0.2);
 		padding: 20px;
 		border: 1px solid $silver;
 		border-radius: 4px;
@@ -378,10 +486,20 @@ carousel{
 		margin-bottom: 20px;
 		margin-top: 20px;
 		height: 240px;
+
+		input {
+			border-color: $accent-color;
+		}
 	}
 }
 
 .checkoutContainer {
+	@media (max-width: $mobile) {
+		.content {
+			position: initial !important;
+			margin-top: 60px;
+		}
+	}
 	.buttons {
 		float: right;
 		clear: both;
@@ -402,12 +520,23 @@ carousel{
 .checkoutContainer {
 	background-color: $seashell;
 
+	@media (max-width: $mobile) {
+		background-size: 100%;
+    	background-repeat: no-repeat;
+		background-position: 0 0 !important;
+	}
+
 	h1 {
 		font-family: 'American';
 		width: 75%;
 		text-align: center;
 		color: darken($accent-color, 15%);
 		text-shadow: -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white, 1px 1px 0 $white;
+
+		@media (max-width: $mobile) {
+			position: initial !important;
+			width: 100%;
+		}
 	}
 
 	h4.subtitle {
@@ -423,6 +552,12 @@ carousel{
 		text-align: center;
 		position: relative;
 		top: 40px;
+
+		@media (max-width: $mobile) {
+			position: initial !important;
+			width: 100% !important;
+			margin-bottom: 30px;
+		}
 	}
 
 	.details {
@@ -433,28 +568,127 @@ carousel{
 		height: 240px;
 		box-shadow: 0px 0 6px -1px $silver-chalice;
 		margin-bottom: 20px;
+		@media (max-width: $mobile) {
+			height: 100% !important;
+		}
 	}
+}
+
+.paypalIcon {
+	width: 90%;
+}
+
+.btn-secondary {
+    padding: 6px 10px !important;
+	border-radius: 9px !important;
 }
 
 .button.success {
-	text-align: center;
-    padding: 6px 0;
-	border-radius: 9px;
-	background-color: $second-accent-color;
+	text-align: center !important;
+    padding: 6px 10px !important;
+	border-radius: 9px !important;
+	background-color: $second-accent-color !important;
 
 	&:hover {
-		background-color: lighten($second-accent-color, 15%);
+		background-color: lighten($second-accent-color, 15%) !important;
 	}
 }
 
+.pull-left {
+	float: left;
+}
 
-.product-selection {
-	background-image: url('../images/step1.png');
+.product-selection,
+.personalData,
+.checkoutContainer {
 	background-position: 50%;
+
+	.details {
+		.content {
+			.planSelectedContainer {
+				border: 1px solid $white;
+				width: 90%;
+				padding: 14px;
+				overflow: hidden;
+
+				> div {
+					display: block;
+					clear: both;
+					overflow: hidden;
+					margin-bottom: 18px;
+				}
+
+				h3 {
+					color: $white !important;
+					font-size: 15px;
+					font-family: arial !important;
+					text-decoration: underline;
+					font-weight: 300 !important;
+				}
+
+				span.plan {
+					color: #aeb0b3;
+					font-weight: bold;
+				}
+
+				.iconContainer {
+					width: 14%;
+					margin-right: 15px;
+				}
+
+				svg {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.detailsTitle {
+		font-family: 'American';
+		margin-left: 7px;
+	}
+
+	h1 {
+		position: relative;
+		top: 34px;
+	}
+
+	h4.subtitle {
+		position: relative;
+		top: 75px !important;
+	}
 
 	.container {
 		margin-right: 0;
 		padding-right: 0;
+	}
+
+	.leftContainer {
+		width: 75%;
+		float: left;
+		height: 70vh;
+		position: relative;
+		top: -50px;
+		margin: 20px 0px 0 0;
+
+		@media (max-width: $mobile) {
+			width: 95%;
+			height: auto;
+		}
+
+		.formQuote,
+		.contactForm {
+			position: absolute;
+			bottom: 0;
+
+			@media (max-width: $mobile) {
+				position: initial;
+			}
+		}
+
+		.contactForm {
+			width: 90%
+		}
 	}
 
 	.details {
@@ -467,15 +701,21 @@ carousel{
 		background-color: transparent;
 		box-shadow: none;
 
+		@media (max-width: $mobile) {
+			float: left;
+			top: 0;
+
+			.content {
+				width: 95%;
+			}
+		}
+
 		.detailsSeparator {
 			width: 90%;
 			float: left;
 		}
 
 		.detailsText {
-			position: relative;
-			top: 25vh;
-
 			header {
 				display: block;
 				clear: both;
@@ -503,20 +743,11 @@ carousel{
 			color: $white;
 		}
 	}
+}
 
-	.leftContainer {
-		width: 75%;
-		float: left;
-		height: 70vh;
-		position: relative;
-		top: -50px;
-		margin: 20px 0px 0 0;
 
-		.formQuote {
-			position: absolute;
-			bottom: 0;
-		}
-	}
+.product-selection {
+	background-image: url('../images/step1.png');
 
 	.infoSelected {
 		background-color: $white;

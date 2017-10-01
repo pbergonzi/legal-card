@@ -56,19 +56,43 @@
     <div class="6u 12u$(medium) details col-md-3">
       <div class='content'>
       <!-- Content -->
-        <h4>Details</h4>
+        <h4 class="detailsTitle">Details</h4>
         <section id="content">
-          <section>
-            <p><strong>Pack:</strong> {{ card.package.name }}</p>
-            <p><strong>Price:</strong> ${{ card.package.price }}</p>
-            <p><strong>From:</strong> {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
-            <section class="detailsText">
-              <hr class="detailsSeparator" />
-              <header>
-                Lorem ipsum.
-              </header>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis lacinia imperdiet. Mauris in eros ut sapien posuere gravida. Quisque tristique urna sed tellus sodales</p>
-            </section>
+          <section class="planSelectedContainer">
+            <div>
+              <div class="pull-left iconContainer">
+                <logo-bw></logo-bw>
+              </div>
+              <div class="pull-left">
+                <h3>Your Selection</h3>
+                <span class="plan">{{ card.package.name }}</span>
+              </div>
+            </div>
+            <div>
+              <div class="pull-left iconContainer">
+                <logo-info></logo-info>
+              </div>
+              <div class="pull-left">
+                <h3>Valid From</h3>
+                <span class="plan">{{ card.package.dateFrom | date:'shortDate' }} <br>to {{ card.package.dateTo | date:'shortDate'}}</span>
+              </div>
+            </div>
+            <div>
+              <div class="pull-left iconContainer">
+                <logo-price></logo-price>
+              </div>
+              <div class="pull-left">
+                <h3>Price</h3>
+                <span class="plan">$ {{ card.package.price }}</span>
+              </div>
+            </div>          
+          </section>
+          <section class="detailsText">
+            <hr class="detailsSeparator" />
+            <header>
+              Lorem ipsum.
+            </header>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis lacinia imperdiet. Mauris in eros ut sapien posuere gravida. Quisque tristique urna sed tellus sodales</p>
           </section>
         </section>
       </div>
