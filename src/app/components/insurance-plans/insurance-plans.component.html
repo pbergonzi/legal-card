@@ -2,43 +2,38 @@
 <div class="breadcrumbs">
   <div class="container">
     <a [routerLink]="['/']">Home</a>
-    <span>Insurance Plans</span>
+    <span>Plans</span>
   </div>
 </div>
 <div class="page">
   <div class="container">
-    <h3 class="entry-title">Choose your own insurance plan</h3>
-    <p>Nam posuere purus vitae est sollicitudin placerat. Praesent posuere porta dignissim. Phasellus viverra, urna a convallis tincidunt, ante mi tempor turpis, nec tempor mauris ligula ut sapien. Etiam euismod mi eu ante mollis commodo. Suspendisse porta nisi vitae dui hendrerit, eget ornare orci semper. Phasellus pharetra, erat sit amet rutrum porttitor, est eros consectetur elit, molestie consequat erat tellus in dui. Vestibulum a vehicula sem. Nullam commodo quis purus in volutpat. Integer semper lacus a lorem efficitur auctor curabitur tincidunt ligula non.</p>
+    <h3 class="entry-title">Choose your own plan</h3>
 
-    <div class="filter-links filterable-nav">
-      <select class="mobile-filter">
-        <option value="*">Show all</option>
-        <option value=".skyscraper">skyscraper</option>
-        <option value=".shopping-center">shopping-center</option>
-        <option value=".apartment">apartment</option>
-      </select>
-      <strong>Select Category: </strong>
-      <a href="javascript:void(0)" class="wow fadeInRight" (click)="filterBy = 'all'" [ngClass]="filterBy === 'all' ? 'current' : ''">Show all</a>
-      <a href="javascript:void(0)" class="wow fadeInRight" (click)=" filterBy = 'skyscraper' " [ngClass]="filterBy === 'skyscraper' ? 'current' : ''">skyscraper</a>
-      <a href="javascript:void(0)" class="wow fadeInRight" (click)=" filterBy = 'shopping-center' " [ngClass]="filterBy === 'shopping-center' ? 'current' : ''">shopping-center</a>
-      <a href="javascript:void(0)" class="wow fadeInRight" (click)=" filterBy = 'apartment'" [ngClass]="filterBy === 'apartment' ? 'current' : ''">apartment</a>
-    </div>
-
-    <div class="filterable-items">
-      <div *ngFor="let plan of (planList | planFilter : filterBy)" class="insurance-item filterable-item col-md-4 {{plan.type}}">
+    <div>
+      <div class="insurance-item col-md-4">
         <div class="insurance-content">
-          <div class="insurance-icon"><i class="{{plan.icon}}"></i></div>
-          <h3 class="insurance-title">{{plan.title}}</h3>
-          <p>{{plan.para}}</p>
-          <a href="javascript:void(0)" class="button">See details</a>
+          <div class="insurance-icon"><i class="icon-peoples"></i></div>
+          <h3 class="insurance-title">45 Days Pack</h3>
+          <p>Ideal for short business trips or vacations, get your country wide legal assistance, direct family included with no extra charge</p>
+          <a (click)="fortyFivePack()" class="button">Buy Now</a>
+        </div>
+      </div>
+      <div class="insurance-item col-md-4">
+        <div class="insurance-content">
+          <div class="insurance-icon"><i class="icon-peoples"></i></div>
+          <h3 class="insurance-title">Year Pack</h3>
+          <p>If you need to stay longer or you are a frecuent visitor, be covered for a whole year straight, no need to inform when you arrive or depart the country</p>
+          <a (click)="yearPack()" class="button">Buy Now</a>
+        </div>
+      </div>
+      <div class="insurance-item col-md-4">
+        <div class="insurance-content">
+          <div class="insurance-icon"><i class="icon-peoples"></i></div>
+          <h3 class="insurance-title">Corporate Pack</h3>
+          <p>Have all your employees and their families protected abroad. Contact us so we can tailor a special pack to fit your company's specific needs</p>
+          <a [routerLink]="['/contact']" class="button">Contact Us</a>
         </div>
       </div>
     </div>
-    <div class="pagination">
-      <span class="current">1</span>
-      <a href="javascript:void(0)">2</a>
-      <a href="javascript:void(0)">3</a>
-    </div>
-    <!--Pagination module will replace this stuff -->
   </div>
 </div>
