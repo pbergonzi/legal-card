@@ -39,7 +39,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   getLeftSpace() {
-    return document.querySelector('.container').clientWidth + (window.screen.width - document.querySelector('.container').clientWidth) / 2;
+    if (window.screen.width > 1023) {
+      return document.querySelector('.container').clientWidth + (window.screen.width - document.querySelector('.container').clientWidth) / 2;
+    } else {
+      return null
+    }
   }
 
   gotoPersonalData(){
