@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { CardService } from 'app/services/card/card.service';
+import { Card } from 'app/models/card.model';
+import { Router } from '@angular/router';
+
+import 'rxjs/add/operator/first';
 
 @Component({
   selector: 'app-insurance-plans',
@@ -6,57 +11,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./insurance-plans.component.scss']
 })
 export class InsurancePlansComponent implements OnInit {
+  card: Card;
 
-  planList : any[] = DummyData;
-
-  filterBy : string = 'all';
-
-  constructor() { }
+  constructor(
+    private router: Router,
+    private cardService: CardService
+  ) { 
+    this.cardService
+    .getCard()
+    .first()
+    .subscribe( (card: Card) => { 
+      if(card) { this.card = card; }
+    });
+  }
 
   ngOnInit() {
   }
 
-}
+  private buildPack(days: number){
+    const auxNow = new Date();
+    const dateTo = new Date();
+    dateTo.setDate(auxNow.getDate() + days);
+    
+    this.card.dateFrom = auxNow;
+    this.card.dateTo = dateTo;
 
+    this.card.package = this.cardService.calculatePackage(this.card);
 
-export const DummyData = [
-  {
-      icon : 'icon-sofa',
-      type : 'shopping-center',
-      title : 'Safe Hohurse',
-      para : 'Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.'
-  },
-  {
-      icon : 'icon-pool',
-      type : 'skyscraper',
-      title : 'Happy Holiday',
-      para : 'Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.'
-  },
-  {
-    icon : 'icon-nurse',
-    type : 'apartment',
-    title : 'Medical 24',
-    para : 'Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.'
-  },
-  {
-    icon : 'icon-weigher',
-    type : 'shopping-center',
-    title : 'Financial Balance',
-    para : 'Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.'
-  },
-  {
-    icon : 'icon-car',
-    type : 'apartment',
-    title : 'Car Protect',
-    para : 'Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.'
-  },
-  {
-    icon : 'icon-shirt',
-    type : 'skyscraper',
-    title : 'Business Insurance',
-    para : 'Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.'
+    this.cardService.updateCard(this.card);
+
+    this.router.navigate(['/product-selection']);
   }
 
-];
+  yearPack() { this.buildPack(365); }
 
+  fortyFivePack() { this.buildPack(20); }
 
+}

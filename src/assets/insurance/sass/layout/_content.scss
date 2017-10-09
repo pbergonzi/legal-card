@@ -13,6 +13,71 @@
     src: url('../fonts/AmericanTypewriter-Bold.ttf');
 }
 
+@media (max-width: $mobile) {
+	.container {
+		max-width: 100%;
+		margin: 0 auto !important;
+	}
+}
+
+.leftPart {
+	width: 75%;
+
+	@media (max-width: $mobile) {
+		width: 100%;
+	}
+}
+
+.steps {
+	@media (max-width: $mobile) {
+		display: none;
+	}
+
+	.step {
+		width: 20px;
+		height: 20px;
+		border: 1px solid $accent-color;
+		border-radius: 10px;
+		margin-right: 11px;
+		background-color: transparentize($primary-color, 0.1);
+		clear: both;
+		margin-bottom: 10px;
+		margin-left: 9px;
+		&:first-child {
+			margin-top: 15px;
+		}
+
+		&.selected {
+			background-color: transparentize($second-accent-color, 0.2);
+			border-color: $second-accent-color;
+			height: 36px;
+			float: left;
+			width: auto;
+			padding-left: 10px;
+			padding-right: 10px;
+			padding-top: 2px;
+			font-size: 21px;
+			border-radius: 16px;
+			color: $white !important;
+			margin-left: 0;
+
+			&:after {
+				content: '';
+				width: 20px;
+				height: 20px;
+				background-color: $second-accent-color;
+				display: block;
+				float: left;
+				border-radius: 16px;
+				margin-top: 5px;
+				margin-left: -2px;
+				margin-right: 9px;
+				border: 1px solid darken($second-accent-color, 20%);
+			}
+		}
+	}
+}
+
 .formError {
 	font-size: 12px;
 	color: $second-accent-color;
@@ -75,6 +140,38 @@
 	}
 }
 
+.page.cancelled {
+	.container {
+		background-color: transparentize($primary-color, 0.1);
+		padding: 30px;
+		border: 2px solid $accent-color;
+		box-shadow: 0 0 13px 0px $primary-color;
+		border-radius: 3px;
+		position: relative;
+		@media (max-width: $mobile) {
+			width: 90%;
+		}
+	}
+}
+
+.page.success {
+	background-image: url('../images/background.png');
+    background-position-x: 100%;
+	background-position-y: 31%;
+	
+	.container {
+		background-color: transparentize($primary-color, 0.1);
+		padding: 30px;
+		border: 2px solid $accent-color;
+		box-shadow: 0 0 13px 0px $primary-color;
+		border-radius: 3px;
+		position: relative;
+		@media (max-width: $mobile) {
+			width: 90%;
+		}
+	}
+}
+
 .homeContainer {
 	height: 100vh;
 	background-image: url('../images/background.png');
@@ -87,6 +184,11 @@
 		float: left;
 		position: relative;
 		top: 104px;
+
+		@media (max-width: $mobile) {
+			position: initial;
+			color: $white;
+		}
 	}
 	
 	@media (max-width: $mobile) {
@@ -96,6 +198,7 @@
 }
 
 .formQuote {
+	margin-bottom: 40px;
 	@media (max-width: $mobile) {
 		padding: 0 15px;
 
@@ -384,11 +487,17 @@ carousel{
 .checkoutContainer {
 	background-image: url('../images/step3.png');
 
+	.buttons {
+		margin-right: 5%;
+	}
+
 	.leftContainer {
 		.cardContent {
-			background-color: transparentize($white, 0.2);
+			background-color: transparentize($white, 0.05);
 			padding: 20px;
 			border-radius: 4px;
+			width: 90%;
+			margin-left: 5%;
 
 			p {
 				text-align: center;
@@ -435,6 +544,7 @@ carousel{
 		.contactForm {
 			width: 95% !important;
 			margin-right: 0;
+			margin-bottom: 40px;
 
 			@media (max-width: $mobile) {
 				form {
@@ -485,7 +595,7 @@ carousel{
 
 	form {
 		width: 100%;
-		background-color: transparentize($white, 0.2);
+		background-color: transparentize($white, 0.05);
 		padding: 20px;
 		border: 1px solid $silver;
 		border-radius: 4px;
@@ -610,6 +720,14 @@ carousel{
 	width: 90%;
 }
 
+.sectionContainer {
+	display: flex;
+
+	@media (max-width: $mobile) {
+		display: block;
+	}
+}
+
 .btn-secondary {
     padding: 6px 10px !important;
 	border-radius: 9px !important;
@@ -630,6 +748,14 @@ carousel{
 	float: left;
 }
 
+.rightDetails {
+	width: 25%;
+
+	@media (max-width: $mobile) {
+		width: 100%;
+	}
+}
+
 .product-selection,
 .personalData,
 .checkoutContainer {
@@ -641,6 +767,7 @@ carousel{
 				border: 1px solid $white;
 				width: 90%;
 				padding: 14px;
+				padding-bottom: 0;
 				overflow: hidden;
 
 				> div {
@@ -680,11 +807,6 @@ carousel{
 		margin-left: 7px;
 	}
 
-	h1 {
-		position: relative;
-		top: 34px;
-	}
-
 	h4.subtitle {
 		position: relative;
 		top: 75px !important;
@@ -696,26 +818,12 @@ carousel{
 	}
 
 	.leftContainer {
-		width: 75%;
+		width: 100%;
 		float: left;
-		height: 70vh;
-		position: relative;
-		top: -50px;
-		margin: 20px 0px 0 0;
 
 		@media (max-width: $mobile) {
 			width: 95%;
 			height: auto;
-		}
-
-		.formQuote,
-		.contactForm {
-			position: absolute;
-			bottom: 0;
-
-			@media (max-width: $mobile) {
-				position: initial;
-			}
 		}
 
 		.contactForm {
@@ -724,12 +832,9 @@ carousel{
 	}
 
 	.details {
-		margin-top: 20px;
+		margin-top: 0px;
 		border-radius: 4px;
-		padding: 20px;
-		height: 77vh;
-		position: relative;
-		top: -99px;
+		height: 100%;
 		background-color: transparent;
 		box-shadow: none;
 
@@ -766,7 +871,7 @@ carousel{
 		.content {
 			background-color: transparentize($black, 0.3);
 			height: 100%;
-			padding-top: 50px;
+			padding-top: 26px;
 			padding-left: 26px;
 			display: block;
 		}
@@ -808,7 +913,7 @@ carousel{
 	}
 
 	.planSelected {
-		background-color: transparentize($white, 0.2);
+		background-color: transparentize($white, 0.05);
 		margin-top: 20px;
 		border: 1px solid $silver;
 		border-radius: 4px;
@@ -906,6 +1011,40 @@ carousel{
 	}
 }
 
+.quotient-border {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+
+	&.topleft {
+		top: -10px;
+		left: -10px;
+		border-top: 2px solid $accent-color;
+		border-left: 2px solid $accent-color;
+	}
+
+	&.topright {
+		top: -10px;
+		right: -10px;
+		border-top: 2px solid $accent-color;
+		border-right: 2px solid $accent-color;
+	}
+
+	&.bottomleft {
+		bottom: -10px;
+		left: -10px;
+		border-bottom: 2px solid $accent-color;
+		border-left: 2px solid $accent-color;
+	}
+
+	&.bottomright {
+		bottom: -10px;
+		right: -10px;
+		border-bottom: 2px solid $accent-color;
+		border-right: 2px solid $accent-color;
+	}
+}
+
 .hero-slider{
 	position: relative;
 	margin-bottom: 50px;
@@ -961,40 +1100,6 @@ carousel{
 
 		@media screen and (max-width: 990px){ width: 50% }
 		@media screen and (max-width: 480px){ width: 100% }
-
-		.quotient-border {
-			position: absolute;
-			width: 30px;
-			height: 30px;
-
-			&.topleft {
-				top: -10px;
-				left: -10px;
-				border-top: 2px solid $accent-color;
-				border-left: 2px solid $accent-color;
-			}
-
-			&.topright {
-				top: -10px;
-				right: -10px;
-				border-top: 2px solid $accent-color;
-				border-right: 2px solid $accent-color;
-			}
-
-			&.bottomleft {
-				bottom: -10px;
-				left: -10px;
-				border-bottom: 2px solid $accent-color;
-				border-left: 2px solid $accent-color;
-			}
-
-			&.bottomright {
-				bottom: -10px;
-				right: -10px;
-				border-bottom: 2px solid $accent-color;
-				border-right: 2px solid $accent-color;
-			}
-		}
 
 		.form-element{
 			padding-bottom: 5px !important;
