@@ -49,6 +49,10 @@ export class CheckoutComponent implements OnInit {
   gotoPersonalData(){
     this.router.navigate(['/personal-data']);
   }
+
+  gotoProductSelection(){
+    this.router.navigate(['/product-selection']);
+  }
   
   ngOnInit() {}
 

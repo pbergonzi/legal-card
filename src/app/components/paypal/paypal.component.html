@@ -9,7 +9,8 @@
   
   <input type="hidden" name="currency_code" value="USD">
 
-  <input (click)="form.submit()" type="image" border="0"
-        name="submit" alt="Buy Now with Paypal" class="btn-primary success button"/>
+  <div (click)="form.submit()">
+    <ng-content></ng-content>
+  </div>
 </form>
   
