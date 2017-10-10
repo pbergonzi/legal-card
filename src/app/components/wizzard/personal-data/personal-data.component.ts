@@ -16,6 +16,7 @@ import 'rxjs/add/operator/first';
 export class PersonalDataComponent implements OnInit {
   public card: Card;
   private ngUnsubscribe: Subject<void> = new Subject<void>();
+  submitted: boolean = false
 
   constructor(
     private router: Router,
@@ -49,17 +50,14 @@ export class PersonalDataComponent implements OnInit {
     this.router.navigate(['/product-selection']);
   }
 
-  onSubmit() {
+  gotoCheckout() {
     if(this.isValid()){
       this.cardService.updateCard(this.card);
       this.router.navigate(['/checkout']);
     } else {
+      this.submitted = true
       console.log('The card is not valid');
     }
-  }
-  
-  gotoCheckout(){
-    this.router.navigate(['/checkout']);
   }
 
   ngOnDestroy() {

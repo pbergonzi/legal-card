@@ -24,9 +24,9 @@
                 <label for="mail">E-mail</label>
                 <input [maxlength]="70" type="email" pattern=".*@.*\.(.{1,})" class="form-control" [(ngModel)]="card.owner.email" id="mail" name="mail" required #mail="ngModel">
               </div>
-              <span [hidden]="fname.valid || fname.pristine" class="formError">Please enter your name</span>
-              <span [hidden]="pport.valid || pport.pristine" class="formError">Please enter your passport number</span>
-              <span [hidden]="mail.valid || mail.pristine" class="formError">Please enter a valid email address</span>
+              <span [hidden]="fname.valid || (fname.pristine && !submitted)" class="formError">Please enter your name</span>
+              <span [hidden]="pport.valid || (pport.pristine && !submitted)" class="formError">Please enter your passport number</span>
+              <span [hidden]="mail.valid || (mail.pristine && !submitted)" class="formError">Please enter a valid email address</span>
             </form>
             <a (click)="gotoCheckout()" class="button checkout success">Go to checkout</a>
             <input type="button" (click)="gotoProductSelection()" value="Go Back" class="special btn-secondary" />
