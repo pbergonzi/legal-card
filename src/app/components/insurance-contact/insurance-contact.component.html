@@ -11,7 +11,7 @@
   </div>
   <div class="container contact">
     <div class="row">
-      <div class="col-md-3 details" [ngClass]="fixed ? 'fixed' : ''">
+      <div class="col-md-3 details">
         <h2 class="section-title text-left">Address</h2>
 
         <div class="contact-detail">
@@ -24,7 +24,7 @@
           </address>
         </div>
       </div>
-      <div class="col-md-9" [ngClass]="fixed ? 'col-md-offset-3' : ''">
+      <div class="col-md-9">
         <h2 class="section-title text-left">Contact form</h2>
 
         <form #personalForm="ngForm" (ngSubmit)="sendMail($event)" id="contactform" class="contact-form">
