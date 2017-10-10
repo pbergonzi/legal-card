@@ -187,12 +187,15 @@
 
 		@media (max-width: $mobile) {
 			position: initial;
-			color: $white;
+			p {
+				color: $white !important;
+			}
 		}
 	}
 	
 	@media (max-width: $mobile) {
-		background-position: 80% 53%;
+		background-position: 80% 33%;
+		height: 190vh;
 		
 	}
 }
@@ -1049,10 +1052,10 @@ carousel{
 	position: relative;
 	margin-bottom: 50px;
   	.container {
-    	position: absolute;
-      	top: -4%;
-      	left: 10%;
-      	@media screen and (max-width: 990px){  left:0 ; }
+      	@media screen and (max-width: 990px){
+			left: 0;
+			position: absolute;
+		}
   	}
 	.carousel.slide{
     	.carousel-indicators {
