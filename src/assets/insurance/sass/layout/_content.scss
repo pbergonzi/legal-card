@@ -48,7 +48,7 @@
 		cursor: pointer;
 		margin-left: 0;
 		float: left;
-		
+
 		&:first-child {
 			margin-top: 15px;
 		}
@@ -336,6 +336,16 @@ header {
 		float: left;
 		margin-left: 29px;
 		margin-right: 29px;
+		&.mobile {
+			display: none;
+			position: absolute;
+			top: -4px;
+			left: 29px;
+
+			i:before {
+				color: white;
+			}
+		}
 		@media (max-width: $mobile) {
 			display: none;
 
