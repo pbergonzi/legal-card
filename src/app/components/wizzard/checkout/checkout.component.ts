@@ -15,6 +15,7 @@ import { SimpleCard } from "app/models/simple-card.model";
 
 export class CheckoutComponent implements OnInit {
   public card: Card;
+  public buying: boolean = false
 
   constructor(
     private cardService: CardService,
@@ -36,6 +37,10 @@ export class CheckoutComponent implements OnInit {
           });
         }       
       });
+  }
+
+  buy() {
+    this.buying = true
   }
 
   getLeftSpace() {

@@ -18,8 +18,10 @@
               <input type="button" (click)="gotoPersonalData()" value="Go Back" class="special btn-secondary" />
               <div class="confirmButton">
                 <app-paypal>
-                  <input type="image" border="0"
-                    name="submit" alt="Buy Now with Paypal" class="btn-primary success button"/>
+                  <div [class]="buying ? 'disabled' : ''">
+                    <input type="image" border="0" (click)="buy()"
+                      name="submit" alt="Buy Now with Paypal" class="btn-primary success button"/>
+                  </div>
                 </app-paypal>
               </div>
             </section>
@@ -81,7 +83,9 @@
             <section class="detailsText">
               <hr class="detailsSeparator" />
               <app-paypal>
-                  <img src="../../../../assets/insurance/images/paypal.png" class="paypalIcon" (click)="buy()" />
+                  <div [class]="buying ? 'disabled' : ''">
+                    <img src="../../../../assets/insurance/images/paypal.png" class="paypalIcon" (click)="buy()" />
+                  </div>
               </app-paypal>
             </section>
           </div>
