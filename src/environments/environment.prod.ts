@@ -4,5 +4,5 @@ export const environment = {
   paypalAction: 'https://www.paypal.com/cgi-bin/webscr',
   yearPack: { name: 'Year Pack', price: 399, days: 365 },
   fortyFivePack: { name: 'FortyFive Pack', price: 99, days: 45 },
-  onePack: { name: '1H Pack', price: 1, days: 1 }
+  testPack: { name: '1H Pack', price: 1, days: 1 }
 };
