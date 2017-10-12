@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
@@ -14,7 +14,7 @@ import { Card } from 'app/models/card.model';
 export class PaypalComponent implements OnInit {
   actionUrl = environment.paypalAction;
   buttonId = environment.paypalButton;
-
+  public disabled: boolean = false;
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public card: Card;
 
@@ -32,8 +32,13 @@ export class PaypalComponent implements OnInit {
       });
   }
 
-  onSubmit() {
-    this.gaService.emitEvent("wizzard", "goToPaypal", this.card.package.name, this.card.package.price);
+  onSubmit(form) {
+    console.log(this.disabled)
+    if (!this.disabled) {
+      this.disabled = true
+      form.submit();
+      this.gaService.emitEvent("wizzard", "goToPaypal", this.card.package.name, this.card.package.price);
+    }
   }
 
   ngOnInit() {

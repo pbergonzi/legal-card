@@ -474,6 +474,22 @@ input[type='image'] {
 	}
 }
 
+div.disabled {
+	input.btn-primary {
+		background-color: lighten($second-accent-color, 30%) !important;
+		cursor: not-allowed !important;
+
+		&:hover {
+			background-color: lighten($second-accent-color, 30%) !important;
+			cursor: not-allowed !important;
+		}
+	}
+
+	img {
+		cursor: not-allowed !important;
+	}
+}
+
 input {
 	&.ng-touched.ng-invalid {
 		border-color: $apple-blossom;
