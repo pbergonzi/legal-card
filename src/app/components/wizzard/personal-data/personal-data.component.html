@@ -9,7 +9,7 @@
         </section>
         <div class="leftContainer">
           <div class="contactForm">
-            <form #personalForm="ngForm" (ngSubmit)="onSubmit()">
+            <form #personalForm="ngForm">
               <div class="form-group">
                 <label for="fname">Full Name</label>
                 <input [maxlength]="70" pattern="[^0-9]{6,70}$" type="text" class="form-control" [(ngModel)]="card.owner.name" id="fname" name="fname" required #fname="ngModel">

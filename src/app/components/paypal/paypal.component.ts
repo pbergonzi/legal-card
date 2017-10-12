@@ -14,10 +14,6 @@ import { Card } from 'app/models/card.model';
 export class PaypalComponent implements OnInit {
   actionUrl = environment.paypalAction;
   buttonId = environment.paypalButton;
-  returnUrl = environment.paypalReturn;
-  cancelUrl = environment.paypalCancel;
-  notificationUrl = environment.paypalNotification;
-  btnImg = environment.paypalButtonImg;
 
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   public card: Card;
