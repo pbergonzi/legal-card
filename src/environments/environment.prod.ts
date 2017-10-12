@@ -1,11 +1,8 @@
 export const environment = {
   production: true,
-  paypalButton: 'F2TEZ9VFGFTWG',
-  paypalAction: 'https://www.sandbox.paypal.com/cgi-bin/webscr',
-  paypalReturn: 'https://localhost:4200/',
-  paypalCancel: 'https://localhost:4200/',
-  paypalNotification: 'https://legal-server.herokuapp.com/ipn',
-  paypalButtonImg: 'https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif',
+  paypalButton: 'DMA9BUULH3RA6',
+  paypalAction: 'https://www.paypal.com/cgi-bin/webscr',
   yearPack: { name: 'Year Pack', price: 399, days: 365 },
-  fortyFivePack: { name: 'FortyFive Pack', price: 99, days: 45 }
+  fortyFivePack: { name: 'FortyFive Pack', price: 99, days: 45 },
+  testPack: { name: '1H Pack', price: 1, days: 1 }
 };
