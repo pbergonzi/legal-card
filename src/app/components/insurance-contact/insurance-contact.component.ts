@@ -11,6 +11,7 @@ import { CardService } from 'app/services/card/card.service';
 })
 export class InsuranceContactComponent implements OnInit {
   public card: Card;
+  public sent: boolean = false
 
   contactForm = new FormGroup({
     name: new FormControl(),
@@ -71,8 +72,12 @@ export class InsuranceContactComponent implements OnInit {
           method: "POST",
           body: data
       })
-      .then(res => res.json())
-      .then(res => console.log(res))
+      .then(res => {
+        this.sent = true
+        window.setTimeout(() => {
+          this.sent = false;
+        }, 3000)
+      })
     }
   }
 }
