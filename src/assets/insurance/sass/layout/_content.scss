@@ -220,12 +220,13 @@
 			position: initial;
 			p {
 				color: $white !important;
+				text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 			}
 		}
 	}
 	
 	@media (max-width: $mobile) {
-		background-position: 80% 33%;
+		background-position: 80% 0%;
 		height: 190vh;
 		
 	}
@@ -352,7 +353,7 @@ header {
 		color: $white;
 		font-family: 'Chaparral-bold';
 		font-weight: bold;
-		text-shadow: -1px -1px 0 $second-accent-color, 1px -1px 0 $second-accent-color, -1px 1px 0 $second-accent-color, 1px 1px 0 $second-accent-color;
+		text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 		font-size: 23px;
 		margin-top: 19px;
 		float: left;
