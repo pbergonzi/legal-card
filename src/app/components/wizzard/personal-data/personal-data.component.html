@@ -12,17 +12,17 @@
             <form #personalForm="ngForm">
               <div class="form-group">
                 <label for="fname">Full Name</label>
-                <input [maxlength]="70" pattern="[^0-9]{6,70}$" type="text" class="form-control" [(ngModel)]="card.owner.name" id="fname" name="fname" required #fname="ngModel">
+                <input [maxlength]="70" pattern="[^0-9]{6,70}$" type="text" class="form-control" [(ngModel)]="card.owner.name" id="fname" name="name" required #fname="ngModel">
               </div>
 
               <div class="form-group pportContainer">
                 <label for="pport">Passport</label>
-                <input type="number" [maxlength]="9" pattern="[0-9]{6,9}$" class="form-control" [(ngModel)]="card.owner.passport" id="pport" name="pport" required #pport="ngModel">
+                <input type="number" [maxlength]="9" pattern="[0-9]{6,9}$" class="form-control" [(ngModel)]="card.owner.passport" id="pport" name="passport" required #pport="ngModel">
               </div>
 
               <div class="form-group mailContainer">
                 <label for="mail">E-mail</label>
-                <input [maxlength]="70" type="email" pattern=".*@.*\.(.{1,})" class="form-control" [(ngModel)]="card.owner.email" id="mail" name="mail" required #mail="ngModel">
+                <input [maxlength]="70" type="email" pattern=".*@.*\.(.{1,})" class="form-control" [(ngModel)]="card.owner.email" id="mail" name="email" required #mail="ngModel">
               </div>
               <span [hidden]="fname.valid || (fname.pristine && !submitted)" class="formError">Please enter your name</span>
               <span [hidden]="pport.valid || (pport.pristine && !submitted)" class="formError">Please enter your passport number</span>
