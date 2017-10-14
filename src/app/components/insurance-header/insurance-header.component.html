@@ -2,7 +2,7 @@
     <div class="header">
       <div class="container">
         <div class="main-navigation">
-          <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+          <button type="button" class="menu-toggle" (click)="toogleMenu()"><i class="fa fa-bars"></i></button>
           <a [routerLink]="['/']"><logo></logo></a>
           <ul class="menu">
               <li class="menu-item" routerLinkActive="current-menu-item">
@@ -18,15 +18,15 @@
           <a class="phone" href="tel:+5491150061109"><i class="fa fa-phone"></i>+54 9 11 5006 1109</a>
         </div> <!-- .main-navigation -->
 
-        <div class="mobile-navigation">
+        <div class="mobile-navigation" *ngIf="visibleMobileMenu">
           <ul class="menu">
-            <li class="menu-item" routerLinkActive="current-menu-item">
+            <li class="menu-item" routerLinkActive="current-menu-item" (click)="toogleMenu()">
               <a [routerLink]="['about']">About Us</a>
             </li>
-            <li class="menu-item" routerLinkActive="current-menu-item">
+            <li class="menu-item" routerLinkActive="current-menu-item" (click)="toogleMenu()">
               <a [routerLink]="['plans']">Plans</a>
             </li>
-            <li class="menu-item" routerLinkActive="current-menu-item">
+            <li class="menu-item" routerLinkActive="current-menu-item" (click)="toogleMenu()">
               <a [routerLink]="['contact']">Contact Us</a>
             </li>
           </ul> <!-- .menu -->
