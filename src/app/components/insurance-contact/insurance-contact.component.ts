@@ -61,14 +61,18 @@ export class InsuranceContactComponent implements OnInit {
   }
 
   sendMail(event) {
+    event.preventDefault();
     if(this.isValid()){
-      event.preventDefault();
-      console.log('Submitted value from the contact form goes here ');
-      console.log(this.contactForm.value);
-      alert('Thank you for submitting the contact form');
-      this.initForm();
-    } else {
-      console.log('The card is not valid');
+      var data = new FormData();
+      data.append("json", JSON.stringify(this.card.contact));
+      
+      fetch("http://themonstera.com/mail.php",
+      {
+          method: "POST",
+          body: data
+      })
+      .then(res => res.json())
+      .then(res => console.log(res))
     }
   }
 }
