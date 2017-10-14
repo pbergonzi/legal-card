@@ -186,8 +186,9 @@
 
 .page.success {
 	background-image: url('../images/background.png');
-    background-position-x: 100%;
+    background-position-x: 50%;
 	background-position-y: 31%;
+	background-repeat: no-repeat;
 	
 	.container {
 		background-color: transparentize($primary-color, 0.1);
@@ -219,12 +220,13 @@
 			position: initial;
 			p {
 				color: $white !important;
+				text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 			}
 		}
 	}
 	
 	@media (max-width: $mobile) {
-		background-position: 80% 33%;
+		background-position: 80% 0%;
 		height: 190vh;
 		
 	}
@@ -348,18 +350,18 @@ small {
 
 header {
 	.phone {
-		color: #ad2d1d;
+		color: $white;
 		font-family: 'Chaparral-bold';
 		font-weight: bold;
-		text-shadow: -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white, 1px 1px 0 $white;
-		font-size: 23px;
-
-		text-shadow: -1px -1px 0 transparentize($white, 0.8), 1px -1px 0 transparentize($white, 0.8), -1px 1px 0 transparentize($white, 0.8), 1px 1px 0 transparentize($white, 0.8);
+		text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 		font-size: 23px;
 		margin-top: 19px;
 		float: left;
 		margin-left: 29px;
 		margin-right: 29px;
+		i:before {
+			color: $white !important;
+		}
 		&.mobile {
 			display: none;
 			position: absolute;
@@ -425,6 +427,7 @@ header {
 			transition: .3s ease;
 			margin-bottom: 4px;
 			cursor: pointer;
+			margin-top: 15px;
 
 			&:hover{
 				color: $white !important;
