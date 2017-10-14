@@ -11,6 +11,7 @@ import { CardService } from 'app/services/card/card.service';
 })
 export class InsuranceContactComponent implements OnInit {
   public card: Card;
+  public sent: boolean = false
 
   contactForm = new FormGroup({
     name: new FormControl(),
@@ -61,14 +62,22 @@ export class InsuranceContactComponent implements OnInit {
   }
 
   sendMail(event) {
+    event.preventDefault();
     if(this.isValid()){
-      event.preventDefault();
-      console.log('Submitted value from the contact form goes here ');
-      console.log(this.contactForm.value);
-      alert('Thank you for submitting the contact form');
-      this.initForm();
-    } else {
-      console.log('The card is not valid');
+      var data = new FormData();
+      data.append("json", JSON.stringify(this.card.contact));
+      
+      fetch("http://themonstera.com/mail.php",
+      {
+          method: "POST",
+          body: data
+      })
+      .then(res => {
+        this.sent = true
+        window.setTimeout(() => {
+          this.sent = false;
+        }, 3000)
+      })
     }
   }
 }

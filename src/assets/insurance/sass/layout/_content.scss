@@ -34,45 +34,75 @@
 	}
 
 	.step {
-		width: 20px;
-		height: 20px;
+		width: auto;
+		height: 37px;
 		border: 1px solid $accent-color;
+		border-right: 0 none;
 		border-radius: 10px;
-		margin-right: 11px;
-		background-color: transparentize($primary-color, 0.1);
-		clear: both;
+		background-color: $primary-color;
 		margin-bottom: 10px;
-		margin-left: 9px;
-		&:first-child {
-			margin-top: 15px;
+		padding-top: 8px;
+		padding-left: 12px;
+		padding-right: 12px;
+		cursor: pointer;
+		margin-left: 0;
+		float: left;
+		margin-top: 15px;
+		position: relative;
+		margin-right: -17px;
+
+		&.step1 {
+			z-index: 3;
+
+			&.selected {
+				padding-left: 16px !important;
+			}
+		}
+
+		&.step2 {
+			z-index: 2;
+			padding-left: 33px;
+		}
+
+		&.step3 {
+			padding-left: 40px !important;
+		}
+
+		span {
+			position: relative;
+			z-index: 1;
+		}
+
+		.arrowTop {
+			width: 23px;
+			height: 23px;
+			position: absolute;
+			background-color: $primary-color;
+			right: -9px;
+			top: 6px;
+			transform: rotate(45deg);
+			border-top: 1px solid $accent-color;
+			border-right: 1px solid $accent-color;
 		}
 
 		&.selected {
-			background-color: transparentize($second-accent-color, 0.2);
-			border-color: $second-accent-color;
-			height: 36px;
+			background-color: $accent-color;
+			border-color: $accent-color;
+			height: 37px;
 			float: left;
 			width: auto;
-			padding-left: 10px;
+			padding-left: 37px !important;
 			padding-right: 10px;
-			padding-top: 2px;
-			font-size: 21px;
-			border-radius: 16px;
-			color: $white !important;
-			margin-left: 0;
+			margin-left: -2px;
+			padding-top: 8px;
 
-			&:after {
-				content: '';
-				width: 20px;
-				height: 20px;
-				background-color: $second-accent-color;
-				display: block;
-				float: left;
-				border-radius: 16px;
-				margin-top: 5px;
-				margin-left: -2px;
-				margin-right: 9px;
-				border: 1px solid darken($second-accent-color, 20%);
+			.arrowTop {
+				background-color: $accent-color;
+				right: -7px !important;
+			}
+
+			span {
+				color: $white !important;
 			}
 		}
 	}
@@ -156,8 +186,9 @@
 
 .page.success {
 	background-image: url('../images/background.png');
-    background-position-x: 100%;
+    background-position-x: 50%;
 	background-position-y: 31%;
+	background-repeat: no-repeat;
 	
 	.container {
 		background-color: transparentize($primary-color, 0.1);
@@ -187,14 +218,22 @@
 
 		@media (max-width: $mobile) {
 			position: initial;
-			color: $white;
+			p {
+				color: $white !important;
+				text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+			}
 		}
 	}
 	
 	@media (max-width: $mobile) {
-		background-position: 80% 53%;
+		background-position: 80% 0%;
+		height: 190vh;
 		
 	}
+}
+
+.page .insurance-item p {
+	height: 150px;
 }
 
 .formQuote {
@@ -315,18 +354,28 @@ small {
 
 header {
 	.phone {
-		color: #ad2d1d;
+		color: $white;
 		font-family: 'Chaparral-bold';
 		font-weight: bold;
-		text-shadow: -1px -1px 0 $white, 1px -1px 0 $white, -1px 1px 0 $white, 1px 1px 0 $white;
-		font-size: 23px;
-
-		text-shadow: -1px -1px 0 transparentize($white, 0.8), 1px -1px 0 transparentize($white, 0.8), -1px 1px 0 transparentize($white, 0.8), 1px 1px 0 transparentize($white, 0.8);
+		text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 		font-size: 23px;
 		margin-top: 19px;
 		float: left;
 		margin-left: 29px;
 		margin-right: 29px;
+		i:before {
+			color: $white !important;
+		}
+		&.mobile {
+			display: none;
+			position: absolute;
+			top: -4px;
+			left: 29px;
+
+			i:before {
+				color: white;
+			}
+		}
 		@media (max-width: $mobile) {
 			display: none;
 
@@ -382,6 +431,7 @@ header {
 			transition: .3s ease;
 			margin-bottom: 4px;
 			cursor: pointer;
+			margin-top: 15px;
 
 			&:hover{
 				color: $white !important;
@@ -456,6 +506,22 @@ input[type='image'] {
 		&:hover {
 			background-color: $doger-blue;
 		}
+	}
+}
+
+div.disabled {
+	input.btn-primary {
+		background-color: lighten($second-accent-color, 30%) !important;
+		cursor: not-allowed !important;
+
+		&:hover {
+			background-color: lighten($second-accent-color, 30%) !important;
+			cursor: not-allowed !important;
+		}
+	}
+
+	img {
+		cursor: not-allowed !important;
 	}
 }
 
@@ -729,18 +795,18 @@ carousel{
 }
 
 .btn-secondary {
-    padding: 6px 10px !important;
+    padding: 16px 16px !important;
 	border-radius: 9px !important;
 }
 
 .button.success {
 	text-align: center !important;
-    padding: 6px 10px !important;
+    padding: 16px 16px !important;
 	border-radius: 9px !important;
-	background-color: $second-accent-color !important;
+	background-color: $accent-color !important;
 
 	&:hover {
-		background-color: lighten($second-accent-color, 15%) !important;
+		background-color: lighten($accent-color, 15%) !important;
 	}
 }
 
@@ -885,6 +951,7 @@ carousel{
 
 .product-selection {
 	background-image: url('../images/step1.png');
+	background-repeat: no-repeat;
 
 	.infoSelected {
 		background-color: $white;
@@ -1049,10 +1116,10 @@ carousel{
 	position: relative;
 	margin-bottom: 50px;
   	.container {
-    	position: absolute;
-      	top: -4%;
-      	left: 10%;
-      	@media screen and (max-width: 990px){  left:0 ; }
+      	@media screen and (max-width: 990px){
+			left: 0;
+			position: absolute;
+		}
   	}
 	.carousel.slide{
     	.carousel-indicators {
@@ -1152,6 +1219,30 @@ carousel{
 			}
 		}
 	}
+}
+
+.argentina {
+    background-image: url(http://flagpedia.net/data/flags/ultra/ar.png);
+    width: 107%;
+    display: block;
+    background-size: 17%;
+    background-repeat: no-repeat;
+	background-position: 100% 50%;
+	@media (max-width: $mobile) {
+		width: 100%;
+	}
+}
+
+.notification {
+	position: fixed;
+    top: 35px;
+    width: 100%;
+    text-align: center;
+    background-color: green;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    z-index: 1;
 }
 
 .fullwidth-block{

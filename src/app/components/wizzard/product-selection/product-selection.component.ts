@@ -52,6 +52,7 @@ export class ProductSelectionComponent implements OnInit {
   }
 
   gotoPersonalData(){
+    this.cardService.updateCard(this.card);
     this.router.navigate(['/personal-data']);
   }
 }

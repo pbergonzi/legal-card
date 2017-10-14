@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class InsuranceHeaderComponent implements OnInit {
 
   constructor() { }
+  public visibleMobileMenu: boolean = false;
+
+  toogleMenu() {
+    this.visibleMobileMenu = !this.visibleMobileMenu
+  }
 
   ngOnInit() {
   }

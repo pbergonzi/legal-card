@@ -20,6 +20,8 @@ class Pack {
 
 const fourthyFivePack: Pack = environment.fortyFivePack;
 const yearPack: Pack = environment.yearPack;
+const testPack: Pack = environment.testPack;
+
 const CARD_STORE = 'card';
 
 @Injectable()
@@ -97,6 +99,28 @@ export class CardService {
     scard.ownerPassport = card.owner.passport;
     
     return scard;
+  }
+
+  getTestPackage(card: Card): Package {
+    const pack: Package = {
+      dateFrom: card.dateFrom,
+      isoDateFrom: card.dateFrom.toISOString(),
+      dateTo: null,
+      isoDateTo: null,
+      price: null,
+      name: null
+    };
+
+    const dateTo = new Date(pack.dateFrom);
+
+    dateTo.setDate(dateTo.getDate() + testPack.days);
+    
+    pack.name = testPack.name;
+    pack.price = testPack.price;
+    pack.dateTo = dateTo;
+    pack.isoDateTo = dateTo.toISOString();
+
+    return pack;
   }
 
   getFortyFiveDaysPackage(card: Card): Package {

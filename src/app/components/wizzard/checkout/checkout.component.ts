@@ -15,6 +15,7 @@ import { SimpleCard } from "app/models/simple-card.model";
 
 export class CheckoutComponent implements OnInit {
   public card: Card;
+  public buying: boolean = false
 
   constructor(
     private cardService: CardService,
@@ -38,6 +39,10 @@ export class CheckoutComponent implements OnInit {
       });
   }
 
+  buy() {
+    this.buying = true
+  }
+
   getLeftSpace() {
     if (window.screen.width > 1023) {
       return document.querySelector('.container').clientWidth + (window.screen.width - document.querySelector('.container').clientWidth) / 2;
@@ -48,6 +53,10 @@ export class CheckoutComponent implements OnInit {
 
   gotoPersonalData(){
     this.router.navigate(['/personal-data']);
+  }
+
+  gotoProductSelection(){
+    this.router.navigate(['/product-selection']);
   }
   
   ngOnInit() {}

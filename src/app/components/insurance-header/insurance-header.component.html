@@ -2,50 +2,40 @@
     <div class="header">
       <div class="container">
         <div class="main-navigation">
-          <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+          <button type="button" class="menu-toggle" (click)="toogleMenu()"><i class="fa fa-bars"></i></button>
           <a [routerLink]="['/']"><logo></logo></a>
           <ul class="menu">
               <li class="menu-item" routerLinkActive="current-menu-item">
-                  <a [routerLink]="['/about']">About us</a>
+                  <a [routerLink]="['/about']">About Us</a>
               </li>
               <li class="menu-item" routerLinkActive="current-menu-item">
                   <a [routerLink]="['/plans']">Plans</a>
               </li>
               <li class="menu-item" routerLinkActive="current-menu-item">
-                <a [routerLink]="['/resources']">Resources</a>
-              </li>
-              <li class="menu-item" routerLinkActive="current-menu-item">
-                <a [routerLink]="['/contact']">Contact</a>
+                <a [routerLink]="['/contact']">Contact Us</a>
               </li>
           </ul> <!-- .menu -->
+          <a class="phone" href="tel:+5491150061109"><i class="fa fa-phone"></i>+54 9 11 5006 1109</a>
         </div> <!-- .main-navigation -->
 
-        <div class="mobile-navigation">
+        <div class="mobile-navigation" *ngIf="visibleMobileMenu">
           <ul class="menu">
-            <li class="menu-item" routerLinkActive="current-menu-item">
-              <a [routerLink]="['about']">About us</a>
+            <li class="menu-item" routerLinkActive="current-menu-item" (click)="toogleMenu()">
+              <a [routerLink]="['about']">About Us</a>
             </li>
-            <li class="menu-item" routerLinkActive="current-menu-item">
-              <a [routerLink]="['plans']">Insurance plans</a>
+            <li class="menu-item" routerLinkActive="current-menu-item" (click)="toogleMenu()">
+              <a [routerLink]="['plans']">Plans</a>
             </li>
-            <li class="menu-item" routerLinkActive="current-menu-item">
-              <a [routerLink]="['resources']">Resources</a>
-            </li>
-            <li class="menu-item" routerLinkActive="current-menu-item">
-              <a [routerLink]="['contact']">Contactaaaa</a>
+            <li class="menu-item" routerLinkActive="current-menu-item" (click)="toogleMenu()">
+              <a [routerLink]="['contact']">Contact Us</a>
             </li>
           </ul> <!-- .menu -->
-          <a class="phone mobile" href="tel:0810-122-1555"><i class="fa fa-phone"></i>0810-122-1555</a>
         </div>
-        <a class="phone" href="tel:0810-122-1555"><i class="fa fa-phone"></i>0810-122-1555</a>
+        <a class="phone mobile" href="tel:+5491150061109"><i class="fa fa-phone"></i></a>
         <div class="social-links">
             <div class="top">
               <a href="#"><i class="fa fa-facebook"></i></a>
               <a href="#"><i class="fa fa-twitter"></i></a>
-            </div>
-            <div class="bottom">
-              <a href="#"><i class="fa fa-google-plus"></i></a>
-              <a href="#"><i class="fa fa-pinterest"></i></a>
             </div>
           </div>
       </div>
