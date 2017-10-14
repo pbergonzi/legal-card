@@ -1,43 +1,105 @@
 <div class="page-container product-selection">
-  <div class="container">
-
-    <!-- Title -->
-    <header class="major">
-      <h1>Your request quotation</h1>
-    </header>
-
-    <div class="row 100% formQuote">
-      <div class="6u 12u$(medium) important(medium) infoSelected">
-        <!-- Sidebar -->
-        <section id="sidebar">
-          <section>
-            <app-form-quotient></app-form-quotient>
-          </section>
+  <div class="container" [ngStyle]="{'width.px': getLeftSpace()}">
+    <div class="sectionContainer">
+      <div class="leftPart pull-left">
+        <section class="steps">
+          <div class="step step1 selected"><span>Product Selection</span><div class="arrowTop"></div></div>
+          <div class="step step2" (click)="gotoPersonalData()"><span>Personal Data</span><div class="arrowTop"></div></div>
+          <div class="step step3"><span>Details</span></div>
         </section>
-      </div>
+        <div class="leftContainer">
+          <div class="row 100% formQuote">
+            <div class="6u 12u$(medium) important(medium) infoSelected">
+              <!-- Sidebar -->
+              <section id="sidebar">
+                <section>
+                  <app-form-quotient></app-form-quotient>
+                </section>
+              </section>
+            </div>
 
-      <section class="planSelected">
-        <h3>1 Year Package</h3>
-        <p>All cool things you have for u$s599</p>
-        <footer>
-          <ul class="actions">
-            <li><a href="#" class="button">More Info</a></li>
-          </ul>
-        </footer>
-      </section>
-
-      <div class="6u 12u$(medium) details">
-        <!-- Content -->
-        <h4>Details</h4>
-        <section id="content">
-          <section>
-            <p>Pack: {{ card.package.name }}</p>
-            <p>Price: {{ card.package.price }}</p>
-            <p>Valid From: {{ card.package.dateFrom | date:'shortDate' }} to {{ card.package.dateTo | date:'shortDate'}}</p>
-          </section>
-        </section>
+            <section class="planSelected">
+              <div
+                class="package"
+                [ngClass]="card.package.name === 'Year Pack' ? 'selected' : ''"
+                (click)="choose('year')"
+              >
+                <div class="content">
+                  <header>
+                    <h3>1 Year Package</h3>
+                    <a [routerLink]="['/plans']" class="moreInfo">More Info</a>
+                    <span class="fa fa-check checked"></span>
+                  </header>
+                  <p>Price: u$s399</p>
+                </div>
+              </div>
+              <hr class="packageSep" />
+              <div
+                class="package"
+                [ngClass]="card.package.name === 'FortyFive Pack' ? 'selected' : ''"
+                (click)="choose('fortyFive')"
+              >
+                <div class="content">
+                  <header>
+                    <h3>45 Days Package</h3>
+                    <a [routerLink]="['/plans']" class="moreInfo">More Info</a>
+                    <span class="fa fa-check checked"></span>
+                  </header>
+                  <p>Price: u$s99</p>
+                </div>
+              </div>
+            </section>
+            <a (click)="gotoPersonalData()" class="button confirmButton success">Confirm</a>
+          </div>
+        </div>
       </div>
-      <a (click)="gotoPersonalData()" class="button confirmButton">Confirm</a>
+      <div class="pull-right rightDetails">
+        <div class="6u 12u$(medium) details">
+          <div class='content'>
+          <!-- Content -->
+            <section id="content">
+              <section class="planSelectedContainer">
+                <div>
+                  <div class="pull-left iconContainer">
+                    <logo-bw></logo-bw>
+                  </div>
+                  <div class="pull-left">
+                    <h3>Your Selection</h3>
+                    <span class="plan">{{ card.package.name }}</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="pull-left iconContainer">
+                    <logo-info></logo-info>
+                  </div>
+                  <div class="pull-left">
+                    <h3>Valid From</h3>
+                    <span class="plan">{{ card.package.dateFrom | date:'shortDate' }} <br>to {{ card.package.dateTo | date:'shortDate'}}</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="pull-left iconContainer">
+                    <logo-price></logo-price>
+                  </div>
+                  <div class="pull-left">
+                    <h3>Price</h3>
+                    <span class="plan">$ {{ card.package.price }}</span>
+                  </div>
+                </div>          
+              </section>
+              <section class="detailsText">
+                  <hr class="detailsSeparator" />
+                  <header>
+                    Details
+                  </header>
+                  <p>24/7 Legal services</p>
+                  <p>All the expenses related to our service are covered, up to u$s50000</p>
+                  <p>Emergency transportation is included for all family members</p>
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

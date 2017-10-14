@@ -5,7 +5,7 @@ import { CarouselConfig } from 'ngx-bootstrap';
   selector: 'app-insurance-home',
   templateUrl: './insurance-home.component.html',
   styleUrls: ['./insurance-home.component.scss'],
-  providers: [{provide: CarouselConfig, useValue: {interval: 1500, noPause: true}}]
+  providers: [{provide: CarouselConfig, useValue: {interval: 10000, noPause: true}}]
 })
 
 export class InsuranceHomeComponent implements OnInit {

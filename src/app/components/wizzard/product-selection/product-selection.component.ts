@@ -35,7 +35,24 @@ export class ProductSelectionComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
+  getLeftSpace() {
+    if (window.screen.width > 1023) {
+      return document.querySelector('.container').clientWidth + (window.screen.width - document.querySelector('.container').clientWidth) / 2;
+    } else {
+      return document.querySelector('.container').getBoundingClientRect().width;
+    }
+  }
+
+  choose(time) {
+    if(time === 'year') {
+      this.card.package = this.cardService.getYearPackage(this.card);
+    } else {
+      this.card.package = this.cardService.getFortyFiveDaysPackage(this.card);
+    }
+  }
+
   gotoPersonalData(){
+    this.cardService.updateCard(this.card);
     this.router.navigate(['/personal-data']);
   }
 }

@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Card } from 'app/models/card.model';
 import { SimpleCard } from 'app/models/simple-card.model';
 import { Owner } from 'app/models/owner.model';
+import { Contact } from 'app/models/contact.model';
 import { Package } from 'app/models/package.model';
 import { Store } from '@ngrx/store';
 import { AppStore } from 'app/app.store';
@@ -19,6 +20,8 @@ class Pack {
 
 const fourthyFivePack: Pack = environment.fortyFivePack;
 const yearPack: Pack = environment.yearPack;
+const testPack: Pack = environment.testPack;
+
 const CARD_STORE = 'card';
 
 @Injectable()
@@ -98,7 +101,7 @@ export class CardService {
     return scard;
   }
 
-  public calculatePackage(card: Card): Package {
+  getTestPackage(card: Card): Package {
     const pack: Package = {
       dateFrom: card.dateFrom,
       isoDateFrom: card.dateFrom.toISOString(),
@@ -108,27 +111,70 @@ export class CardService {
       name: null
     };
 
-    const days =  1 + Math.floor(( card.dateTo.getTime() - card.dateFrom.getTime() ) / 86400000); 
-    
     const dateTo = new Date(pack.dateFrom);
 
-    if(days <= 45){
-      dateTo.setDate(dateTo.getDate() + fourthyFivePack.days);
-
-      pack.name = fourthyFivePack.name;
-      pack.price = fourthyFivePack.price;
-      pack.dateTo = dateTo;
-      pack.isoDateTo = dateTo.toISOString(); 
-    } else {
-      dateTo.setDate(dateTo.getDate() + yearPack.days);
-
-      pack.name = yearPack.name;
-      pack.price = yearPack.price;
-      pack.dateTo = dateTo;
-      pack.isoDateTo = dateTo.toISOString();
-    }
+    dateTo.setDate(dateTo.getDate() + testPack.days);
+    
+    pack.name = testPack.name;
+    pack.price = testPack.price;
+    pack.dateTo = dateTo;
+    pack.isoDateTo = dateTo.toISOString();
 
     return pack;
+  }
+
+  getFortyFiveDaysPackage(card: Card): Package {
+    const pack: Package = {
+      dateFrom: card.dateFrom,
+      isoDateFrom: card.dateFrom.toISOString(),
+      dateTo: null,
+      isoDateTo: null,
+      price: null,
+      name: null
+    };
+
+    const dateTo = new Date(pack.dateFrom);
+
+    dateTo.setDate(dateTo.getDate() + fourthyFivePack.days);
+    
+    pack.name = fourthyFivePack.name;
+    pack.price = fourthyFivePack.price;
+    pack.dateTo = dateTo;
+    pack.isoDateTo = dateTo.toISOString();
+
+    return pack;
+  }
+
+  getYearPackage(card: Card): Package {
+    const pack: Package = {
+      dateFrom: card.dateFrom,
+      isoDateFrom: card.dateFrom.toISOString(),
+      dateTo: null,
+      isoDateTo: null,
+      price: null,
+      name: null
+    };
+
+    const dateTo = new Date(pack.dateFrom);
+
+    dateTo.setDate(dateTo.getDate() + yearPack.days);
+    
+    pack.name = yearPack.name;
+    pack.price = yearPack.price;
+    pack.dateTo = dateTo;
+    pack.isoDateTo = dateTo.toISOString();
+
+    return pack;
+  }
+
+  public calculatePackage(card: Card): Package {
+    const days =  1 + Math.floor(( card.dateTo.getTime() - card.dateFrom.getTime() ) / 86400000); 
+    
+    if(days <= 45){
+      return this.getFortyFiveDaysPackage(card);
+    } else {
+      return this.getYearPackage(card);
+    }
   }
 
   /* por ahora solo calculo dias
@@ -168,6 +214,10 @@ export class CardService {
   
   public isValidOwner(owner: Owner){
     return owner && owner.name && owner.passport && owner.email;  
+  }
+
+  public isValidContact(contact: Contact) {
+    return contact && contact.name && contact.email && contact.description;
   }
 
   public updateCard(card: Card) {
