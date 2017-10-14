@@ -2,10 +2,13 @@
 <div class="breadcrumbs">
   <div class="container">
     <a [routerLink]="['/']">Home</a>
-    <span>Contact</span>
+    <span>Contact us</span>
   </div>
 </div>
 <div class="page contact">
+  <div class="notification" *ngIf="sent">
+    Thank you for contacting us. We will reach you soon.
+  </div>
   <div class="map">
     <app-map class="map"></app-map>
   </div>
@@ -20,7 +23,7 @@
             <p>20 Caminante Street, Rincon de Milberg, Buenos Aires, Argentina</p>
 
             <p>Phone: +54 9 11 5006 1109</p>
-            <p>info@attorney-assistance.com</p>
+            <p>contact@attorney-assistance.com</p>
           </address>
         </div>
       </div>

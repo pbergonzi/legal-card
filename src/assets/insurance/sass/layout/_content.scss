@@ -232,13 +232,6 @@
 	}
 }
 
-.flag {
-	width: 54px;
-    position: absolute;
-    right: 26px;
-    top: 50px;
-}
-
 .page .insurance-item p {
 	height: 150px;
 }
@@ -1226,6 +1219,30 @@ carousel{
 			}
 		}
 	}
+}
+
+.argentina {
+    background-image: url(http://flagpedia.net/data/flags/ultra/ar.png);
+    width: 107%;
+    display: block;
+    background-size: 17%;
+    background-repeat: no-repeat;
+	background-position: 100% 50%;
+	@media (max-width: $mobile) {
+		width: 100%;
+	}
+}
+
+.notification {
+	position: fixed;
+    top: 35px;
+    width: 100%;
+    text-align: center;
+    background-color: green;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    z-index: 1;
 }
 
 .fullwidth-block{
