@@ -67,7 +67,7 @@ export class InsuranceContactComponent implements OnInit {
       var data = new FormData();
       data.append("json", JSON.stringify(this.card.contact));
       
-      fetch("http://themonstera.com/mail.php",
+      fetch("https://us-central1-legal-card.cloudfunctions.net/addMessage",
       {
           method: "POST",
           body: data
