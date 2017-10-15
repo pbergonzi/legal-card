@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Contact } from 'app/models/contact.model';
 import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 import { CardService } from 'app/services/card/card.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-insurance-contact',
@@ -64,13 +65,10 @@ export class InsuranceContactComponent implements OnInit {
   sendMail(event) {
     event.preventDefault();
     if(this.isValid()){
-      var data = new FormData();
-      data.append("json", JSON.stringify(this.card.contact));
-      
-      fetch("http://themonstera.com/mail.php",
+      fetch(environment.contactUrl,
       {
           method: "POST",
-          body: data
+          body: JSON.stringify(this.card.contact)
       })
       .then(res => {
         this.sent = true
