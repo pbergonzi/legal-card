@@ -65,10 +65,13 @@ export class InsuranceContactComponent implements OnInit {
   sendMail(event) {
     event.preventDefault();
     if(this.isValid()){
+      var data = new FormData();
+      data.append("json", JSON.stringify(this.card.contact));
+
       fetch(environment.contactUrl,
       {
           method: "POST",
-          body: JSON.stringify(this.card.contact)
+          body: data
       })
       .then(res => {
         this.sent = true
