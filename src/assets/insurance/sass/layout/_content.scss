@@ -369,8 +369,8 @@ header {
 		&.mobile {
 			display: none;
 			position: absolute;
-			top: -4px;
-			left: 29px;
+			top: -8px;
+			left: 49px;
 
 			i:before {
 				color: white;
@@ -403,6 +403,13 @@ header {
 			}
 		}
 	}
+
+	.bottom-footer {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+	}
+	
 	svg {
 		width: 227px;
 		margin-bottom: 0px;
