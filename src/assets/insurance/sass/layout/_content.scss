@@ -516,13 +516,23 @@ input[type='image'] {
 	}
 }
 
+input[disabled] {
+	background-color: lighten($accent-color, 30%) !important;
+	cursor: not-allowed !important;
+
+	&:hover {
+		background-color: lighten($accent-color, 30%) !important;
+		cursor: not-allowed !important;
+	}
+}
+
 div.disabled {
 	input.btn-primary {
-		background-color: lighten($second-accent-color, 30%) !important;
+		background-color: lighten($accent-color, 30%) !important;
 		cursor: not-allowed !important;
 
 		&:hover {
-			background-color: lighten($second-accent-color, 30%) !important;
+			background-color: lighten($accent-color, 30%) !important;
 			cursor: not-allowed !important;
 		}
 	}
