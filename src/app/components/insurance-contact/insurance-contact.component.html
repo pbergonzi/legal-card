@@ -52,7 +52,7 @@
           </div>
 
           <p class="pull-right">
-            <input type="submit" value="Send message" [disabled]="(!name.valid || name.pristine || !email.valid || email.pristine || !description.valid || description.pristine)">
+            <input type="submit" value="Send message" [disabled]="(!name.valid || name.pristine || !email.valid || email.pristine || !description.valid || description.pristine || sending)">
           </p>
         </form>
       </div>
