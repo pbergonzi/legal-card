@@ -10,5 +10,6 @@ export const environment = {
   yearPack: { name: 'Year Pack', price: 399, days: 365 },
   fortyFivePack: { name: 'FortyFive Pack', price: 99, days: 45 },
   testPack: { name: '1H Pack', price: 1, days: 1 },
-  contactUrl: 'https://attorney-assistance.herokuapp.com/'
+  contactUrl: 'https://attorney-assistance.herokuapp.com/',
+  gaId:'TEST'
 };
