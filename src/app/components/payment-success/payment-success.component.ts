@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConversionTrackService } from 'app/services/conversion/conversionTrack.service';
 
 @Component({
   selector: 'app-payment-success',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentSuccessComponent implements OnInit {
 
-  constructor() {}
+  constructor(private conversionTrack: ConversionTrackService) {
+    this.conversionTrack.trackConversion();
+  }
 
   ngOnInit() {}
 
