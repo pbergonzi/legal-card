@@ -12,6 +12,7 @@ import { environment } from '../../../environments/environment';
 })
 export class InsuranceContactComponent implements OnInit {
   public card: Card;
+  public sending: boolean = false
   public sent: boolean = false
 
   contactForm = new FormGroup({
@@ -65,6 +66,7 @@ export class InsuranceContactComponent implements OnInit {
   sendMail(event) {
     event.preventDefault();
     if(this.isValid()){
+      this.sending = true;
       var data = new FormData();
       data.append("json", JSON.stringify(this.card.contact));
 
@@ -77,6 +79,7 @@ export class InsuranceContactComponent implements OnInit {
         this.sent = true
         window.setTimeout(() => {
           this.sent = false;
+          this.sending = false;
         }, 3000)
       })
     }

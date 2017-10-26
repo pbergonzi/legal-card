@@ -10,6 +10,7 @@ import { AppComponent } from 'app/app.component';
 import { StoreModule } from '@ngrx/store';
 import { cardReducer } from 'app/reducers/card.reducer';
 import { CardService } from 'app/services/card/card.service';
+import { ConversionTrackService } from 'app/services/conversion/conversionTrack.service';
 import { GoogleAnalyticsEventsService } from 'app/services/analytics/ga.service';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -72,7 +73,8 @@ import { CarouselModule } from 'ngx-bootstrap';
   ],
   providers: [
     CardService,
-    GoogleAnalyticsEventsService
+    GoogleAnalyticsEventsService,
+    ConversionTrackService
   ],
   bootstrap: [AppComponent]
 })
