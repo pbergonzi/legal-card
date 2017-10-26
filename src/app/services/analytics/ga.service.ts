@@ -1,10 +1,14 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from "@angular/core";
 import { NavigationEnd } from "@angular/router";
+import { environment } from '../../../environments/environment';
 
 declare const ga: any;
 
 @Injectable()
 export class GoogleAnalyticsEventsService {
+    constructor(){
+        ga('create', environment.gaId , 'auto');
+    }
 
     public emitEvent(eventCategory: string,
                     eventAction: string,
