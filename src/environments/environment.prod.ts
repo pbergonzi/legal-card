@@ -6,6 +6,7 @@ export const environment = {
   fortyFivePack: { name: 'FortyFive Pack', price: 99, days: 45 },
   testPack: { name: '1H Pack', price: 1, days: 1 },
   contactUrl: 'https://attorney-assistance.herokuapp.com/',
+  gaId:'UA-65711503-2',
   googleConversionId: 829822129,
   googleConversionLabel: '9PTCCKO4xncQsanYiwM',
   googleRemarketingOnly: false
