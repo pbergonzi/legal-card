@@ -203,11 +203,16 @@
 	}
 }
 
+.red p {
+	color: $second-accent-color;
+}
+
 .homeContainer {
-	height: 100vh;
+	height: 90vh;
 	background-image: url('../images/background.png');
-	background-position: 50% 20%;
 	background-repeat: no-repeat;
+    background-position: 50% 100%;
+    background-size: 100%;
 
 	.description {
 		font-family: 'American';
@@ -565,6 +570,11 @@ carousel{
       }
     }
   }
+}
+
+.leftContent {
+	width: 25%;
+	float: left;
 }
 
 .checkoutContainer {
@@ -1172,7 +1182,7 @@ carousel{
 		border-radius: 3px;
 		background-color: transparentize($primary-color, 0.1);
 		border: 1px solid $accent-color;
-		width: 25%;
+		width: 100%;
 		padding: 10px 30px 0 30px;
 		margin-top: 80px;
 		margin-bottom: 30px;
@@ -1236,6 +1246,26 @@ carousel{
 			}
 		}
 	}
+}
+
+.mtl20 {
+	margin-top: -20px;
+}
+
+.bottomText {
+	font-family: 'American';
+
+	p {
+		color: darken($accent-color, 15%);
+	}
+}
+
+.discount {
+	width: 16%;
+    transform: rotate(26deg);
+    position: absolute;
+    right: 130px;
+    top: 30px;
 }
 
 .argentina {
