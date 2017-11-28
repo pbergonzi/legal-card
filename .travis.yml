@@ -14,7 +14,7 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-  - ng build --prod --aot
+  - if [[ $TRAVIS_BRANCH == "staging" ]]; then echo "building for staging"; ng build --prod --env=stg; else echo "building for production"; ng build --prod; fi;
   
 after_success:
   - if [[ $TRAVIS_BRANCH == "staging" ]]; then echo "deploying to staging"; firebase use legal-card; firebase deploy --token $FIREBASE_TOKEN; else echo "deploying to production"; firebase use attorney-assistance; firebase deploy --token $FIREBASE_PRD_TOKEN; fi;
