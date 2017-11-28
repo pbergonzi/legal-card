@@ -4,6 +4,7 @@ import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-product-selection',
@@ -13,6 +14,9 @@ import { Router } from '@angular/router';
 
 export class ProductSelectionComponent implements OnInit {
   public card: Card;
+  public fortyFivePrice = environment.fortyFivePack.price;
+  public yearPrice = environment.yearPack.price;
+  
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   
   constructor(
