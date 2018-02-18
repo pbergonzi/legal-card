@@ -5,37 +5,68 @@
           <button type="button" class="menu-toggle" (click)="toogleMenu()"><i class="fa fa-bars"></i></button>
           <a [routerLink]="['/']"><logo></logo></a>
           <ul class="menu">
-              <li class="menu-item" routerLinkActive="current-menu-item">
-                  <a [routerLink]="['/about']">About Us</a>
+              <li class="menu-item">
+                  <a href="/">HOME</a>
               </li>
-              <li class="menu-item" routerLinkActive="current-menu-item">
-                  <a [routerLink]="['/plans']">Plans</a>
+              <li class="menu-item">
+                  <a href="/#services">SERVICES</a>
               </li>
-              <li class="menu-item" routerLinkActive="current-menu-item">
-                <a [routerLink]="['/contact']">Contact Us</a>
+              <li class="menu-item">
+                  <a href="/#about">ABOUT</a>
+              </li>
+              <li class="menu-item">
+                <a href="/#plans">PLANS</a>
+              </li>
+              <li class="menu-item">
+                <a href="/#team">TEAM</a>
+              </li>
+              <li class="menu-item">
+                <a href="/#faqs">FAQS</a>
+              </li>
+              <li class="menu-item">
+                <a href="/#ourvision">OUR VISION</a>
+              </li>
+              <li class="menu-item">
+                <a href="/#contact">CONTACT</a>
               </li>
           </ul> <!-- .menu -->
-          <a class="phone" href="tel:+5491150061109"><i class="fa fa-phone"></i>+54 9 11 5006 1109</a>
         </div> <!-- .main-navigation -->
 
         <div class="mobile-navigation" *ngIf="visibleMobileMenu">
           <ul class="menu">
-            <li class="menu-item" routerLinkActive="current-menu-item" (click)="toogleMenu()">
-              <a [routerLink]="['about']">About Us</a>
+            <li class="menu-item" (click)="toogleMenu()">
+              <a href="/">HOME</a>
             </li>
-            <li class="menu-item" routerLinkActive="current-menu-item" (click)="toogleMenu()">
-              <a [routerLink]="['plans']">Plans</a>
+            <li class="menu-item" (click)="toogleMenu()">
+              <a href="/#services">SERVICES</a>
             </li>
-            <li class="menu-item" routerLinkActive="current-menu-item" (click)="toogleMenu()">
-              <a [routerLink]="['contact']">Contact Us</a>
+            <li class="menu-item" (click)="toogleMenu()">
+              <a href="/#about">ABOUT</a>
+            </li>
+            <li class="menu-item" (click)="toogleMenu()">
+              <a href="/#plans">PLANS</a>
+            </li>
+            <li class="menu-item" (click)="toogleMenu()">
+              <a href="/#team">TEAM</a>
+            </li>
+            <li class="menu-item" (click)="toogleMenu()">
+              <a href="/#faqs">FAQS</a>
+            </li>
+            <li class="menu-item" (click)="toogleMenu()">
+              <a href="/#ourvision">OUR VISION</a>
+            </li>
+            <li class="menu-item" (click)="toogleMenu()">
+              <a href="/#contact">CONTACT</a>
             </li>
           </ul> <!-- .menu -->
         </div>
-        <a class="phone mobile" href="tel:+5491150061109"><i class="fa fa-phone"></i></a>
         <div class="social-links">
             <div class="top">
-              <a href="https://www.facebook.com/ContactAttorneyAssitance/" target="_blank"><i class="fa fa-facebook"></i></a>
-              <a href="https://twitter.com/AAsistance/" target="_blank"><i class="fa fa-twitter"></i></a>
+              <a href="https://www.facebook.com/ContactAttorneyAssitance/" target="_blank"><i class="attorneyicon-social-facebook"></i></a>
+              <span class="separator">|</span>
+              <a href="https://twitter.com/AAsistance/" target="_blank"><i class="attorneyicon-social-twitter"></i></a>
+              <span class="separator">|</span>
+              <a href="mailto:contact@attorneyassistance.com" target="_blank"><i class="attorneyicon-at-sign"></i></a>
             </div>
           </div>
       </div>

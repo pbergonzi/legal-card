@@ -1,12 +1,8 @@
 <div class="personalData">
-  <div class="container" [ngStyle]="{'width.px': getLeftSpace()}">
+  <h2>PERSONAL DATA</h2>
+  <div>
     <div class="sectionContainer">
       <div class="leftPart pull-left">
-        <section class="steps">
-          <div class="step step1" (click)="gotoProductSelection()"><span>Product Selection</span><div class="arrowTop"></div></div>
-          <div class="step step2 selected"><span>Personal Data</span><div class="arrowTop"></div></div>
-          <div class="step step3" (click)="gotoCheckout()"><span>Details</span></div>
-        </section>
         <div class="leftContainer">
           <div class="contactForm">
             <form #personalForm="ngForm">
@@ -28,54 +24,10 @@
               <span [hidden]="pport.valid || (pport.pristine && !submitted)" class="formError">Please enter your passport number</span>
               <span [hidden]="mail.valid || (mail.pristine && !submitted)" class="formError">Please enter a valid email address</span>
             </form>
-            <a (click)="gotoCheckout()" class="button checkout success">Go to checkout</a>
-            <input type="button" (click)="gotoProductSelection()" value="Go Back" class="special btn-secondary" />
+            <div class="actions">
+              <button (click)="gotoCheckout()">Go to checkout</button>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="pull-right rightDetails">
-        <div class="5u 12u$(medium) details">
-          <!-- Content -->
-          <section class="content">  
-            <section class="planSelectedContainer">
-              <div>
-                <div class="pull-left iconContainer">
-                  <logo-bw></logo-bw>
-                </div>
-                <div class="pull-left">
-                  <h3>Your Selection</h3>
-                  <span class="plan">{{ card.package.name }}</span>
-                </div>
-              </div>
-              <div>
-                <div class="pull-left iconContainer">
-                  <logo-info></logo-info>
-                </div>
-                <div class="pull-left">
-                  <h3>Valid From</h3>
-                  <span class="plan">{{ card.package.dateFrom | date:'shortDate' }} <br>to {{ card.package.dateTo | date:'shortDate'}}</span>
-                </div>
-              </div>
-              <div>
-                <div class="pull-left iconContainer">
-                  <logo-price></logo-price>
-                </div>
-                <div class="pull-left">
-                  <h3>Price</h3>
-                  <span class="plan">$ {{ card.package.price }}</span>
-                </div>
-              </div>          
-            </section>
-            <section class="detailsText">
-                <hr class="detailsSeparator" />
-                <header>
-                  Details
-                </header>
-                <p>24/7 Legal services</p>
-                <p>All the expenses related to our service are covered, up to u$s50000</p>
-                <p>Emergency transportation is included for all family members</p>
-            </section>
-          </section>
         </div>
       </div>
     </div>

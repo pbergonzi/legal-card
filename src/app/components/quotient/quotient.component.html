@@ -1,5 +1,6 @@
 <form #quoteForm="ngForm" (ngSubmit)="onSubmit()">
-  <div class="row 100%">
+  <div class="row 100%" [ngClass]="{'hidden': step !== 1}">
+    <h2>Get Your Legal Protection in Argentina</h2>
     <div class="12u form-element">
       <label for="dfrom">Departure date</label>
       <my-date-picker
@@ -34,9 +35,19 @@
     <div class="12u form-element">
       <footer>
         <ul class="actions" style="list-style: none">
-          <li><input type="submit" value="Quote now" class="special" [disabled]="!isValid" /></li>
+          <li><input type="submit" value="Get Started" class="special" [disabled]="!isValid" /></li>
         </ul>
       </footer>
     </div>
   </div>
+  <div class="productSelection" [ngClass]="{'hidden': step !== 2}">
+    <app-product-selection (onNextStep)="onPersonalData()"></app-product-selection>
+  </div>
+  <div class="personalData" [ngClass]="{'hidden': step !== 3}">
+    <app-personal-data (onNextStep)="onCheckout()"></app-personal-data>
+  </div>
+  <div class="checkout" *ngIf="step === 4" [ngClass]="{'hidden': step !== 4}">
+    <app-checkout></app-checkout>
+  </div>
+  {{step}}
 </form>
