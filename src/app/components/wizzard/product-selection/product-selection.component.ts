@@ -1,5 +1,5 @@
 import { Card } from 'app/models/card.model';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
@@ -13,27 +13,29 @@ import { environment } from '../../../../environments/environment';
 })
 
 export class ProductSelectionComponent implements OnInit {
+  @Output() onNextStep = new EventEmitter<void>();
+
   public card: Card;
   public fortyFivePrice = environment.fortyFivePack.price;
   public yearPrice = environment.yearPack.price;
-  
+
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-  
+
   constructor(
     private cardService: CardService,
     private router: Router
-  ) { 
+  ) {
     this.cardService
       .getCard()
       .takeUntil(this.ngUnsubscribe)
-      .subscribe( (card: Card) => { 
+      .subscribe( (card: Card) => {
         this.card = card;
       });
   }
 
   ngOnInit() {
   }
-  
+
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
@@ -57,6 +59,6 @@ export class ProductSelectionComponent implements OnInit {
 
   gotoPersonalData(){
     this.cardService.updateCard(this.card);
-    this.router.navigate(['/personal-data']);
+    this.onNextStep.emit();
   }
 }

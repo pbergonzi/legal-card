@@ -1,7 +1,7 @@
 import { Card } from 'app/models/card.model';
 import { SimpleCard } from 'app/models/simple-card.model';
 import { Owner } from 'app/models/owner.model';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
 import { Router } from '@angular/router';
@@ -14,6 +14,8 @@ import 'rxjs/add/operator/first';
 })
 
 export class PersonalDataComponent implements OnInit {
+  @Output() onNextStep = new EventEmitter<void>();
+
   public card: Card;
   private ngUnsubscribe: Subject<void> = new Subject<void>();
   submitted: boolean = false
@@ -21,12 +23,12 @@ export class PersonalDataComponent implements OnInit {
   constructor(
     private router: Router,
     private cardService: CardService
-  ) { 
+  ) {
     this.cardService
       .getCard()
       .first()
       .subscribe( (card: Card) => {
-        if(card){ 
+        if(card){
           this.card = card;
         }
       });
@@ -43,7 +45,7 @@ export class PersonalDataComponent implements OnInit {
   ngOnInit() {}
 
   private isValid(){
-    return this.cardService.isValidDateRange(this.card) && this.cardService.isValidOwner(this.card.owner);  
+    return this.cardService.isValidDateRange(this.card) && this.cardService.isValidOwner(this.card.owner);
   }
 
   gotoProductSelection(){
@@ -53,7 +55,7 @@ export class PersonalDataComponent implements OnInit {
   gotoCheckout() {
     if(this.isValid()){
       this.cardService.updateCard(this.card);
-      this.router.navigate(['/checkout']);
+      this.onNextStep.emit();
     } else {
       this.submitted = true
       console.log('The card is not valid');
