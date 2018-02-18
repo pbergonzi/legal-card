@@ -20,22 +20,23 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private cardService: CardService,
     private router: Router
-  ) { 
-    
+  ) {
+
     this.cardService
       .getCard()
       .first()
       .subscribe( (card: Card) => {
         if(card){
           this.card = card;
+          console.log(this.card)
           const simpleCard: SimpleCard = this.cardService.toSimple(this.card);
-          this.cardService.compressSimpleCard(simpleCard).first().subscribe( csCard=> {
+          this.cardService.compressSimpleCard(simpleCard).first().subscribe( csCard => {
             if(csCard){
               this.card.hash = csCard;
               this.cardService.updateCard(this.card);
             }
           });
-        }       
+        }
       });
   }
 
@@ -58,7 +59,7 @@ export class CheckoutComponent implements OnInit {
   gotoProductSelection(){
     this.router.navigate(['/product-selection']);
   }
-  
+
   ngOnInit() {}
 
   ngOnDestroy() {}

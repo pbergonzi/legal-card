@@ -1,3 +1,63 @@
+@import url('assets/css/attorneyicon.css');
+
+@font-face {
+  font-family: "monserrat";
+  src:url("assets/fonts/Montserrat-Regular.ttf");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "monserrat-bold";
+  src:url("assets/fonts/Montserrat-Bold.ttf");
+  font-weight: 100;
+  font-style: 700;
+}
+
+@font-face {
+  font-family: "oswald";
+  src:url("assets/fonts/Oswald-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "crismon";
+  src:url("assets/fonts/crismon-roman.otf");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "crismon-italic";
+  src:url("assets/fonts/crismon-italic.otf");
+  font-weight: 500;
+  font-style: italic;
+}
+
+h1 {
+  font-family: monserrat !important;
+  color: white !important;
+  text-transform: uppercase;
+  position: relative;
+  font-size: 30px !important;
+  font-weight: lighter !important;
+
+  .bigger {
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+body h2 {
+  font-family: monserrat !important;
+  color: white !important;
+  text-transform: uppercase;
+  font-size: 28px;
+  margin: 0 0 57px 0;
+}
+
 [data-bg-color="#f1f1f1"] {
   background-color: #f1f1f1;
 }
