@@ -3,13 +3,17 @@
  */
 
 .button{
-	border: none;
-	color: $white;
-	background: $accent-color ;
-	padding: 10px;
-	border-radius: 3px;
-	display: inline-block;
-	transition: .3s ease;
+  color: #ffffff;
+  background: #932c2c;
+  padding: 6px 25px;
+  border-radius: 0;
+  display: inline-block;
+  transition: .3s ease;
+  border: 1px solid white;
+  border-left-width: 2px;
+  border-top-width: 2px;
+  font-family: monserrat;
+  font-size: 15px;
 
 	&:hover,&:focus{
 		background: lighten($accent-color ,10%);
