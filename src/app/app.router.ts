@@ -8,9 +8,6 @@ import { CheckoutComponent } from 'app/components/wizzard/checkout/checkout.comp
 
 import { InsuranceHomeComponent } from 'app/components/insurance-home/insurance-home.component';
 import { InsuranceContactComponent } from 'app/components/insurance-contact/insurance-contact.component';
-import { InsuranceAboutusComponent } from 'app/components/insurance-aboutus/insurance-aboutus.component';
-import { InsuranceResourceComponent } from 'app/components/insurance-resource/insurance-resource.component';
-import { InsurancePlansComponent } from 'app/components/insurance-plans/insurance-plans.component';
 import { PaymentSuccessComponent } from 'app/components/payment-success/payment-success.component';
 import { PaymentCancelledComponent } from 'app/components/payment-cancelled/payment-cancelled.component';
 
@@ -23,28 +20,19 @@ const router: Routes = [
     path: 'contact', component : InsuranceContactComponent
   },
   {
-    path: 'about', component : InsuranceAboutusComponent
+    path: 'product-selection', component: ProductSelectionComponent
   },
   {
-    path: 'resources', component : InsuranceResourceComponent
+    path: 'personal-data', component: PersonalDataComponent
   },
   {
-    path: 'plans', component : InsurancePlansComponent
+    path: 'checkout', component: CheckoutComponent
   },
-  { 
-    path: 'product-selection', component: ProductSelectionComponent 
+  {
+    path: 'success', component: PaymentSuccessComponent
   },
-  { 
-    path: 'personal-data', component: PersonalDataComponent 
-  },
-  { 
-    path: 'checkout', component: CheckoutComponent 
-  },
-  { 
-    path: 'success', component: PaymentSuccessComponent 
-  },
-  { 
-    path: 'cancel', component: PaymentCancelledComponent 
+  {
+    path: 'cancel', component: PaymentCancelledComponent
   },
   { path: '**', component: InsuranceHomeComponent }
 ];
