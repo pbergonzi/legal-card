@@ -45,7 +45,8 @@ const router: Routes = [
   },
   { 
     path: 'cancel', component: PaymentCancelledComponent 
-  }
+  },
+  { path: '**', component: InsuranceHomeComponent }
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);
