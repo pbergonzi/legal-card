@@ -20,6 +20,13 @@
 	}
 }
 
+video {
+  width: 560px;
+  z-index: 1;
+  position: relative;
+  top: -61px;
+}
+
 .homeContainer {
   height: 100vh !important;
 
@@ -2109,7 +2116,7 @@ carousel{
         text-overflow: ellipsis;
         color: white;
         font-family: monserrat;
-        font-size: 13px;
+        font-size: 11px;
         font-weight: lighter;
       }
     }
@@ -2388,16 +2395,6 @@ carousel{
     margin-top: 25px;
   }
 
-  .image {
-    width: 60%;
-    flex-grow: 1;
-    background: url('../images/aboutus.png') no-repeat;
-    background-position-y: 100%;
-    z-index: 1;
-    position: relative;
-    top: -54px;
-  }
-
   .text {
     background-color: #003875;
     padding: 71px 39px 39px;
@@ -2579,7 +2576,9 @@ section {
     background-color: #003065;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    padding-top: 12px;
+    padding-bottom: 12px;
 
     > div {
       width: 16px;
@@ -2604,6 +2603,12 @@ section {
             min-height: 44px;
             padding: 11px;
             border-radius: 6px;
+            width: 485px;
+            font-size: 12px;
+
+            b {
+              display: block;
+            }
           }
 
           .hover {
@@ -2651,6 +2656,12 @@ section {
             min-height: 44px;
             padding: 11px;
             border-radius: 6px;
+            width: 485px;
+            font-size: 12px;
+
+            b {
+              display: block;
+            }
           }
 
           .hover {
@@ -2687,7 +2698,7 @@ section {
 
       .baloon {
         &.important {
-          p {
+          p, b {
             background-color: #003065;
             color: white;
           }
@@ -2755,7 +2766,7 @@ section {
     }
 
     .formQuotient {
-      width: 100% !important;
+      width: 90% !important;
     }
 
     .bottomPart {
@@ -2778,11 +2789,15 @@ section {
     }
   }
 
+  .servicesSection {
+    width: 91%;
+  }
+
   .plans {
     display: block !important;
 
     .planItem {
-      width: 100% !important;
+      width: 90% !important;
       margin-bottom: 10px;
     }
   }
@@ -2951,6 +2966,48 @@ section {
 
   .contactSection {
     background-image: none;
+  }
+
+  .values1 {
+    height: 290px !important;
+    p {
+      height: 275px !important;
+      span {
+        height: 211px !important;
+      }
+    }
+  }
+
+  .values3 {
+    height: 310px !important;
+    p {
+      height: 295px !important;
+      span {
+        height: 231px !important;
+      }
+    }
+  }
+
+  .values4 {
+    height: 290px !important;
+    p {
+      height: 275px !important;
+      span {
+        height: 211px !important;
+      }
+    }
+  }
+
+  .baloon p {
+    width: 90% !important;
+  }
+
+  .container.contact {
+    width: 91% !important;
+  }
+
+  .values p {
+    right: 5% !important;
   }
 }
 
