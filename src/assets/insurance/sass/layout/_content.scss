@@ -2766,7 +2766,7 @@ section {
     }
 
     .formQuotient {
-      width: 90% !important;
+      width: 100% !important;
     }
 
     .bottomPart {
@@ -2790,14 +2790,14 @@ section {
   }
 
   .servicesSection {
-    width: 91%;
+    width: 100%;
   }
 
   .plans {
     display: block !important;
 
     .planItem {
-      width: 90% !important;
+      width: 100% !important;
       margin-bottom: 10px;
     }
   }
@@ -2827,8 +2827,11 @@ section {
       float: none;
       clear: both;
       height: 250px;
+      left: 15px;
+
        p {
          width: 100%;
+         left: -15px;
        }
     }
 
@@ -2837,9 +2840,11 @@ section {
       float: none;
       clear: both;
       height: 250px;
+      left: 15px;
 
       p {
         width: 100%;
+        left: -15px;
       }
     }
 
@@ -2848,9 +2853,11 @@ section {
       float: none;
       clear: both;
       height: 250px;
+      left: 15px;
 
       p {
         width: 100%;
+        left: -15px;
       }
     }
     .values4 {
@@ -2858,9 +2865,11 @@ section {
       float: none;
       clear: both;
       height: 250px;
+      left: 15px;
 
       p {
         width: 100%;
+        left: -15px;
       }
     }
   }
@@ -2999,11 +3008,11 @@ section {
   }
 
   .baloon p {
-    width: 90% !important;
+    width: 100% !important;
   }
 
   .container.contact {
-    width: 91% !important;
+    width: 100% !important;
   }
 
   .values p {
