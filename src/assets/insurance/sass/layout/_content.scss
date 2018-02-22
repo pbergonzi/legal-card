@@ -3022,6 +3022,15 @@ section {
   video {
     width: 100% !important;
   }
+
+  .details {
+    height: 410px !important;
+    min-height: auto !important;
+  }
+
+  .container.home {
+    width: 100% !important;
+  }
 }
 
 .site-footer {
