@@ -27,8 +27,7 @@ export class CheckoutComponent implements OnInit {
       .first()
       .subscribe( (card: Card) => {
         if(card){
-          this.card = card;
-          console.log(this.card)
+          this.card = card;          
           const simpleCard: SimpleCard = this.cardService.toSimple(this.card);
           this.cardService.compressSimpleCard(simpleCard).first().subscribe( csCard => {
             if(csCard){
