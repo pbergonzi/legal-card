@@ -101,6 +101,14 @@ export class QuotientComponent implements OnInit {
                       this.card.dateTo > this.card.dateFrom;
   }
 
+  onQuotient() {
+    this.step = 1
+  }
+
+  onPackageSelection() {
+    this.step = 2
+  }
+
   onPersonalData() {
     this.step = 3;
   }
