@@ -3036,3 +3036,30 @@ section {
 .site-footer {
   display: none;
 }
+
+.termsAndConditions {
+  padding: 80px 20px 20px 20px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  pre {
+    background-color: transparent;
+    border: 0 none;
+    font-family: monserrat;
+    font-size: 14px;
+  }
+
+  * {
+    color: black !important;
+  }
+}
+
+.contactSection {
+  a {
+    color: #78a0c1 !important;
+    text-decoration: underline !important;
+  }
+}
