@@ -1,5 +1,5 @@
 import { Card } from 'app/models/card.model';
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import 'rxjs/add/operator/takeUntil';
 import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
@@ -12,8 +12,9 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./product-selection.component.scss']
 })
 
-export class ProductSelectionComponent implements OnInit {
+export class ProductSelectionComponent {
   @Output() onNextStep = new EventEmitter<void>();
+  @Output() onPrevStep = new EventEmitter<void>();
 
   public card: Card;
   public fortyFivePrice = environment.fortyFivePack.price;
@@ -33,22 +34,6 @@ export class ProductSelectionComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
-  }
-
-  getLeftSpace() {
-    if (window.screen.width > 1023) {
-      return document.querySelector('.container').clientWidth + (window.screen.width - document.querySelector('.container').clientWidth) / 2;
-    } else {
-      return document.querySelector('.container').getBoundingClientRect().width;
-    }
-  }
-
   choose(time) {
     if(time === 'year') {
       this.card.package = this.cardService.getYearPackage(this.card);
@@ -60,5 +45,9 @@ export class ProductSelectionComponent implements OnInit {
   gotoPersonalData(){
     this.cardService.updateCard(this.card);
     this.onNextStep.emit();
+  }
+
+  gotoQuotient(){
+    this.onPrevStep.emit();
   }
 }
