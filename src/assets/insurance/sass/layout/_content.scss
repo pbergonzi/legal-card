@@ -843,6 +843,9 @@ carousel{
 }
 
 .personalData {
+  .formError {
+    display: none;
+  }
 	.leftContainer {
 		.contactForm {
 			width: 100% !important;
@@ -852,7 +855,7 @@ carousel{
 	}
 
   .actions {
-    top: 60px !important;
+    top: 20px !important;
   }
 
 	@media (max-width: $mobile) {
@@ -918,7 +921,6 @@ carousel{
 	@media (max-width: $mobile) {
 		.content {
 			position: initial !important;
-			margin-top: 60px;
 		}
 	}
 	.buttons {
@@ -943,6 +945,22 @@ carousel{
 .product-selection,
 .personalData,
 .checkoutContainer {
+  position: relative;
+
+  .backButton {
+    position: absolute;
+    left: -48px;
+    top: 50%;
+    background-color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    box-shadow: 1px 1px 1px 1px black;
+    cursor: pointer;
+  }
+
 	h1 {
 		font-family: 'American';
 		width: 75%;
@@ -3030,6 +3048,15 @@ section {
 
   .container.home {
     width: 100% !important;
+  }
+
+  .formQuotient {
+    height: 439px;
+  }
+
+  .backButton {
+    right: 0;
+    left: auto !important;
   }
 }
 

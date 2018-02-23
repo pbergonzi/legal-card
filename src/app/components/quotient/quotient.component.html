@@ -41,13 +41,12 @@
     </div>
   </div>
   <div class="productSelection" [ngClass]="{'hidden': step !== 2}">
-    <app-product-selection (onNextStep)="onPersonalData()"></app-product-selection>
+    <app-product-selection (onNextStep)="onPersonalData()" (onPrevStep)="onQuotient()"></app-product-selection>
   </div>
   <div class="personalData" [ngClass]="{'hidden': step !== 3}">
-    <app-personal-data (onNextStep)="onCheckout()"></app-personal-data>
+    <app-personal-data (onNextStep)="onCheckout()" (onPrevStep)="onPackageSelection()" ></app-personal-data>
   </div>
   <div class="checkout" *ngIf="step === 4" [ngClass]="{'hidden': step !== 4}">
-    <app-checkout></app-checkout>
+    <app-checkout (onPrevStep)="onPersonalData()"></app-checkout>
   </div>
-  {{step}}
 </form>
