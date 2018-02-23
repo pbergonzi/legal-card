@@ -10,6 +10,7 @@ import { InsuranceHomeComponent } from 'app/components/insurance-home/insurance-
 import { InsuranceContactComponent } from 'app/components/insurance-contact/insurance-contact.component';
 import { PaymentSuccessComponent } from 'app/components/payment-success/payment-success.component';
 import { PaymentCancelledComponent } from 'app/components/payment-cancelled/payment-cancelled.component';
+import { TermsAndConditionsComponent } from './components/terms-and-conditions/terms-and-conditions.component';
 
 
 const router: Routes = [
@@ -33,6 +34,9 @@ const router: Routes = [
   },
   {
     path: 'cancel', component: PaymentCancelledComponent
+  },
+  {
+    path: 'terms-and-conditions', component: TermsAndConditionsComponent
   },
   { path: '**', component: InsuranceHomeComponent }
 ];

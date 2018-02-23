@@ -28,6 +28,7 @@ import { SeparatorComponent } from 'app/components/separator/separator.component
 import { ProductSelectionComponent } from 'app/components/wizzard/product-selection/product-selection.component';
 import { PersonalDataComponent } from 'app/components/wizzard/personal-data/personal-data.component';
 import { CheckoutComponent } from 'app/components/wizzard/checkout/checkout.component';
+import { TermsAndConditionsComponent } from 'app/components/terms-and-conditions/terms-and-conditions.component';
 import { CarouselModule } from 'ngx-bootstrap';
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CarouselModule } from 'ngx-bootstrap';
     LogoBlackAndWhiteComponent,
     CheckoutComponent,
     PaymentSuccessComponent,
-    PaymentCancelledComponent
+    PaymentCancelledComponent,
+    TermsAndConditionsComponent
   ],
   imports: [
     BrowserModule,
