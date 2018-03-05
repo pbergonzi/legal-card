@@ -17,7 +17,7 @@ export class QuotientComponent implements OnInit {
   public isValid: boolean = true;
   public daterange: any = {};
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-
+  public step: number = 1;
   public model = {
     dateFrom: this.formatModelDate(new Date()),
     dateTo: this.formatModelDate(this.defaultTo())
@@ -25,13 +25,13 @@ export class QuotientComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private cardService: CardService
+    private cardService: CardService,
   ) {
 
     this.cardService
       .getCard()
       .takeUntil(this.ngUnsubscribe)
-      .subscribe( (card: Card) => { 
+      .subscribe( (card: Card) => {
         if(card){
           this.card = card;
           card.dateFrom ?
@@ -43,12 +43,12 @@ export class QuotientComponent implements OnInit {
         }
       });
   }
-  
+
   private formatModelDate(date: Date): any{
-    return  {date: { year: date.getFullYear(), 
-              month: date.getMonth() + 1, 
-              day: date.getDate() 
-            }}; 
+    return  {date: { year: date.getFullYear(),
+              month: date.getMonth() + 1,
+              day: date.getDate()
+            }};
   }
 
   private defaultTo(): Date {
@@ -62,7 +62,7 @@ export class QuotientComponent implements OnInit {
     auxNow.setDate(auxNow.getDate() + 365);
     return auxNow;
   }
-  
+
   private yesterday(): Date {
     const auxNow = new Date();
     auxNow.setDate(auxNow.getDate() - 1);
@@ -74,24 +74,22 @@ export class QuotientComponent implements OnInit {
     disableUntil: this.formatModelDate(this.yesterday()).date,
     disableSince: this.formatModelDate(this.oneYearFromNow()).date
   };
-  
+
   public onDateFromChanged(event: IMyDateModel) {
-    //console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
     this.selectedDate({
       start: new Date(event.jsdate),
       end: this.card.dateTo
     });
   }
-  
+
   public onDateToChanged(event: IMyDateModel) {
-    //console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
     this.selectedDate({
       start: this.card.dateFrom,
       end: new Date(event.jsdate)
     });
   }
-  
-  
+
+
   public selectedDate(value: any) {
       const now = new Date();
       now.setHours(0,0,0,0);
@@ -99,15 +97,34 @@ export class QuotientComponent implements OnInit {
       this.card.dateTo = value.end;
       this.card.dateFrom.setHours(0,0,0,0);
       this.card.dateTo.setHours(0,0,0,0);
-      this.isValid = this.card.dateFrom >= now && 
+      this.isValid = this.card.dateFrom >= now &&
                       this.card.dateTo > this.card.dateFrom;
   }
 
+  onQuotient() {
+    this.step = 1
+  }
+
+  onPackageSelection() {
+    this.step = 2
+  }
+
+  onPersonalData() {
+    this.step = 3;
+  }
+
+  onCheckout() {
+    this.step = 4;
+  }
+
   onSubmit() {
+    if (this.step !== 1) {
+      return false;
+    }
     if(this.isValid){
       this.card.package = this.cardService.calculatePackage(this.card);
       this.cardService.updateCard(this.card);
-      this.router.navigate(['/product-selection']);
+      this.step = 2;
     } else {
       console.log('The card is not valid');
     }

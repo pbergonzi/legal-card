@@ -1,35 +1,24 @@
 <!--breadCrumb-->
-<div class="breadcrumbs">
-  <div class="container">
-    <a [routerLink]="['/']">Home</a>
-    <span>Contact us</span>
-  </div>
-</div>
 <div class="page contact">
   <div class="notification" *ngIf="sent">
     Thank you for contacting us. We will reach you soon.
   </div>
-  <div class="map">
-    <app-map class="map"></app-map>
-  </div>
   <div class="container contact">
     <div class="row">
       <div class="col-md-3 details">
-        <h2 class="section-title text-left">Address</h2>
-
         <div class="contact-detail">
+          <logo></logo>
           <address>
             <p>Attorney Travel Assistance SRL. </p>
             <p>20 Caminante Street, Rincon de Milberg, Buenos Aires, Argentina</p>
 
-            <p>Phone: +54 9 11 5006 1109</p>
+            <p>Phone: +54 11 4871 6347</p>
             <p>contact@attorney-assistance.com</p>
+            <a href="/terms-and-conditions">Terms and conditions.</a>
           </address>
         </div>
       </div>
       <div class="col-md-9">
-        <h2 class="section-title text-left">Contact form</h2>
-
         <form #personalForm="ngForm" (ngSubmit)="sendMail($event)" id="contactform" class="contact-form" method="POST">
           <div class="row">
             <div class="col-md-4">
@@ -51,7 +40,7 @@
             <span [hidden]="description.valid || description.pristine" class="formError">Please enter your message</span>
           </div>
 
-          <p class="pull-right">
+          <p>
             <input type="submit" value="Send message" [disabled]="(!name.valid || name.pristine || !email.valid || email.pristine || !description.valid || description.pristine || sending)">
           </p>
         </form>

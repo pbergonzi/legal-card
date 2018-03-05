@@ -15,24 +15,20 @@ import { GoogleAnalyticsEventsService } from 'app/services/analytics/ga.service'
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { LogoBlackAndWhiteComponent } from './components/logo-bw/logo-bw.component';
-import { LogoPriceComponent } from './components/logo-price/logo-price.component';
-import { LogoInfoComponent } from './components/logo-info/logo-info.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { InsuranceHeaderComponent } from 'app/components/insurance-header/insurance-header.component';
 import { InsuranceFooterComponent } from 'app/components/insurance-footer/insurance-footer.component';
 import { InsuranceHomeComponent } from 'app/components/insurance-home/insurance-home.component';
 import { InsuranceContactComponent } from 'app/components/insurance-contact/insurance-contact.component';
-import { InsuranceAboutusComponent } from 'app/components/insurance-aboutus/insurance-aboutus.component';
-import { InsuranceResourceComponent } from 'app/components/insurance-resource/insurance-resource.component';
-import { InsurancePlansComponent } from 'app/components/insurance-plans/insurance-plans.component';
 import { PaymentSuccessComponent } from 'app/components/payment-success/payment-success.component';
 import { PaymentCancelledComponent } from 'app/components/payment-cancelled/payment-cancelled.component';
-import { MapComponent } from 'app/components/map/map.component';
 import { PlanFilterPipe } from 'app/services/pipes/planFilter.pipe';
 import { QuotientComponent } from 'app/components/quotient/quotient.component';
+import { SeparatorComponent } from 'app/components/separator/separator.component';
 import { ProductSelectionComponent } from 'app/components/wizzard/product-selection/product-selection.component';
 import { PersonalDataComponent } from 'app/components/wizzard/personal-data/personal-data.component';
 import { CheckoutComponent } from 'app/components/wizzard/checkout/checkout.component';
+import { TermsAndConditionsComponent } from 'app/components/terms-and-conditions/terms-and-conditions.component';
 import { CarouselModule } from 'ngx-bootstrap';
 
 @NgModule({
@@ -42,10 +38,7 @@ import { CarouselModule } from 'ngx-bootstrap';
     InsuranceFooterComponent,
     InsuranceHomeComponent,
     InsuranceContactComponent,
-    InsuranceAboutusComponent,
-    InsuranceResourceComponent,
-    InsurancePlansComponent,
-    MapComponent,
+    SeparatorComponent,
     PlanFilterPipe,
     QuotientComponent,
     ProductSelectionComponent,
@@ -53,11 +46,10 @@ import { CarouselModule } from 'ngx-bootstrap';
     PaypalComponent,
     LogoComponent,
     LogoBlackAndWhiteComponent,
-    LogoInfoComponent,
-    LogoPriceComponent,
     CheckoutComponent,
     PaymentSuccessComponent,
-    PaymentCancelledComponent
+    PaymentCancelledComponent,
+    TermsAndConditionsComponent
   ],
   imports: [
     BrowserModule,

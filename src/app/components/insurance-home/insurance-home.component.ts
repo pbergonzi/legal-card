@@ -9,9 +9,18 @@ import { CarouselConfig } from 'ngx-bootstrap';
 })
 
 export class InsuranceHomeComponent implements OnInit {
+  actualPage: any = 1;
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+    setInterval(() => {
+      this.actualPage = this.actualPage + 1;
+      if (this.actualPage > 3) {
+        this.actualPage = 1;
+      }
+    }, 5000);
+  }
 
 }

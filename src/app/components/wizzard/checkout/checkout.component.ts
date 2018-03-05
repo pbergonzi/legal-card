@@ -1,11 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { CardService } from 'app/services/card/card.service';
 import { Card } from 'app/models/card.model';
-import { Router } from '@angular/router';
 import 'rxjs/add/operator/first';
 
-import { SimpleCard } from "app/models/simple-card.model";
+import { SimpleCard } from 'app/models/simple-card.model';
 
 @Component({
   selector: 'app-checkout',
@@ -13,15 +11,15 @@ import { SimpleCard } from "app/models/simple-card.model";
   styleUrls: ['./checkout.component.scss']
 })
 
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent {
   public card: Card;
-  public buying: boolean = false
+  public buying: Boolean = false;
+  @Output() onPrevStep = new EventEmitter<void>();
 
   constructor(
     private cardService: CardService,
-    private router: Router
-  ) { 
-    
+  ) {
+
     this.cardService
       .getCard()
       .first()
@@ -29,13 +27,13 @@ export class CheckoutComponent implements OnInit {
         if(card){
           this.card = card;
           const simpleCard: SimpleCard = this.cardService.toSimple(this.card);
-          this.cardService.compressSimpleCard(simpleCard).first().subscribe( csCard=> {
+          this.cardService.compressSimpleCard(simpleCard).first().subscribe( csCard => {
             if(csCard){
               this.card.hash = csCard;
               this.cardService.updateCard(this.card);
             }
           });
-        }       
+        }
       });
   }
 
@@ -43,24 +41,7 @@ export class CheckoutComponent implements OnInit {
     this.buying = true
   }
 
-  getLeftSpace() {
-    if (window.screen.width > 1023) {
-      return document.querySelector('.container').clientWidth + (window.screen.width - document.querySelector('.container').clientWidth) / 2;
-    } else {
-      return null
-    }
-  }
-
   gotoPersonalData(){
-    this.router.navigate(['/personal-data']);
+    this.onPrevStep.emit();
   }
-
-  gotoProductSelection(){
-    this.router.navigate(['/product-selection']);
-  }
-  
-  ngOnInit() {}
-
-  ngOnDestroy() {}
-
 }

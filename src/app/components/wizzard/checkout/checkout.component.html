@@ -1,52 +1,24 @@
 <div class="checkoutContainer">
-  <div *ngIf="card.hash" class="container" [ngStyle]="{'width.px': getLeftSpace()}">
+  <div class="backButton fa fa-caret-left" (click)="gotoPersonalData()"></div>
+  <h2>You Are almost there!</h2>
+  <div *ngIf="card.hash">
     <div class="sectionContainer">
-      <div class="leftPart pull-left">
-        <section class="steps">
-          <div class="step step1" (click)="gotoProductSelection()"><span>Product Selection</span><div class="arrowTop"></div></div>
-          <div class="step step2" (click)="gotoPersonalData()"><span>Personal Data</span><div class="arrowTop"></div></div>
-          <div class="step step3 selected"><span>Details</span></div>
-        </section>
-        <div class="leftContainer">
-          <div class="5u 12u$(medium) cardContent">
-            <h1>You're almost there</h1>
-            <p class="bold">Thank you for choosing us as your personal attorneys in Argentina.</p>
-            <p>Please check your order details before buying</p>
-          </div>
-          <div class="7u 12u$(medium) buttons">
-            <section id="content">
-              <input type="button" (click)="gotoPersonalData()" value="Go Back" class="special btn-secondary" />
-              <div class="confirmButton">
-                <app-paypal>
-                  <div [class]="buying ? 'disabled' : ''">
-                    <input type="image" border="0" (click)="buy()"
-                      name="submit" alt="Buy Now with Paypal" class="btn-primary success button"/>
-                  </div>
-                </app-paypal>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
-      <div class="pull-right rightDetails">
+      <div class="rightDetails">
         <section id="content" class="details">
           <div class="content">
-            <section class="planSelectedContainer">
+            <div class="planSelectedContainer">
               <div class="dataLoaded">
                 <div class="pull-left userIcon">
                   <span class="fa fa-user"></span>
                 </div>
                 <div class="pull-left personalDetails">
                   <p>
-                    <strong>Name:</strong>
                     <label>{{card.owner.name}}</label>
                   </p>
                   <p>
-                    <strong>Passport:</strong>
                     <label>{{card.owner.passport}}</label>
                   </p>
                   <p>
-                    <strong>Email:</strong>
                     <label>{{card.owner.email}}</label>
                   </p>
                 </div>
@@ -56,38 +28,26 @@
                 <div class="pull-left iconContainer">
                   <logo-bw></logo-bw>
                 </div>
-                <div class="pull-left">
-                  <h3>Your Selection</h3>
+                <div class="pull-left planContainer">
                   <span class="plan">{{ card.package.name }}</span>
                 </div>
               </div>
-              <div>
-                <div class="pull-left iconContainer">
-                  <logo-info></logo-info>
-                </div>
+              <div class="pull-left dateContainer">
                 <div class="pull-left">
                   <h3>Valid From</h3>
                   <span class="plan">{{ card.package.dateFrom | date:'shortDate' }} <br>to {{ card.package.dateTo | date:'shortDate'}}</span>
                 </div>
               </div>
-              <div>
-                <div class="pull-left iconContainer">
-                  <logo-price></logo-price>
-                </div>
+              <div class="pull-right priceContainer">
                 <div class="pull-left">
                   <h3>Price</h3>
                   <span class="plan">$ {{ card.package.price }}</span>
                 </div>
               </div>
-            </section>
-            <section class="detailsText">
-              <hr class="detailsSeparator" />
-              <app-paypal>
-                  <div [class]="buying ? 'disabled' : ''">
-                    <img src="../../../../assets/insurance/images/paypal.png" class="paypalIcon" (click)="buy()" />
-                  </div>
-              </app-paypal>
-            </section>
+            </div>
+            <app-paypal>
+              <button (click)="buy()">PAY NOW</button>
+            </app-paypal>
           </div>
         </section>
       </div>
