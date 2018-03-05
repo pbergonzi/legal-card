@@ -17,7 +17,13 @@
 	.container {
 		max-width: 100%;
 		margin: 0 auto !important;
-	}
+  }
+  
+  .aboutUs {
+    img {
+      width: 100% !important;
+    }
+  }
 }
 
 video {
@@ -2423,6 +2429,12 @@ carousel{
 
 .aboutUs {
   padding-top: 0;
+
+  img {
+    z-index: 1;
+    width: 60%;
+    margin-bottom: 60px;
+  }
 
   h2 {
     color: #a29a9a !important;
