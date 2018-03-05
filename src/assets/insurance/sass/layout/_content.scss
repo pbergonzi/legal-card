@@ -2447,6 +2447,17 @@ carousel{
     position: relative;
     top: 15%;
     flex-direction: column;
+
+    .image {
+      width: 560px;
+      z-index: 1;
+      position: relative;
+      top: -61px;
+    
+      &.team {
+        background-image: url('../images/plan1.png');
+      }
+    }
   }
 
   button {
@@ -2543,6 +2554,15 @@ section {
     font-size: 22px;
     text-align: center;
     margin-bottom: 30px;
+  }
+
+  h3 {
+    text-transform: uppercase;
+    color: black !important;
+    font-family: monserrat !important;
+    font-size: 15px;
+    text-align: center;
+    font-weight: lighter !important;
   }
 }
 
