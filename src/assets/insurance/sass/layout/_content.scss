@@ -18,7 +18,7 @@
 		max-width: 100%;
 		margin: 0 auto !important;
   }
-  
+
   .aboutUs {
     img {
       width: 100% !important;
@@ -286,6 +286,7 @@ header {
         float: left;
         margin-right: 64px;
         margin-top: -15px;
+        margin-left: 15px;
       }
 
       .services {
@@ -2455,7 +2456,7 @@ carousel{
       z-index: 1;
       position: relative;
       top: -61px;
-    
+
       &.team {
         background-image: url('../images/plan1.png');
       }
@@ -2848,7 +2849,7 @@ section {
       font-size: 16px !important;
       color: black !important;
       text-shadow: 0px 0px 3px white;
-       
+
       .bigger {
         font-size: 22px !important;
         color: black !important;
