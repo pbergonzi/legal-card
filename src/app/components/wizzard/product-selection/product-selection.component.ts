@@ -21,14 +21,14 @@ export class ProductSelectionComponent {
   public yearPrice = environment.yearPack.price;
 
   private ngUnsubscribe: Subject<void> = new Subject<void>();
-
+  
   constructor(
     private cardService: CardService,
     private router: Router
   ) {
     this.cardService
       .getCard()
-      .takeUntil(this.ngUnsubscribe)
+      .first(c => c !=null)
       .subscribe( (card: Card) => {
         this.card = card;
       });
