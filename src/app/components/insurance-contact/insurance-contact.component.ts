@@ -4,6 +4,7 @@ import { Contact } from 'app/models/contact.model';
 import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 import { CardService } from 'app/services/card/card.service';
 import { environment } from '../../../environments/environment';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-insurance-contact',
@@ -26,7 +27,8 @@ export class InsuranceContactComponent implements OnInit {
 
   constructor(
     private fb : FormBuilder,
-    private cardService: CardService
+    private cardService: CardService,
+    private http: Http
   ) {
     this.cardService
     .getCard()
@@ -68,20 +70,13 @@ export class InsuranceContactComponent implements OnInit {
     if(this.isValid()){
       this.sending = true;
       var data = new FormData();
-      data.append("json", JSON.stringify(this.card.contact));
-
-      fetch(environment.contactUrl,
-      {
-          method: "POST",
-          body: data
-      })
-      .then(res => {
-        this.sent = true
+      this.http.post('https://contact-attorney.herokuapp.com/',this.card.contact).subscribe(res => {
+        this.sent = true;
         window.setTimeout(() => {
           this.sent = false;
           this.sending = false;
-        }, 3000)
-      })
+        }, 3000);
+      });
     }
   }
 }
