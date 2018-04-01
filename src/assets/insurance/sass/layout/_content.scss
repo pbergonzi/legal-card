@@ -553,7 +553,6 @@ small {
   .ng-invalid:not(form)  {
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
-	border-left: 5px solid $second-accent-color;
   }
 
 * {
@@ -2495,6 +2494,7 @@ carousel{
 section {
   padding-top: 155px;
   height: 100vh;
+  min-height: 800px;
 
   &.planSelected {
     height: auto;
