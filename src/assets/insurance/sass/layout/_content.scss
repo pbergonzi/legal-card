@@ -35,6 +35,7 @@ video {
 
 .homeContainer {
   height: 100vh !important;
+  min-height: 800px;
 
   .formQuotient {
     margin-top: 80px;
@@ -2350,7 +2351,7 @@ carousel{
   .pictures .pablo,{
     display: flex;
     align-items: flex-end;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
 
   .nico,
