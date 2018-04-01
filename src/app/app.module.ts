@@ -3,6 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { environment } from '../environments/environment';
+import { HttpModule } from '@angular/http';
+
 
 import { routes } from 'app/app.router';
 import { AppComponent } from 'app/app.component';
@@ -54,6 +56,7 @@ import { CarouselModule } from 'ngx-bootstrap';
   imports: [
     BrowserModule,
     routes,
+    HttpModule,
     FormsModule,
     StoreModule.provideStore({
       card: cardReducer
