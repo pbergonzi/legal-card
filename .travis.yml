@@ -4,6 +4,10 @@ language: node_js
 node_js:
   - "6.9"
 
+cache:
+  directories:
+  - node_modules # NPM packages
+
 branches:
   only:
     - staging
@@ -11,10 +15,9 @@ branches:
 
 before_script:
   - npm install -g firebase-tools
-  - npm install -g @angular/cli
 
 script:
-  - if [[ $TRAVIS_BRANCH == "staging" ]]; then echo "building for staging"; ng build --prod --env=stg; else echo "building for production"; ng build --prod; fi;
+  - if [[ $TRAVIS_BRANCH == "staging" ]]; then echo "building for staging"; npm run build:stg ; else echo "building for production"; npm run build:prod ; fi;
   
 after_success:
   - if [[ $TRAVIS_BRANCH == "staging" ]]; then echo "deploying to staging"; firebase use legal-card; firebase deploy --token $FIREBASE_TOKEN; else echo "deploying to production"; firebase use attorney-assistance; firebase deploy --token $FIREBASE_PRD_TOKEN; fi;
