@@ -10,5 +10,6 @@ export interface Card {
   isoDateTo?: string,
   package?: Package,
   owner?: Owner,
-  hash?:string
+  hash?:string,
+  promoCode?:string
 }

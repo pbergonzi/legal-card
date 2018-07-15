@@ -22,6 +22,9 @@ const fourthyFivePack: Pack = environment.fortyFivePack;
 const yearPack: Pack = environment.yearPack;
 const testPack: Pack = environment.testPack;
 
+const fourthyFivePackPromo: Pack = environment.fortyFivePackPromo;
+const yearPackPromo: Pack = environment.yearPackPromo;
+
 const CARD_STORE = 'card';
 
 @Injectable()
@@ -123,6 +126,50 @@ export class CardService {
     return pack;
   }
 
+  getFortyFiveDaysPackagePromo(card: Card): Package {
+    const pack: Package = {
+      dateFrom: card.dateFrom,
+      isoDateFrom: card.dateFrom.toISOString(),
+      dateTo: null,
+      isoDateTo: null,
+      price: null,
+      name: null
+    };
+
+    const dateTo = new Date(pack.dateFrom);
+
+    dateTo.setDate(dateTo.getDate() + fourthyFivePackPromo.days);
+    
+    pack.name = fourthyFivePackPromo.name;
+    pack.price = fourthyFivePackPromo.price;
+    pack.dateTo = dateTo;
+    pack.isoDateTo = dateTo.toISOString();
+
+    return pack;
+  }
+
+  getYearPackagePromo(card: Card): Package {
+    const pack: Package = {
+      dateFrom: card.dateFrom,
+      isoDateFrom: card.dateFrom.toISOString(),
+      dateTo: null,
+      isoDateTo: null,
+      price: null,
+      name: null
+    };
+
+    const dateTo = new Date(pack.dateFrom);
+
+    dateTo.setDate(dateTo.getDate() + yearPackPromo.days);
+    
+    pack.name = yearPackPromo.name;
+    pack.price = yearPackPromo.price;
+    pack.dateTo = dateTo;
+    pack.isoDateTo = dateTo.toISOString();
+
+    return pack;
+  }
+
   getFortyFiveDaysPackage(card: Card): Package {
     const pack: Package = {
       dateFrom: card.dateFrom,
@@ -171,9 +218,17 @@ export class CardService {
     const days =  1 + Math.floor(( card.dateTo.getTime() - card.dateFrom.getTime() ) / 86400000); 
     
     if(days <= 45){
-      return this.getFortyFiveDaysPackage(card);
+      if(card.promoCode){
+        return this.getFortyFiveDaysPackagePromo(card);  
+      } else {
+        return this.getFortyFiveDaysPackage(card);
+      }
     } else {
-      return this.getYearPackage(card);
+      if(card.promoCode){
+        return this.getYearPackagePromo(card);
+      } else {
+        return this.getYearPackage(card);
+      }
     }
   }
 

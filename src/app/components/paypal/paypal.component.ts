@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
 import { GoogleAnalyticsEventsService } from 'app/services/analytics/ga.service';
 import { Card } from 'app/models/card.model';
+import { Subscription } from '../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-paypal',
@@ -15,16 +16,15 @@ export class PaypalComponent implements OnInit {
   actionUrl = environment.paypalAction;
   buttonId = environment.paypalButton;
   public disabled: boolean = false;
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
   public card: Card;
-
+  private cardSub: Subscription;
+  
   constructor(
     private cardService: CardService,
     private gaService: GoogleAnalyticsEventsService
   ) {
-    this.cardService
-      .getCard()
-      .takeUntil(this.ngUnsubscribe)
+    this.cardSub = this.cardService
+      .getCard()      
       .subscribe( (card: Card) => { 
         if(card){
           this.card = card;
@@ -45,7 +45,6 @@ export class PaypalComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
+    this.cardSub.unsubscribe();
   }
 }

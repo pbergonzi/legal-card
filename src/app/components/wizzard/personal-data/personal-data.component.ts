@@ -1,8 +1,9 @@
 import { Card } from 'app/models/card.model';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { CardService } from 'app/services/card/card.service';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/first';
+import { Subscription } from '../../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-personal-data',
@@ -10,20 +11,20 @@ import 'rxjs/add/operator/first';
   styleUrls: ['./personal-data.component.css']
 })
 
-export class PersonalDataComponent {
+export class PersonalDataComponent implements OnDestroy{
   @Output() onNextStep = new EventEmitter<void>();
   @Output() onPrevStep = new EventEmitter<void>();
 
   public card: Card;
   submitted: boolean = false
-
+  private cardSub: Subscription;
+  
   constructor(
     private router: Router,
     private cardService: CardService
   ) {
-    this.cardService
+    this.cardSub = this.cardService
       .getCard()
-      .first()
       .subscribe( (card: Card) => {
         if(card){
           this.card = card;
@@ -47,5 +48,9 @@ export class PersonalDataComponent {
       this.submitted = true
       console.log('The card is not valid');
     }
+  }
+
+  ngOnDestroy(): void {
+    this.cardSub.unsubscribe();
   }
 }

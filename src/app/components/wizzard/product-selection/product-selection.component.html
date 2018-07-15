@@ -6,7 +6,41 @@
         <div>
           <div class="row 100% formQuote">
             <h2>Choose your plan</h2>
-            <div class="planSelected">
+            <div class="plan selected" *ngIf="card.promoCode">
+              <div
+                class="package"
+                [ngClass]="card && card.package && card.package.name === 'Year Pack Promo' ? 'selected' : ''"
+                (click)="choose('year')">
+                
+                <div class="content">
+                  <div>
+                    <h3>Year Plan Promo</h3>
+                    <span class="checkbox">
+                      <span class="attorneyicon-tick checked"></span>
+                    </span>
+                  </div>
+                  <p>Price: u$s{{ yearPricePromo }}</p>
+                  <a class="moreInfo">More Info...</a>
+                </div>
+              </div>
+              <div
+                class="package"
+                [ngClass]="card && card.package && card.package.name === 'FortyFive Pack Promo' ? 'selected' : ''"
+                (click)="choose('fortyFive')"
+              >
+                <div class="content">
+                  <div>
+                    <h3>45 Days Plan Promo</h3>
+                    <span class="checkbox">
+                      <span class="attorneyicon-tick checked"></span>
+                    </span>
+                  </div>
+                  <p>Price: u$s{{ fortyFivePricePromo }}</p>
+                  <a class="moreInfo">More Info...</a>
+                </div>
+              </div>
+            </div>
+            <div class="planSelected" *ngIf="!card.promoCode">
               <div
                 class="package"
                 [ngClass]="card && card.package && card.package.name === 'Year Pack' ? 'selected' : ''"
