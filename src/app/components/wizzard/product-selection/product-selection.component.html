@@ -6,7 +6,7 @@
         <div>
           <div class="row 100% formQuote">
             <h2>Choose your plan</h2>
-            <div class="plan selected" *ngIf="card.promoCode">
+            <div class="planSelected" *ngIf="card.promoCode">
               <div
                 class="package"
                 [ngClass]="card && card.package && card.package.name === 'Year Pack Promo' ? 'selected' : ''"

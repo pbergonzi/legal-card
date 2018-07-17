@@ -25,9 +25,15 @@
         required></my-date-picker>
     </div>
 
-    <div class="12u form-element">
+    <div class="12u form-element promoContainer">
       <label>Promo code</label>
-      <input [value]="promoCode" (input)="promoCode = $event.target.value" type="text" maxlength="10"/>
+      <input
+        class="promoCode"
+        [value]="promoCode"
+        (input)="promoCode = $event.target.value"
+        type="text"
+        maxlength="10"
+      />
     </div>
 
     <div class="12u form-element">
