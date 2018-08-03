@@ -100,6 +100,7 @@ export class CardService {
     scard.ownerEmail = card.owner.email;
     scard.ownerName = card.owner.name;
     scard.ownerPassport = card.owner.passport;
+    scard.promoCode = card.promoCode;
     
     return scard;
   }
@@ -212,6 +213,10 @@ export class CardService {
     pack.isoDateTo = dateTo.toISOString();
 
     return pack;
+  }
+
+  public isValidPromoCode(promoCode: string): boolean{
+    return environment.availableCodes.find(code => code == promoCode) != undefined || !promoCode;
   }
 
   public calculatePackage(card: Card): Package {

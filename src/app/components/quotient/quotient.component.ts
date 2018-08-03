@@ -1,7 +1,6 @@
 import { Card } from 'app/models/card.model';
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import 'rxjs/add/operator/takeUntil';
-import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MyDatePicker, IMyDpOptions, IMyDateModel, IMyDate } from 'mydatepicker';
@@ -132,23 +131,20 @@ export class QuotientComponent implements OnInit, OnDestroy {
     if (this.step !== 1) {
       return false;
     }
-    if(this.isValid && this.isValidPromoCode()){
+
+    if(this.isValid && this.cardService.isValidPromoCode(this.promoCode)){
       this.card.promoCode = this.promoCode;
       this.card.package = this.cardService.calculatePackage(this.card);
       this.cardService.updateCard(this.card);
       this.step = 2;
       console.log(this.card);
     } else {
-      if(this.isValidPromoCode()){
+      if(this.cardService.isValidPromoCode(this.promoCode)){
         console.log('The card is not valid');
       } else {
         console.log('Non valid promo code');
       }
     }
-  }
-
-  isValidPromoCode(): boolean {
-    return true;
   }
 
   ngOnInit() {}
