@@ -9,6 +9,8 @@ export const environment = {
   paypalAction: 'https://www.sandbox.paypal.com/cgi-bin/webscr',
   yearPack: { name: 'Year Pack', price: 399, days: 365 },
   fortyFivePack: { name: 'FortyFive Pack', price: 99, days: 45 },
+  yearPackPromo: { name: 'Year Pack Promo', price: 359, days: 365 },
+  fortyFivePackPromo: { name: 'FortyFive Pack Promo', price: 89, days: 45 },
   testPack: { name: '1H Pack', price: 1, days: 1 },
   contactUrl: 'https://attorney-assistance.herokuapp.com/',
   gaId:'TEST',
