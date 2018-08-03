@@ -4,6 +4,7 @@ export interface SimpleCard {
   packageName?: string,
   ownerName?: string,
   ownerPassport?: string,
-  ownerEmail?: string
+  ownerEmail?: string,
+  promoCode?:string
 }
 
