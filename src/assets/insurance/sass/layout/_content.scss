@@ -814,8 +814,9 @@ carousel{
 }
 
 .checkoutContainer {
+  height: 480px;
 	.buttons {
-		margin-right: 5%;
+    margin-right: 5%;
 	}
 
   .dateContainer,
@@ -1489,7 +1490,7 @@ carousel{
 		@media screen and (max-width: 480px){ width: 100% }
 
 		.form-element{
-			padding-bottom: 5px !important;
+      padding-bottom: 5px !important;
 		}
 
 		.slide-title{
@@ -3134,7 +3135,7 @@ section {
   }
 
   .formQuotient {
-    height: 439px;
+    height: 484px;
   }
 
   .backButton {
@@ -3173,4 +3174,15 @@ section {
     color: #78a0c1 !important;
     text-decoration: underline !important;
   }
+}
+
+.promoCode {
+  background-color: transparent;
+  border-width: 0 0 3px 0;
+  border-radius: 0;
+  color: white;
+  padding-bottom: 0px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  width: 95%;
 }

@@ -1,10 +1,10 @@
 import { Card } from 'app/models/card.model';
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import 'rxjs/add/operator/takeUntil';
-import { Subject } from 'rxjs/Subject';
 import { CardService } from 'app/services/card/card.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MyDatePicker, IMyDpOptions, IMyDateModel, IMyDate } from 'mydatepicker';
+import { Subscription } from '../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-form-quotient',
@@ -12,25 +12,34 @@ import { MyDatePicker, IMyDpOptions, IMyDateModel, IMyDate } from 'mydatepicker'
   styleUrls: ['./quotient.component.scss']
 })
 
-export class QuotientComponent implements OnInit {
+export class QuotientComponent implements OnInit, OnDestroy {
   public card: Card;
   public isValid: boolean = true;
   public daterange: any = {};
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
   public step: number = 1;
   public model = {
     dateFrom: this.formatModelDate(new Date()),
     dateTo: this.formatModelDate(this.defaultTo())
   };
+  public promoCode: string = '';
+
+  private cardSub: Subscription;
 
   constructor(
     private router: Router,
     private cardService: CardService,
+    private activatedRoute: ActivatedRoute
   ) {
 
-    this.cardService
+    this.activatedRoute.queryParams.subscribe((params: Params) => {      
+      if(params['promoCode']){
+        this.promoCode = params['promoCode'];
+      }
+  
+      console.log(this.promoCode);
+
+      this.cardSub = this.cardService
       .getCard()
-      .takeUntil(this.ngUnsubscribe)
       .subscribe( (card: Card) => {
         if(card){
           this.card = card;
@@ -42,6 +51,7 @@ export class QuotientComponent implements OnInit {
             card.dateTo = this.defaultTo();
         }
       });
+    });
   }
 
   private formatModelDate(date: Date): any{
@@ -121,20 +131,26 @@ export class QuotientComponent implements OnInit {
     if (this.step !== 1) {
       return false;
     }
-    if(this.isValid){
+
+    if(this.isValid && this.cardService.isValidPromoCode(this.promoCode)){
+      this.card.promoCode = this.promoCode;
       this.card.package = this.cardService.calculatePackage(this.card);
       this.cardService.updateCard(this.card);
       this.step = 2;
+      console.log(this.card);
     } else {
-      console.log('The card is not valid');
+      if(this.cardService.isValidPromoCode(this.promoCode)){
+        console.log('The card is not valid');
+      } else {
+        console.log('Non valid promo code');
+      }
     }
   }
 
   ngOnInit() {}
 
   ngOnDestroy() {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
+    this.cardSub.unsubscribe();
   }
 }
 

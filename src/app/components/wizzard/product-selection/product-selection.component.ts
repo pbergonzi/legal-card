@@ -1,10 +1,9 @@
 import { Card } from 'app/models/card.model';
-import { Component, Output, EventEmitter } from '@angular/core';
-import 'rxjs/add/operator/takeUntil';
-import { Subject } from 'rxjs/Subject';
+import { Component, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { CardService } from 'app/services/card/card.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../../environments/environment';
+import { Subscription } from '../../../../../node_modules/rxjs/Subscription';
 
 @Component({
   selector: 'app-product-selection',
@@ -12,33 +11,43 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./product-selection.component.scss']
 })
 
-export class ProductSelectionComponent {
+export class ProductSelectionComponent implements OnDestroy{
   @Output() onNextStep = new EventEmitter<void>();
   @Output() onPrevStep = new EventEmitter<void>();
 
   public card: Card;
   public fortyFivePrice = environment.fortyFivePack.price;
   public yearPrice = environment.yearPack.price;
-
-  private ngUnsubscribe: Subject<void> = new Subject<void>();
+  public fortyFivePricePromo = environment.fortyFivePackPromo.price;
+  public yearPricePromo = environment.yearPackPromo.price;
+  
+  private cardSub: Subscription;
   
   constructor(
     private cardService: CardService,
     private router: Router
   ) {
-    this.cardService
+    this.cardSub = this.cardService
       .getCard()
-      .first(c => c !=null)
+      //.first(c => c !=null)
       .subscribe( (card: Card) => {
         this.card = card;
       });
   }
 
   choose(time) {
-    if(time === 'year') {
-      this.card.package = this.cardService.getYearPackage(this.card);
+    if(this.card.promoCode){
+      if(time === 'year') {
+        this.card.package = this.cardService.getYearPackagePromo(this.card);
+      } else {
+        this.card.package = this.cardService.getFortyFiveDaysPackagePromo(this.card);
+      }  
     } else {
-      this.card.package = this.cardService.getFortyFiveDaysPackage(this.card);
+      if(time === 'year') {
+        this.card.package = this.cardService.getYearPackage(this.card);
+      } else {
+        this.card.package = this.cardService.getFortyFiveDaysPackage(this.card);
+      }
     }
   }
 
@@ -49,5 +58,9 @@ export class ProductSelectionComponent {
 
   gotoQuotient(){
     this.onPrevStep.emit();
+  }
+
+  ngOnDestroy(): void {
+    this.cardSub.unsubscribe();
   }
 }
